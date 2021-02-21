@@ -1,0 +1,23 @@
+{
+  "name": "mountainmadness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proyecto-2-Ironhack-MountainMadness/MountainMadness.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Proyecto-2-Ironhack-MountainMadness/MountainMadness/issues"
+  },
+  "homepage": "https://github.com/Proyecto-2-Ironhack-MountainMadness/MountainMadness#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  }
+}
