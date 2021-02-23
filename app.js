@@ -55,6 +55,8 @@ app.use("/", routes);
 
 app.use("/login", routes);
 
+//app.use("user.Profile", routes); //ruta del perfil de usuario
+
 
 // Error handler
 app.use((req, res, next) => {

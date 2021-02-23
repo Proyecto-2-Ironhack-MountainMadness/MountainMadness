@@ -15,4 +15,9 @@ router.post("/login",  usersController.doLogin);
 router.get("/register", usersController.register);
 router.post("/register", usersController.doRegister);
 
+//router.get("/userProfile", )
+
+//=======================nodemailer-activarToken=====================
+router.get("/activate/:token",usersController.activate);
+ 
 module.exports = router;
