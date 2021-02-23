@@ -17,6 +17,9 @@ const hbs = require('hbs');
 //Requerimos routes para configurar todas nuestras rutas en un archivo
 const routes = require("./config/routes");
 
+//Requerimos la instancia db.config donde está la configuración de la base de datos
+require('./config/db.config')
+
 
 
 //=================Configuracion de Express=========================
@@ -49,6 +52,23 @@ hbs.registerPartials(__dirname+"/views/partials");
 
 //Seteamos el / para poder utilizar las rutas
 app.use("/", routes);
+
+app.use("/login", routes);
+
+
+// Error handler
+app.use((req, res, next) => {
+    next(createError(404));
+  });
+  
+  app.use((error, req, res, next) => {
+    console.log(error);
+    if (!error.status) {
+      error = createError(500);
+    }
+    res.status(error.status);
+    res.render("error", error);
+  });
 
 
 //=================Configuración inicialización=========================
