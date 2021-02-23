@@ -79,7 +79,7 @@ module.exports.doLogin = (req, res, next) => {
               if (user.active) {
                 req.session.currentUserId = user.id;
 
-                res.redirect("/profile");
+                res.redirect("/userProfile");
               } else {
                 renderWithErrors("Tu cuenta no está activa, mira tu email");
               }
@@ -91,6 +91,17 @@ module.exports.doLogin = (req, res, next) => {
     })
     .catch((e) => next(e));
 };
+
+module.exports.logout = (req, res, next) => {
+  req.session.destroy()
+  res.redirec('/')
+}
+
+module.exports.profile = (req, res, next) =>{
+  res.render('users/profile')
+}
+
+
 module.exports.activate = (req, res, next) => {
   User.findOneAndUpdate(
     { activationToken: req.params.token, active: false },

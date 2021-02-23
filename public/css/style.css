@@ -1,0 +1,7 @@
+.home{
+    background-color: green;
+}
+
+.error-message {
+    color: var(--bs-red)
+}
