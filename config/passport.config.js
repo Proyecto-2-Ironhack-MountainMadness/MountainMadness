@@ -2,6 +2,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require ('../models/User.model')
+const mongoose = require('mongoose')
 
 passport.serializeUser((user,next) => {
     next(null, user.id)

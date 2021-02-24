@@ -58,7 +58,7 @@ module.exports.doLogin = (req, res, next) => {
     } else {
       req.login(user, loginErr => {
         if (loginErr) next(loginErr)
-        else res.redirect('/profile')
+        else res.redirect('/')
       })
     }
   })(req, res, next);

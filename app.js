@@ -13,7 +13,6 @@ const logger = require('morgan');
 //Motor de vistas que utilizamos
 const hbs = require('hbs');
 
-
 //Requerimos routes para configurar todas nuestras rutas en un archivo
 const routes = require("./config/routes");
 const sessionMiddleware = require('./middlewares/session.middleware')
@@ -44,6 +43,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Configuramos carpeta public con express para poder usar css e imagenes en nuestras views
 app.use(express.static("public"));
+
 
 //Middleware para las cookies
 app.use(session)
