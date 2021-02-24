@@ -42,9 +42,10 @@ const userSchema = new mongoose.Schema({
         enum: ['ADMIN', 'USER'],
         default: 'USER'
       }, */
-     /*  social: {
+      social: {
         google: String
-      }, */
+        /* feisbuk: String */
+      },
       //======================nodemailer====================
       activationToken: {
         type: String,
