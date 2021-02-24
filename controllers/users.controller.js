@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
+const passport = require("passport")
 
 const { sendActivationEmail } = require("../config/mailer.config"); //Nodemailer
 
 
 
-
+//=================================REGISTER================================================
 
 module.exports.register = (req, res, next) => {
   res.render("users/register");
@@ -49,26 +50,21 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.doLogin = (req, res, next) => {
-  function renderWithErrors(e) {
-    res.render("users/login", {
-      user: req.body,
-      error: e || "El correo electrónico o la contraseña no son correctos",
-    });
-  }
-
-    //passport.authenticate('local-auth', (error, user, validations) => {
-      // if (error) {
-      //   next(error);
-      /* } else  */if (!user) {
-    res.status(400).render('users/login', { user: req.body, error: validations.error });
-  } else {
-    req.login(user, loginErr => {
-      if (loginErr) next(loginErr)
-      else res.redirect('/')
-    })
-  }
+  passport.authenticate('local-auth', (error, user, validations) => {
+    if (error) {
+      next(error);
+    } else if (!user) {
+      res.status(400).render('users/login', { user: req.body, error: validations.error });
+    } else {
+      req.login(user, loginErr => {
+        if (loginErr) next(loginErr)
+        else res.redirect('/profile')
+      })
+    }
+  })(req, res, next);
+};
   //========================NODEMAILER=============================
-  User.findOne({ email: req.body.email })
+/*   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
         renderWithErrors();
@@ -89,17 +85,22 @@ module.exports.doLogin = (req, res, next) => {
           });
       }
     })
-    .catch((e) => next(e));
-};
+    .catch((e) => next(e)); */
+
+//=======================================LOGIN FIN===================================================
+
+//=======================================LOGOUT============================================
 
 module.exports.logout = (req, res, next) => {
   req.session.destroy()
-  res.redirec('/')
+  res.redirect('/')
 }
 
 module.exports.profile = (req, res, next) =>{
   res.render('users/profile')
 }
+
+//=======================================LOGOUT FIN============================================
 
 
 module.exports.activate = (req, res, next) => {
@@ -120,8 +121,25 @@ module.exports.activate = (req, res, next) => {
     })
     .catch((e) => next(e));
 
-    // PRO TIP: PARA EDITAR TEMPLATES USAR MJML  !!!!!!!!!!!!!!!!!!!  <--------------
+    // PRO TIP: PARA EDITAR TEMPLATES DEL CORREO DE ACTIVACION, USAR MJML  !!!!!!!!!!!!!!!!!!!  <--------------
 };
-//========================NODEMAILER=============================
-//=======================================LOGIN===================================================
+//========================NODEMAILER FIN=============================
+ 
+//========================GOOGLE=============================
 
+
+module.exports.doLoginGoogle = (req, res, next) => {
+  passport.authenticate('google-auth', (error, user, validations) => {
+    if (error) {
+      next(error);
+    } else if (!user) {
+      res.status(400).render('users/login', { error: validations });
+    } else {
+      req.login(user, loginErr => {
+        if (loginErr) next(loginErr)
+        else res.redirect('/')
+      })
+    }
+  })(req, res, next)
+}
+//========================GOOGLE fin=============================

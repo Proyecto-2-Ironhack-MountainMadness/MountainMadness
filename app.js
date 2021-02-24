@@ -12,17 +12,23 @@ const logger = require('morgan');
 
 //Motor de vistas que utilizamos
 const hbs = require('hbs');
-//Requerimos session connfig para configurar las sesiones de usuario
-const session = require('./config/session.config')
 
 
 //Requerimos routes para configurar todas nuestras rutas en un archivo
 const routes = require("./config/routes");
 const sessionMiddleware = require('./middlewares/session.middleware')
 
+//Requerimos session connfig para configurar las sesiones de usuario
+const session = require('./config/session.config')
+
+//Para poder utilizar los middlewares de passport
+const passport = require('passport')
+
 //Requerimos la instancia db.config donde está la configuración de la base de datos
 require('./config/db.config')
 
+//Requerimos para instanciar la configuracion de passport en la carpeta donde la hemos configurado
+require("./config/passport.config")
 
 
 //=================Configuracion de Express=========================
@@ -38,8 +44,13 @@ app.use(express.urlencoded({ extended: false }));
 
 //Configuramos carpeta public con express para poder usar css e imagenes en nuestras views
 app.use(express.static("public"));
+
 //Middleware para las cookies
 app.use(session)
+
+//Tenemos que decirle que use passport
+app.use(passport.initialize());
+app.use(passport.session())
 
 //Middleware para poder meter logs en consola
 app.use(logger("dev"));
@@ -53,6 +64,12 @@ app.set("view engine", "hbs");
 //Registramos los partials
 hbs.registerPartials(__dirname + "/views/partials");
 
+app.use((req,res,next) =>{
+  req.currentUser = req.user;
+  res.locals.currentUser = req.user;
+
+  next()
+})
 
 //===========================Middleware===========================================
 app.use(sessionMiddleware.findUser)
