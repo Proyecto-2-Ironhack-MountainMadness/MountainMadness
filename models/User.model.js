@@ -66,9 +66,9 @@ userSchema.methods.checkPassword = function (passwordToCheck) {
 };
 
 userSchema.pre("save", function (next) {
-    if (this.email === process.env.ADMIN_EMAIL) {
+    /* if (this.email === process.env.ADMIN_EMAIL) {
       this.role = 'ADMIN'
-    }
+    } */
   
     if (this.isModified("password")) {
       bcrypt.hash(this.password, SALT_ROUNDS).then((hash) => {
