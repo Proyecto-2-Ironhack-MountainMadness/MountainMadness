@@ -15,6 +15,7 @@ const SALT_ROUNDS = 10;
 //============Schema que guardamos en const e importamos de mongoose===================
 
 const userSchema = new mongoose.Schema({
+  
     email: {
       type: String,
       required: "Es necesario añadir un correo electrónico",
