@@ -6,38 +6,30 @@
 
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand" href="#">
-          <img src="/images/Logoprueba.png" class="img-fluid" alt="">
+    <a class="navbar-brand" href="/">
+          <img src="/images/Logoprueba.png" width="200" height="200"class="img-fluid" alt="">
         </a>
 
     <a class="navbar-brand" href="/">MountainMadness</a>
     <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
-      <div class="container-fluid">
-        <form class="d-flex">
+      <div class=class="container-fluid">
+        <form class="d-flex"style="width: 700px;">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" class="container-fluid">
         <li class="nav-item">
-          <a class="nav-link" href="/">Inicio</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Mi cuenta
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {{#if currentUser}}
-            <li><a class="dropdown-item" href="/profile">Mi perfil</a></li>
-            <form action="/logout" method="POST">
-              <li><button class="dropdown-item">Cerrar sesión</button></li>
+          {{#if currentUser}}
+          <a class="nav-link" href="/profile">Mi perfil</a></li>
+          <form action="/logout" method="POST">
+              <li><button class="btn btn-danger">Cerrar sesión</button></li>
             </form>
-            </form>
-            {{else}}
-            <li><a class="dropdown-item" href="/register">Registro</a></li>
-            <li><a class="dropdown-item" href="/login">Iniciar sesión</a></li>
-            {{/if}}
+          {{else}}
+          <a class="nav-link" href="/register">SignUp</a></li>
+          <a class="nav-link" href="/login">LogIn</a></li>
+          {{/if}}
+      
           </ul>
         </li>
       </ul>
