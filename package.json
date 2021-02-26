@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/Proyecto-2-Ironhack-MountainMadness/MountainMadness#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "connect-mongo": "3.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "faker": "^5.4.0",
     "hbs": "^4.1.1",
     "mongoose": "^5.11.17",
     "morgan": "^1.10.0",
