@@ -34,4 +34,24 @@ body {
     left: 0;
     right: 0;
     width: 100%;
+    
+}
+.profile-img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 300px;
+    border: 8px solid white;
+    max-height: 150px;
+    height: 206px;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+.form-control {
+    resize: none;
 }
