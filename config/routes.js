@@ -29,7 +29,7 @@ router.post('/logout', secure.isAuthenticated, usersController.logout)
 
 router.get('/profile', secure.isAuthenticated, usersController.profile)
 
-router.post('/delete', usersController.delete)
+router.get('/delete', usersController.delete)
 
 //Routes list
 
