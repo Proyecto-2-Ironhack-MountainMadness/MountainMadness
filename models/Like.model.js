@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Route = require("./route.model");
+const Route = require("./Route.model");
 const User = require("./User.model")
 
 const likeSchema = new mongoose.Schema(

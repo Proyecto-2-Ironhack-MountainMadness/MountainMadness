@@ -89,18 +89,32 @@ module.exports.doLogin = (req, res, next) => {
 
 //=======================================LOGIN FIN===================================================
 
-//=======================================LOGOUT============================================
+//===================================================================================
 
 module.exports.logout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
 
+//==================================DELETE===========================================
+module.exports.delete = (req, res, next) => {
+  
+  User.findByIdAndDelete(_id, function (err) {
+    if(err) console.log(err);
+    console.log("Successful deletion");
+  });
+}
+
+
+
+
+
+//=============================PROFILE=============================================================
 module.exports.profile = (req, res, next) =>{
   res.render('users/profile')
 }
 
-//=======================================LOGOUT FIN============================================
+//================================================================================
 
 
 module.exports.activate = (req, res, next) => {
@@ -142,4 +156,4 @@ module.exports.doLoginGoogle = (req, res, next) => {
     }
   })(req, res, next)
 }
-//========================GOOGLE fin=============================
+//========================GOOGLE fin============================
