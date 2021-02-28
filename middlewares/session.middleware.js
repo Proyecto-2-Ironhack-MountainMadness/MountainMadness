@@ -5,11 +5,15 @@ module.exports.findUser = (req, res, next) => {
         User.findById(req.session.currentUserId)
             .then((user) => {
                 if (user) {
+                    console.log("aqui esta el user",user)
                     req.currentUser = user
                     res.locals.currentUser = user
                 }
             })
-            .catch(e => next(e))
+            .catch(e => {
+                console.log("aqui el user ", e)
+                next(e) 
+            })
     } else {
         next()
     }

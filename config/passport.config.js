@@ -54,6 +54,7 @@ passport.use('local-auth', new LocalStrategy({
   }, (accessToken, refreshToken, profile, next) => {
     const googleID = profile.id
     const email = profile.emails[0] ? profile.emails[0].value : undefined;
+    const imgProfile = profile.photos[0].value
   
     if (googleID && email) {
       User.findOne({ $or: [
@@ -65,6 +66,7 @@ passport.use('local-auth', new LocalStrategy({
             if (!user) {
                 const newUserInstance = new User({
                   email,
+                  imgProfile,
                   password: 'Aa1' + mongoose.Types.ObjectId(),
                   social: {
                     google: googleID
