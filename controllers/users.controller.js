@@ -98,9 +98,9 @@ module.exports.logout = (req, res, next) => {
 
 //==================================DELETE===========================================
 module.exports.delete = (req, res, next) => {
-  User.findByIdAndRemove({_id: req.params.id, user: req.currentUser.id })
+  console.log(req, "delete")
+  User.findByIdAndRemove(req.user._id)
     .then(user => {
-      console.log({_id: id})
       if (!user) {
         next(console.log( 'User not found'));
       } else {

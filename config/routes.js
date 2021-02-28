@@ -2,9 +2,9 @@ const passport = require('passport')
 const router = require("express").Router();
 const miscController = require("../controllers/misc.controller");
 const usersController = require("../controllers/users.controller");
-const routesController = require("../controllers/routes.controller")
+const tracksController = require("../controllers/tracks.controller")
 const secure = require('../middlewares/secure.middleware');
-const Routes = require('../models/Route.model');
+const Routes = require('../models/Track.model');
 
 const GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/userinfo.profile",
@@ -33,17 +33,17 @@ router.get('/delete', usersController.delete)
 
 //Routes list
 
-router.get("/routes", routesController.routesPage);
+router.get("/tracks", tracksController.tracksPage);
 
 
 //Routes create - edit - delete
 
-router.get("/routes/create", routesController.create);
-router.post("/routes/create", routesController.doCreate);
-router.get("/routes/:id", routesController.detail);
-router.get("/routes/:id/edit", routesController.edit);
-router.post("/routes/:id/edit", routesController.doEdit);
-router.get("/routes/:id/delete", routesController.delete);
+router.get("/tracks/create", tracksController.create);
+router.post("/tracks/create", tracksController.doCreate);
+router.get("/tracks/:id", tracksController.detail);
+router.get("/tracks/:id/edit", tracksController.edit);
+router.post("/tracks/:id/edit", tracksController.doEdit);
+router.get("/tracks/:id/delete", tracksController.delete);
 
 
 //============================google===============================

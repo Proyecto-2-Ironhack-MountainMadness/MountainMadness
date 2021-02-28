@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 // const Like = require("./Like.model")
 
-const routeSchema = new mongoose.Schema(
+const trackSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -61,9 +61,9 @@ const routeSchema = new mongoose.Schema(
     }
 );
 
-const Route = mongoose.model("Routes", routeSchema);
+const Track = mongoose.model("Track", trackSchema);
 
-module.exports = Route;
+module.exports = Track;
 
 
 //No se me ocurre mas información para el modelo xDDD
