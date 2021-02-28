@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon -e hbs,css,js app.js"
+    "dev": "nodemon -e hbs,css,js app.js",
+    "seeds": "node seeds.js"
   },
   "repository": {
     "type": "git",

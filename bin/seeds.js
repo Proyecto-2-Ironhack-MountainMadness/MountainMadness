@@ -1,27 +1,37 @@
-const faker = require("faker");
+require("dotenv").config();
 require("../config/db.config");
-const Routes = require("../models/Route.model");
-const User = require("../models/User.model");
+const Route = require("../models/Route.model");
+const faker = require("faker");
 
-Promise.all([Routes.deleteMany(), User.deleteMany()]).then(() => {
-  // Create N users
-  for (let i = 0; i < 100; i++) {
-    User.create({
-      email: faker.internet.email(),
-      password: "Abcde1234",
-    }).then((u) => {
-      // For each user, create N products
-      for (let j = 0; j < 3; j++) {
-        Routes.create({
-          name: faker.address.state(),
-          routes:faker.random.locale(),
-          description: faker.random.words(),
-          image: faker.image.nature(),
-        }).then((p) => console.log(`Created ${p.name} by ${u.email}`));
-      }
-    });
+
+Route.deleteMany()
+.then(() => {
+  for (let i = 0; i < 30; i++) {
+  Route.create({
+    title: faker.lorem.sentence(),
+    description: faker.lorem.paragraphs(Math.floor(4 * Math.random()) + 1),
+    author: faker.internet.userName(),
+    image: faker.image.nature(),
+    tags: getRandom(
+      ["Forest", " Your Bag", "Camping", "Mountains", "Walking", "Controlled Areas"],
+      Math.floor(Math.random() * 3) + 1
+    ),
+  }).then((p) => {
+console.log(`created ${p.title} by ${p.author}`);
+  })
+}
+});
+
+//===================== Crear una cantidad aleatoria de Tags ========================
+function getRandom(arr, n) {
+  let result = new Array(n);
+  let len = arr.length;
+  let taken = new Array(len);
+  while (n--) {
+    let x = Math.floor(Math.random() * len);
+    result[n] = arr[x in taken ? taken[x] : x];
+    taken[x] = --len in taken ? taken[len] : len;
   }
-})
+  return result;
+}
 
-// No lo lanzo haste que estemos seguros, no tengo muy claro lo que va a salir, lo dejo mas o menos configurado... pero no lo usamos
-//En el video de Carol para usar Axios , crea antes los productos... y he pensado en crear rutas fake , pero no lo tengo claro , lo dejo aqui y si no lo borramos.

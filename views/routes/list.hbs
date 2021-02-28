@@ -1,0 +1,21 @@
+<h2>Routes</h2>
+<form action="/routes" method="GET">
+<section id="routes">
+    {{#each route as |Route|}}
+    <div class="route">
+    <h3>
+        <span class="route__title">{{Route.title}}</span>,by <span class="route__author">{{Route.author}}</span>
+    </h3>
+    <p class="route__description">{{Route.description}}</p>
+    <img class="route__image" alt="Route image" src="{{Route.image}}">
+    <div class="route__tags">
+        {{#each Route.tags as |tag|}}
+        <p class="route__tag">{{tag}}</p>
+        {{/each}}
+    </div>
+    {{/each}}
+    </div>
+
+</section>
+</form>
+

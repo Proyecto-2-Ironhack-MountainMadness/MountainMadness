@@ -89,18 +89,37 @@ module.exports.doLogin = (req, res, next) => {
 
 //=======================================LOGIN FIN===================================================
 
-//=======================================LOGOUT============================================
+//===================================================================================
 
 module.exports.logout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
 
+//==================================DELETE===========================================
+module.exports.delete = (req, res, next) => {
+  User.findByIdAndRemove({_id: req.params.id, user: req.currentUser.id })
+    .then(user => {
+      console.log({_id: id})
+      if (!user) {
+        next(console.log( 'User not found'));
+      } else {
+        res.redirect('/');
+      }
+    })
+    .catch(error => next(error));
+}
+
+
+
+
+
+//=============================PROFILE=============================================================
 module.exports.profile = (req, res, next) =>{
   res.render('users/profile')
 }
 
-//=======================================LOGOUT FIN============================================
+//================================================================================
 
 
 module.exports.activate = (req, res, next) => {
@@ -142,4 +161,4 @@ module.exports.doLoginGoogle = (req, res, next) => {
     }
   })(req, res, next)
 }
-//========================GOOGLE fin=============================
+//========================GOOGLE fin============================
