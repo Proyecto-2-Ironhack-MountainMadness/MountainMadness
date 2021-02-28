@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const Route = require("../models/Route.model");
+const Track = require("../models/Track.model");
 
 module.exports.create = (req, res, next) => {
-  res.render("routes/form");
+  res.render("track/form");
 };
 
 module.exports.doCreate = (req, res, next) => {
@@ -13,9 +13,9 @@ module.exports.doCreate = (req, res, next) => {
     });
   }
 
-  Route.create(req.body)
+  Track.create(req.body)
     .then((u) => {
-      res.redirect(`/routes/${id}`);
+      res.redirect(`/track/${id}`);
     })
     .catch((e) => {
       if (e instanceof mongoose.Error.ValidationError) {
@@ -27,15 +27,15 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 module.exports.edit = (req, res, next) => {
-  Route.findById(req.params.id)
-    .then((route) => {
+  Track.findById(req.params.id)
+    .then((track) => {
       if (
-        !route ||
-        route.create.toString() !== req.currentUser.id.toString()
+        !track ||
+        track.create.toString() !== req.currentUser.id.toString()
       ) {
         res.redirect("/");
       } else {
-        res.render("routes/form", { route });
+        res.render("track/form", { track });
       }
     })
     .catch((e) => next(e));
@@ -43,19 +43,19 @@ module.exports.edit = (req, res, next) => {
 
 module.exports.doEdit = (req, res, next) => {
   function renderWithErrors(err) {
-    res.status(400).render("routes/form", {
+    res.status(400).render("track/form", {
       errors: err,
-      route: req.body,
+      track: req.body,
     });
   }
-  Route.findById(req.params.id)
+  Track.findById(req.params.id)
     .then((p) => {
       if (!p || p.author.toString() !== req.currentUser.id.toString()) {
         res.redirect("/");
       } else {
         Object.entries(req.body).forEach(([k, v]) => (p[k] = v));
         return p.save().then(() => {
-          res.redirect(`/routes/${req.params.id}`);
+          res.redirect(`/track/${req.params.id}`);
         });
       }
     })
@@ -69,12 +69,12 @@ module.exports.doEdit = (req, res, next) => {
 };
 
 module.exports.detail = (req, res, next) => {
-  Route.findById(req.params.id)
-    .then((route) => {
-      res.render("routes/detail", {
-        route,
+  Track.findById(req.params.id)
+    .then((track) => {
+      res.render("track/detail", {
+        track,
         canEdit: req.currentUser
-          ? route.author.toString() === req.currentUser.id.toString()
+          ? track.author.toString() === req.currentUser.id.toString()
           : false,
       });
     })
@@ -82,7 +82,7 @@ module.exports.detail = (req, res, next) => {
 };
 
 module.exports.delete = (req, res, next) => {
-  Route.findOneAndDelete({ _id: req.params.id, author: req.currentUser.id })
+  Track.findOneAndDelete({ _id: req.params.id, author: req.currentUser.id })
     .then(() => {
       res.redirect("/");
     })
@@ -91,8 +91,8 @@ module.exports.delete = (req, res, next) => {
 
 
 
-module.exports.routesPage = (req, res, next) =>{
-  res.render('routes/list')
+module.exports.tracksPage = (req, res, next) =>{
+  res.render('track/list')
   
   
 }
