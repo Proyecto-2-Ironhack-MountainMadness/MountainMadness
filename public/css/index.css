@@ -38,6 +38,7 @@ body {
 }
 .profile-img {
     width: 100%;
+    margin-bottom: -60px;
     max-width: 150px;
     border-radius: 300px;
     border: 8px solid white;

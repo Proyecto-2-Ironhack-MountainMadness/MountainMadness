@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema({
         "Tu contraseña debe conteneral menos 1 número, 1 mayúscula, 1 minúscula y 8 caracteres",
       ],
     },
+    imgProfile: {
+      type: String,
+      default: ""
+
+    },
     //=======================nodemailer===================
     active: {
         type: Boolean,
