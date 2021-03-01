@@ -4,7 +4,7 @@ const miscController = require("../controllers/misc.controller");
 const usersController = require("../controllers/users.controller");
 const tracksController = require("../controllers/tracks.controller")
 const secure = require('../middlewares/secure.middleware');
-const Routes = require('../models/Track.model');
+// const Routes = require('../models/Track.model');
 
 const GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/userinfo.profile",
@@ -36,19 +36,18 @@ router.get('/editProfile', secure.isAuthenticated, usersController.editProfile)
 router.post('/editProfile', secure.isAuthenticated, usersController.doEditProfile)
 
 
-//Routes list
+//Tracks list
 
 router.get("/tracks", tracksController.tracksPage);
 
 
 //Routes create - edit - delete
 
-router.get("/tracks/create", tracksController.create);
-router.post("/tracks/create", tracksController.doCreate);
-router.get("/tracks/:id", tracksController.detail);
-router.get("/tracks/:id/edit", tracksController.edit);
-router.post("/tracks/:id/edit", tracksController.doEdit);
-router.get("/tracks/:id/delete", tracksController.delete);
+router.get("/trackCreate", tracksController.create);
+router.post("/trackCreate", tracksController.doCreate);
+
+
+
 
 
 //============================google===============================

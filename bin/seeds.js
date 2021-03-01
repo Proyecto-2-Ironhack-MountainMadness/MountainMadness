@@ -1,13 +1,13 @@
 require("dotenv").config();
 require("../config/db.config");
-const Route = require("../models/Route.model");
+const track = require("../models/Track.model");
 const faker = require("faker");
 
 
-Route.deleteMany()
+track.deleteMany()
 .then(() => {
-  for (let i = 0; i < 30; i++) {
-  Route.create({
+  for (let i = 0; i < 5; i++) {
+  track.create({
     title: faker.lorem.sentence(),
     description: faker.lorem.paragraphs(Math.floor(4 * Math.random()) + 1),
     author: faker.internet.userName(),

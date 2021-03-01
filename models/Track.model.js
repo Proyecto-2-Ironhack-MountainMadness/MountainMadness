@@ -5,59 +5,59 @@ const trackSchema = new mongoose.Schema(
     {
         title: {
             type: String,
-            required: true,
+            required: false,
         },
         description: {
             type: String,
-            required: true,
+            required: false,
         },
-        
+
         author: {
             type: String,
-            required: true,
+            required: false,
 
         },
-        image: {
-            type: String,
-            validate: {
-                validator: (text) => {
-                    return text.startsWith("http");
-                },
-                message: "URL start with HTTP/HTTPS"
-            },
-        },
+        // image: {
+        //     type: String,
+        //     validate: {
+        //         validator: (text) => {
+        //             return text.startsWith("http");
+        //         },
+        //         message: "URL start with HTTP/HTTPS"
+        //     },
+        // },
 
-        tags: [String],
+        // tags: [String],
 
-    //     origin: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     destinations: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     distance: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     time: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     altitude: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     latitude: {
-    //         type: String,
-    //         required: true,
-    //     },
-    //     longitude: {
-    //         type: String,
-    //         required: true,
-    //     },
-        
+        //     origin: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     destinations: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     distance: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     time: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     altitude: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     latitude: {
+        //         type: String,
+        //         required: true,
+        //     },
+        //     longitude: {
+        //         type: String,
+        //         required: true,
+        //     },
+
     }
 );
 

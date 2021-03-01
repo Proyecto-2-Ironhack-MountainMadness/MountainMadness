@@ -1,16 +1,16 @@
-<h2>Routes</h2>
-<form action="/routes" method="GET">
-<section id="routes">
-    {{#each route as |Route|}}
-    <div class="route">
+<h2>Routes2</h2>
+<form action="/tracks" method="GET">
+<section id="tracks">
+    {{#each tracks as |track|}}
+    <div class="track">
     <h3>
-        <span class="route__title">{{Route.title}}</span>,by <span class="route__author">{{Route.author}}</span>
+        <span class="track__title">Titulo: {{track.title}}</span>,by <span class="track__author">{{track.author}}</span>
     </h3>
-    <p class="route__description">{{Route.description}}</p>
-    <img class="route__image" alt="Route image" src="{{Route.image}}">
-    <div class="route__tags">
-        {{#each Route.tags as |tag|}}
-        <p class="route__tag">{{tag}}</p>
+    <p class="track__description">Descripción: {{track.description}}</p>
+    <img class="track__image" alt="track image" src="{{track.image}}">
+    <div class="track__tags">
+        {{#each track.tags as |tag|}}
+        <p class="track__tag">{{tag}}</p>
         {{/each}}
     </div>
     {{/each}}
