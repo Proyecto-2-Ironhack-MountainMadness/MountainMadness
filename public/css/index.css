@@ -28,12 +28,15 @@ body {
  */
 .footer
 {
-    height: 50px;
+    height: 0px;
     background-color: black;
     position: absolute;
-    left: 0;
-    right: 0;
+    
+    
     width: 100%;
+   /*  left: 0;
+    right: 0;
+    width: 100%; */
     
 }
 .profile-img {
