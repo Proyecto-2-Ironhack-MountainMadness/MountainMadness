@@ -1,5 +1,5 @@
 module.exports.home = (req, res, next) => {
-    res.render('home')
+    res.render('home', {isHome: true})
 }
 
 module.exports.login = (req, res, next) =>(

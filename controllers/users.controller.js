@@ -95,6 +95,34 @@ module.exports.logout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
+//=====================================EDIT PROFILE==============================================
+module.exports.editProfile = (req, res, next) =>{
+  res.render('users/editProfile')
+}
+
+module.exports.doEditProfile = (req, res, next) => {
+  console.log(req.body)
+  console.log(req.params)
+  req.body.country = 'Spain'
+
+  User.findByIdAndUpdate(req.user.id, req.body,
+
+    {
+      safe: true,
+      upsert: true,
+      new: true,
+    })
+    .then(user => {
+      if (!user) {
+        next(createError(404, 'User not found'));
+      } else {
+        res.redirect('/profile')
+      }})
+      .catch(error => next(error));
+  
+}
+
+//===================================================================================
 
 //==================================DELETE===========================================
 module.exports.delete = (req, res, next) => {

@@ -1,38 +1,41 @@
 {{!-- <nav class="navbar navbar-light bg-light">
 
 </nav>
- --}}
-
-
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-          <img src="/images/Logoprueba.png" width="200" height="200"class="img-fluid" alt="">
+--}}
+<div {{#if isHome}} class="navbarhome p-0" {{else}} class="bghome p-0" {{/if}}> 
+  <div "navbar transparent navbar-inverse">
+    <nav class="navbar navbar-expand-lg {{!-- bg-dark --}}">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/images/Logoprueba.png" width="200" height="200" class="img-fluid" alt="">
         </a>
 
-    <a class="navbar-brand" href="/">MountainMadness</a>
-    <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
-      <div class=class="container-fluid">
-        <form class="d-flex" href="/" style="width: 700px;">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success"  type="submit">Search</button>
-        </form>
-      </div>
-      <ul class="navbar-nav" class="container-fluid">
-        <li class="nav-item">
-          {{#if currentUser}}
-          <a class="nav-link" href="/profile">Mi perfil</a></li>
-          <form action="/logout" method="POST">
+        <a class="navbar-brand" href="/">MountainMadness</a>
+        <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
+          <div class=class="container-fluid">
+            <form class="d-flex" href="/" style="width: 700px;">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+          <ul class="navbar-nav" class="container-fluid">
+            <li class="nav-item">
+              {{#if currentUser}}
+              <a class="nav-link" href="/profile">Mi perfil</a>
+            </li>
+            <form action="/logout" method="POST">
               <li><button class="btn btn-danger">Cerrar sesión</button></li>
             </form>
-          {{else}}
-          <a class="nav-link" href="/register">SignUp</a></li>
-          <a class="nav-link" href="/login">LogIn</a></li>
-          {{/if}}
-      
+            {{else}}
+            <a class="nav-link" href="/register">SignUp</a></li>
+            <a class="nav-link" href="/login">LogIn</a></li>
+            {{/if}}
+
           </ul>
-        </li>
-      </ul>
-    </div>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>

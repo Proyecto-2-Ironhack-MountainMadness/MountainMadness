@@ -15,56 +15,69 @@ const SALT_ROUNDS = 10;
 //============Schema que guardamos en const e importamos de mongoose===================
 
 const userSchema = new mongoose.Schema({
-  
-    email: {
-      type: String,
-      required: "Es necesario añadir un correo electrónico",
-      unique: true,
-      lowercase: true,
-      //Requisitos para que un email se válido
-      match: [EMAIL_PATTERN, "Email inválido"],
-      trim: true,
-    },
-    password: {
-      type: String,
-      required: "La contraseña es requerida",
-      match: [
-        PASSWORD_PATTERN,
-        "Tu contraseña debe conteneral menos 1 número, 1 mayúscula, 1 minúscula y 8 caracteres",
-      ],
-    },
-    imgProfile: {
-      type: String,
-      default: ""
-
-    },
-    //=======================nodemailer===================
-    active: {
-        type: Boolean,
-        default: false,
-      },
-      /* role: {
+  email: {
+    type: String,
+    required: "Es necesario añadir un correo electrónico",
+    unique: true,
+    lowercase: true,
+    //Requisitos para que un email se válido
+    match: [EMAIL_PATTERN, "Email inválido"],
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: "La contraseña es requerida",
+    match: [
+      PASSWORD_PATTERN,
+      "Tu contraseña debe conteneral menos 1 número, 1 mayúscula, 1 minúscula y 8 caracteres",
+    ],
+  },
+  nickName: {
+    type: String
+  },
+  imgProfile: {
+    type: String,
+    default: "",
+  },
+  birth: {
+    type: String
+  },
+  about: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  phone: {
+    type: String
+  },
+  //=======================nodemailer===================
+  active: {
+    type: Boolean,
+    default: false,
+  },
+  /* role: {
         type: String,
         enum: ['ADMIN', 'USER'],
         default: 'USER'
       }, */
-      social: {
-        google: String
-        /* feisbuk: String */
-      },
-      //======================nodemailer====================
-      activationToken: {
-        type: String,
-        default: () => {
-          return (
-            Math.random().toString(36).substring(2, 15) +
-            Math.random().toString(36).substring(2, 15) +
-            Math.random().toString(36).substring(2, 15) +
-            Math.random().toString(36).substring(2, 15)
-          );
-        },
-      },
-    });
+  social: {
+    google: String,
+    /* feisbuk: String */
+  },
+  //======================nodemailer====================
+  activationToken: {
+    type: String,
+    default: () => {
+      return (
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15)
+      );
+    },
+  },
+});
     
 
 userSchema.methods.checkPassword = function (passwordToCheck) {

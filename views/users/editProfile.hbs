@@ -1,0 +1,164 @@
+<div><a class="nav-link" href="/tracks">Rutas</a>
+  <div class="main-img">
+    <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="jumbotron bg-cover text-white">
+      <div class="container py-5 text-center">
+
+        <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.email}}</h1>
+        </p>
+        <div class="image-div-flex ">
+          <div class="profile-img mx-auto" data-image="{{currentUser.imgProfile}}"
+            style="background:url('{{currentUser.imgProfile}}') " alt="Profile Picture">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p> </p>
+  <form method="POST" {{!-- enctype="multipart/form-data" --}} action="/editProfile">
+    <div class="row">
+
+      {{!-- FORMULARIO DE LA IZQUIERDA CON NOMBRE EMAIL MOVIL PAIS FECHA DE NACIMIENTO... --}}
+      <div class="col-xl-4 col-md-12 col-12 row mx-left ml-20">
+        
+          <div class="form-group row">
+            {{!-- <label for="" class="col-sm-2 col-form-label col-xs-2"></label> --}}
+            <div class="col-sm-10">
+
+
+              <input type="text" name="nickName" class="form-control" id="inputNickname" value="{{user.nickName}}"
+                placeholder="Nickname">
+
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Phone">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputPassword" placeholder="Country">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Birth">
+            </div>
+          </div>
+        
+      </div>
+      <div class="col-xl-8 col-md-12 col-12 row mx-right mr-20 ">
+        <div class="textArea">
+          
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">About me</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div class="text-center">
+        <h1>Mis Rutas</h1>
+
+        <div class="mx-auto">
+          <div class="row mx-auto">
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="align-end text-center">
+      {{!-- <form action="/delete" method="GET"> --}}
+        <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
+            class="fa fa-check nt-w ml-2"></span></button>
+
+    </div>
+  </form>
+</div>

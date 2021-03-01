@@ -31,6 +31,11 @@ router.get('/profile', secure.isAuthenticated, usersController.profile)
 
 router.get('/delete', usersController.delete)
 
+router.get('/editProfile', secure.isAuthenticated, usersController.editProfile)
+
+router.post('/editProfile', secure.isAuthenticated, usersController.doEditProfile)
+
+
 //Routes list
 
 router.get("/tracks", tracksController.tracksPage);
