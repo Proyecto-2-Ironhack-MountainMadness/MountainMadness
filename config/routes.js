@@ -4,7 +4,10 @@ const miscController = require("../controllers/misc.controller");
 const usersController = require("../controllers/users.controller");
 const tracksController = require("../controllers/tracks.controller")
 const secure = require('../middlewares/secure.middleware');
-// const Routes = require('../models/Track.model');
+/* const multer = require("multer");
+const upload = multer({dest: "./public/uploads/"}) */
+const upload = require('./storage.config')
+
 
 const GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/userinfo.profile",
@@ -33,18 +36,19 @@ router.get('/delete', usersController.delete)
 
 router.get('/editProfile', secure.isAuthenticated, usersController.editProfile)
 
-router.post('/editProfile', secure.isAuthenticated, usersController.doEditProfile)
+router.post('/editProfile', secure.isAuthenticated,upload.single("image"), usersController.doEditProfile)
 
 
 //Tracks list
 
-router.get("/tracks", tracksController.tracksPage);
+router.get("/tracks",secure.isAuthenticated, tracksController.tracksPage);
 
-
+//Tenemos que configurar MULTER solo en las rutas en las que necesitemos subir una imagen !! (min_1:25 de la clase 13-Febrero)
+//Siempre que tengamos una ruta en el que usemos un archivo img debemos añadirle el middleware --> upload.single("image"),
 //Routes create - edit - delete
 
-router.get("/trackCreate", tracksController.create);
-router.post("/trackCreate", tracksController.doCreate);
+router.get("/trackCreate",secure.isAuthenticated, tracksController.create);
+router.post("/trackCreate",secure.isAuthenticated, upload.single("image"), tracksController.doCreate);
 
 
 

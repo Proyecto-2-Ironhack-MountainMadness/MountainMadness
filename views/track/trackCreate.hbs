@@ -1,8 +1,8 @@
 <div class="container">
-	<form action="/trackCreate" method="POST">
+	<form action="/trackCreate" method="POST" enctype="multipart/form-data"> 
 		<div class="mb-3">
 			<label for="name" class="form-label">Nombre</label>
-			<input type="text" name="name" value="{{track.name}}"
+			<input type="text" name="title" value="{{track.title}}"
 				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
 			{{#if errors.name}}
 			<div class="invalid-feedback">
@@ -20,16 +20,16 @@
 			</div>
 			{{/if}}
 		</div>
-		{{!-- <div class="mb-3">
+		<div class="mb-3">
 			<label for="image" class="form-label">Imagen</label>
-			<input type="url" name="image" value="{{track.image}}"
-				class="form-control {{#if errors.image}}is-invalid{{/if}}" id="image" required>
+			<input type="file" name="image" value="{{track.image}}"
+				class="form-control {{#if errors.image}}is-invalid{{/if}}" id="image">
 			{{#if errors.image}}
 			<div class="invalid-feedback">
 				{{errors.image}}
 			</div>
 			{{/if}}
-		</div> --}}
+		</div>
 		<button type="submit" class="btn btn-primary" > Ruta</button>
 	</form>
 
