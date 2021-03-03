@@ -27,13 +27,13 @@ const trackSchema = new mongoose.Schema(
              }, */
          },
 
-        // tags: [String],
+        // tags: [String],        
 
-        //     origin: {
+        //     origin: {  
         //         type: String,
         //         required: true,
         //     },
-        //     destinations: {
+        //     destinations: { Waypoints
         //         type: String,
         //         required: true,
         //     },
