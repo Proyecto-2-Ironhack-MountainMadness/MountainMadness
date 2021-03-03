@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/register" method="POST">
+  <form action="/users/register" method="POST">
     <div class="mb-3">
       <label for="email" class="form-label">Correo electrónico</label>
       <input type="email" name="email" value="{{user.email}}" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" required>

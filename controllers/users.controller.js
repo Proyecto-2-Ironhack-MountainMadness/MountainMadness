@@ -27,7 +27,6 @@ module.exports.doRegister = (req, res, next) => {
           email: "Ya existe un usuario con este email",
         });
       } else {
-
         User.create(req.body)
           .then((u) => {
             sendActivationEmail(u.email, u.activationToken); //NODEMAILER
@@ -63,50 +62,20 @@ module.exports.doLogin = (req, res, next) => {
     }
   })(req, res, next);
 };
-  //========================NODEMAILER=============================
-/*   User.findOne({ email: req.body.email })
-    .then((user) => {
-      if (!user) {
-        renderWithErrors();
-      } else {
-        user.checkPassword(req.body.password)
-          .then((match) => {
-            if (match) {
-              if (user.active) {
-                req.session.currentUserId = user.id;
-
-                res.redirect("/userProfile");
-              } else {
-                renderWithErrors("Tu cuenta no está activa, mira tu email");
-              }
-            } else {
-              renderWithErrors();
-            }
-          });
-      }
-    })
-    .catch((e) => next(e)); */
-
-//=======================================LOGIN FIN===================================================
-
-//===================================================================================
+  
 
 module.exports.logout = (req, res, next) => {
   req.session.destroy()
   res.redirect('/')
 }
+
 //=====================================EDIT PROFILE==============================================
 module.exports.editProfile = (req, res, next) =>{
   res.render('users/editProfile')
 }
 
 module.exports.doEditProfile = (req, res, next) => {
-  console.log(req.body)
-  console.log(req.params)
-  req.body.country = 'Spain'
-
   User.findByIdAndUpdate(req.user.id, req.body,
-
     {
       safe: true,
       upsert: true,
@@ -116,18 +85,16 @@ module.exports.doEditProfile = (req, res, next) => {
       if (!user) {
         next(createError(404, 'User not found'));
       } else {
-        res.redirect('/profile')
+        res.redirect('/users/profile')
       }})
       .catch(error => next(error));
   
 }
 
-//===================================================================================
-
 //==================================DELETE===========================================
 module.exports.delete = (req, res, next) => {
-  console.log(req, "delete")
-  User.findByIdAndRemove(req.user._id)
+  const currentUserId = req.currentUser._id
+  User.findByIdAndRemove(currentUserId)
     .then(user => {
       if (!user) {
         next(console.log( 'User not found'));
@@ -138,17 +105,10 @@ module.exports.delete = (req, res, next) => {
     .catch(error => next(error));
 }
 
-
-
-
-
 //=============================PROFILE=============================================================
 module.exports.profile = (req, res, next) =>{
   res.render('users/profile')
 }
-
-//================================================================================
-
 
 module.exports.activate = (req, res, next) => {
   User.findOneAndUpdate(
@@ -168,13 +128,9 @@ module.exports.activate = (req, res, next) => {
     })
     .catch((e) => next(e));
 
-    // PRO TIP: PARA EDITAR TEMPLATES DEL CORREO DE ACTIVACION, USAR MJML  !!!!!!!!!!!!!!!!!!!  <--------------
 };
-//========================NODEMAILER FIN=============================
  
 //========================GOOGLE=============================
-
-
 module.exports.doLoginGoogle = (req, res, next) => {
   passport.authenticate('google-auth', (error, user, validations) => {
     if (error) {
@@ -189,4 +145,3 @@ module.exports.doLoginGoogle = (req, res, next) => {
     }
   })(req, res, next)
 }
-//========================GOOGLE fin============================
