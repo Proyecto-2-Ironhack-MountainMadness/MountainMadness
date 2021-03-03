@@ -13,21 +13,25 @@ const logger = require('morgan');
 //Motor de vistas que utilizamos
 const hbs = require('hbs');
 
-//Requerimos routes para configurar todas nuestras rutas en un archivo
-const routes = require("./config/routes");
-const sessionMiddleware = require('./middlewares/session.middleware')
+//Para poder utilizar los middlewares de passport
+const passport = require('passport')
+//Requerimos para instanciar la configuracion de passport en la carpeta donde la hemos configurado
+require("./config/passport.config")
 
+//Configuramos duración de la sesión para que no sea eterna
+const sessionMiddleware = require('./middlewares/session.middleware')
 //Requerimos session connfig para configurar las sesiones de usuario
 const session = require('./config/session.config')
 
-//Para poder utilizar los middlewares de passport
-const passport = require('passport')
+//Requerimos rutas en carpeta modularizada
+const routes = require("./routes/index.routes");
+const userRoutes = require('./routes/users.routes')
+const trackRoutes = require('./routes/tracks.routes')
 
 //Requerimos la instancia db.config donde está la configuración de la base de datos
 require('./config/db.config')
 
-//Requerimos para instanciar la configuracion de passport en la carpeta donde la hemos configurado
-require("./config/passport.config")
+
 
 
 //=================Configuracion de Express=========================
@@ -39,7 +43,7 @@ const app = express();
 //que están incluidos en el cuerpo (es decir, req.body) de esa solicitud (POST) 
 // ¡¡¡CONFLICTO SI USAMOS BODY PARSER PORQUE YA VIENE IMPLICITO!!!
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 //Configuramos carpeta public con express para poder usar css e imagenes en nuestras views
 app.use(express.static("public"));
@@ -70,6 +74,12 @@ app.use((req,res,next) =>{
 
   next()
 })
+app.use((req,res,next) =>{
+  req.currentTrack = req.track;
+  res.locals.currentTrack = req.track;
+
+  next()
+})
 
 
 
@@ -78,12 +88,10 @@ app.use(sessionMiddleware.findUser)
 
 //======================================================================
 
-//Seteamos el / para poder utilizar las rutas
+// Routes
 app.use("/", routes);
-
-
-
-
+app.use("/users", userRoutes)
+app.use("/tracks", trackRoutes)
 
 // Error handler
 app.use((req, res, next) => {

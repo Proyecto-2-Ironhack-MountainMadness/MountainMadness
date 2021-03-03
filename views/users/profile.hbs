@@ -1,4 +1,4 @@
-<div><a class="nav-link" href="/tracks">Rutas</a>
+
   <div class="main-img">
     <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="jumbotron bg-cover text-white">
       <div class="container py-5 text-center">
@@ -6,10 +6,8 @@
         <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.email}}</h1>
         </p>
         <div class="image-div-flex ">
-          <div class="profile-img mx-auto"
-            data-image="{{currentUser.imgProfile}}"
-            style="background:url('{{currentUser.imgProfile}}') "
-            alt="Profile Picture">
+          <div class="profile-img mx-auto" data-image="{{currentUser.imgProfile}}"
+            style="background:url('{{currentUser.imgProfile}}') " alt="Profile Picture">
           </div>
         </div>
       </div>
@@ -20,41 +18,45 @@
   <p> </p>
   <div class="row">
     <div class="align-end text-center">
-   <form action="/editProfile" method="GET">
-              <button class="btn btn-danger">Editar Perfil</button>
-            </form>
-  </div>
+      <form action="/users/editProfile" method="GET">
+        <button class="btn btn-danger">Editar Perfil</button>
+      </form>
+    </div>
 
-      {{!-- FORMULARIO DE LA IZQUIERDA CON NOMBRE EMAIL MOVIL PAIS FECHA DE NACIMIENTO... --}}
+    {{!-- FORMULARIO DE LA IZQUIERDA CON NOMBRE EMAIL MOVIL PAIS FECHA DE NACIMIENTO... --}}
     <div class="col-xl-4 col-md-12 col-12 row mx-left ml-20">
       <form>
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-2 col-form-label col-xs-2"></label>
           <div class="col-sm-10">
             <p class=" ml-0 profile-paragraph">{{currentUser.nickName}}</p>
-{{!--             <input type="email" class="form-control" id="inputEmail" placeholder="Email">
- --}}          </div>
+            {{!-- <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            --}}
+          </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label"></label>
           <div class="col-sm-10">
             <p class=" ml-0 profile-paragraph">{{currentUser.email}}</p>
-{{!--             <input type="password" class="form-control" id="inputPassword" placeholder="Telefono de contacto">
- --}}          </div>
+            {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Telefono de contacto">
+            --}}
+          </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label"></label>
           <div class="col-sm-10">
             <p class=" ml-0 profile-paragraph">{{currentUser.country}}</p>
-{{!--             <input type="password" class="form-control" id="inputPassword" placeholder="Pais">
- --}}          </div>
+            {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Pais">
+            --}}
+          </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label"></label>
           <div class="col-sm-10">
             <p class=" ml-0 profile-paragraph">{{currentUser.birth}}</p>
-{{!--             <input type="password" class="form-control" id="inputPassword" placeholder="Fecha de nacimiento">
- --}}          </div>
+            {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Fecha de nacimiento">
+            --}}
+          </div>
         </div>
       </form>
     </div>
@@ -73,80 +75,120 @@
 
 
 
-  <div >
+  <div>
     <div class="text-center">
-      <h1>Mis Rutas</h1>
+      <h2>Mis Rutas</h2>
     </div>
     <div class=".mx-auto">
       <div class="row mx-auto">
-        <div class="card" style="width: 18rem;">
-          {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text content.
-            </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            
-          </ul>
-          <div class="card-body">
-            
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text content.
-            </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            
-          </ul>
-          <div class="card-body">
-            
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text content.
-            </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            
-          </ul>
-          <div class="card-body">
-            
+        <div class="track">
+          <div class="row">
+            <div class="col-12 mt-3">
+              <div class="card">
+                <div class="card-horizontal">
+
+                  <div class="card-body">
+
+                    <h4>
+                      <div class="track__title">
+                        <a href="/tracks/{{track._id}}" {{!-- {{ experience._id }} --}}> Titulo: {{track.title}}</a>
+                      </div>
+                    </h4>
+                    <p class="track__description">Descripción: {{track.description}}</p>
+                    <p class="track__description">Distancia: </p>
+                    <p class="track__description">Dificultad: </p>
+                    <p class="track__description">Valoración: </p>
+
+                  </div>
+                  <div>
+                    <div class="box-track-img">
+                      <p>{{!-- <b>IMAGEN</b> --}}<img class="card-img-top" src="{{track.image}}" alt="track image"></p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Subido por {{track.creator}}</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="card" style="width: 18rem;">
-          {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text content.
-            </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            
-          </ul>
-          <div class="card-body">
-            
+        <div class="track">
+          <div class="row">
+            <div class="col-12 mt-3">
+              <div class="card">
+                <div class="card-horizontal">
+
+                  <div class="card-body">
+
+                    <h4 href="/">
+                      <div class="track__title">
+                        <a href="/tracks/{{track._id}}"> Titulo: {{track.title}}</a>
+                      </div>
+                    </h4>
+                    <p class="track__description">Descripción: {{track.description}}</p>
+                    <p class="track__description">Distancia: </p>
+                    <p class="track__description">Dificultad: </p>
+                    <p class="track__description">Valoración: </p>
+
+                  </div>
+                  <div>
+                    <div class="box-track-img">
+                      <p>{{!-- <b>IMAGEN</b> --}}<img class="card-img-top" src="{{track.image}}" alt="track image"></p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Subido por {{track.creator}}</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="track">
+          <div class="row">
+            <div class="col-12 mt-3">
+              <div class="card">
+                <div class="card-horizontal">
+
+                  <div class="card-body">
+
+                    <h4 href="/">
+                      <div class="track__title">
+                        <a href="/trackDetails/" {{!-- {{ experience._id }} --}}> Titulo: {{track.title}}</a>
+                      </div>
+                    </h4>
+                    <p class="track__description">Descripción: {{track.description}}</p>
+                    <p class="track__description">Distancia: </p>
+                    <p class="track__description">Dificultad: </p>
+                    <p class="track__description">Valoración: </p>
+
+                  </div>
+                  <div>
+                    <div class="box-track-img">
+                      <p>{{!-- <b>IMAGEN</b> --}}<img class="card-img-top" src="{{track.image}}" alt="track image"></p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Subido por {{track.creator}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
 
   <div class="align-end text-center">
-   <form action="/delete" method="GET">
-              <button class="btn btn-danger">Borrar Cuenta</button>
-            </form>
+    <form action="/users/delete" method="POST">
+      <button class="btn btn-danger">Borrar Cuenta</button>
+    </form>
   </div>
 </div>

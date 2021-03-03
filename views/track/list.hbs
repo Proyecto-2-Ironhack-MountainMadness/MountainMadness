@@ -1,36 +1,38 @@
-<form action="/tracks" method="GET">
-    <div class="container-fluid">
-        <h2 class="align-center"> Routes</h2>
-        <section id="tracks">
-            {{#each tracks as |track|}}
-            <div class="track">
-                <div class="row">
-                    <div class="col-12 mt-3">
-                        <div class="card">
-                            <div class="card-horizontal">
+<div class="container-fluid">
+    <h1 class="align-center"> Routes</h1>
+    <section id="tracks">
+        {{#each tracks as |track|}}
+        <div class="track">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
 
-                                <div class="card-body">
-                                    <h4>
-                                        <span class="track__title">Titulo: {{track.title}}</span>
-                                    </h4>
-                                    <p class="track__description">Descripción: {{track.description}}</p>.</p>
+                            <div class="card-body">
+                                <div class="track__title">
+                                    <a href="/tracks/{{track._id}}/">
+                                        <h4>Titulo: {{track.title}}</h4>
+                                    </a>
                                 </div>
-                                <div  >
-                                    <div class="img-wrap">
-                                    <p><b>IMAGEN</b><img class="card-img-top" src="{{track.image}}"alt="track image"></p>
+                                <p class="track__description">Descripción: {{track.description}}</p>
+                                <p class="track__description">Distancia: </p>
+                                <p class="track__description">Dificultad: </p>
+                                <p class="track__description">Valoración: </p>
 
-                                    </div>
+                            </div>
+                            <div>
+                                <div class="box-track-img">
+                                    <p><img class="card-img-top" src="{{track.image}}" alt="track image"></p>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Subido por {{track.creator}}</small>
                         </div>
                     </div>
                 </div>
             </div>
-            {{/each}}
-        </section>
-    </div>
-</form>
-
+        </div>
+        {{/each}}
+    </section>
+</div>

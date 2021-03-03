@@ -1,0 +1,22 @@
+<div class="container" id="route">
+	<h1>{{track.title}}</h1>
+	<div class="mb-3">
+		<p><b>Descripción: </b>{{track.description}}</p>
+	</div>
+	<div class="mb-3">
+		<p><b>Autor: </b>{{track.author}}</p>
+	</div>
+	<div class="mb-3">
+		<p><b>Imagen: </b><img src="{{track.image}}" alt="Route image"></p>
+	</div>
+	
+	
+	<form action="/tracks/{{track._id}}/delete" method="POST">
+		<button class="btn btn-danger">Borrar Track</button>
+	</form>
+{{!-- 	<form action="/trackDelete" method="GET">
+		<button class="btn btn-danger">Editar Track</button>
+
+	</form> --}}
+	
+</div> 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
 
 
-//======================================================MOSTRAR TRACKS=============================================
+//======================================================MOSTRAR TODAS LAS TRACKS=============================================
 module.exports.tracksPage = (req, res, next) => {
   Track.find({})
     .then((tracks) => {
@@ -12,7 +12,38 @@ module.exports.tracksPage = (req, res, next) => {
       console.log(e);
     });
 };
-//===========================================================
+//==================================================================================================
+//======================================================MOSTRAR DETAIL DE UNA TRACK=============================================
+module.exports.trackDetails = (req, res, next) => {
+  const id = req.params.id;
+  Track.findById(id)
+    .then((track) => {
+      res.render("track/trackDetails", { track });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+/* module.exports.get = (req, res, next) => {
+  const id = req.params.id;
+  Experience.findById(id)
+    .populate('user')
+    .populate({
+      path: 'comments',
+      populate: {
+        path: 'user',
+      }
+    })
+    .then(experience => {
+      res.render('experiences/detail', {
+        experience,
+        pointsJSON: encodeURIComponent(JSON.stringify(experience.location.coordinates))
+      })
+    })
+    .catch(err => next(err));
+} */
+//==================================================================================================
 
 
 //=======================================================CREATE================================================================
@@ -21,23 +52,20 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.doCreate = (req, res, next) => {
-  console.log("caca");
-  console.log(req.file);
-  res.render("home");
   if(req.file) {
   //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
     req.body.image = req.file.path;/* `/uploads/${req.file.filename}`; */ //Antes usabamos antes con el multer pero con cloudinary usamos <--
   }
+
   function renderWithErrors(errors) {
     res.status(400).render("/", {
       errors: errors,
       route: req.body,
     });
   }
-  console.log(req.body)
+
   Track.create(req.body)
-    .then((track) => {
-      console.log("track",track )
+    .then(() => {
       res.redirect(`/tracks`);
     })
     .catch((e) => {
@@ -52,5 +80,20 @@ module.exports.doCreate = (req, res, next) => {
 
 //====================================================UPDATE-EDITAR TRACKS========================================================
 
+//====================================================DELETE TRACKS========================================================
+
+module.exports.trackDelete = (req, res, next) => {
+  const id = req.params.id;
 
 
+  Track.findByIdAndRemove(id)
+    .then(track => {
+      if (!track) {
+        next(console.log( 'Track not found'));
+      } else {
+        res.redirect('/tracks');
+      }
+    })
+    .catch(error => next(error));
+}
+//===========================================================
