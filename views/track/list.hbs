@@ -1,21 +1,36 @@
-<h2>Routes2</h2>
 <form action="/tracks" method="GET">
-<section id="tracks">
-    {{#each tracks as |track|}}
-    <div class="track">
-    <h3>
-        <span class="track__title">Titulo: {{track.title}}</span>,by <span class="track__author">{{track.author}}</span>
-    </h3>
-    <p class="track__description">Descripción: {{track.description}}</p>
-    <img class="track__image" alt="track image" src="{{track.image}}">
-    <div class="track__tags">
-        {{#each track.tags as |tag|}}
-        <p class="track__tag">{{tag}}</p>
-        {{/each}}
-    </div>
-    {{/each}}
-    </div>
+    <div class="container-fluid">
+        <h2 class="align-center"> Routes</h2>
+        <section id="tracks">
+            {{#each tracks as |track|}}
+            <div class="track">
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                            <div class="card-horizontal">
 
-</section>
+                                <div class="card-body">
+                                    <h4>
+                                        <span class="track__title">Titulo: {{track.title}}</span>
+                                    </h4>
+                                    <p class="track__description">Descripción: {{track.description}}</p>.</p>
+                                </div>
+                                <div  >
+                                    <div class="img-wrap">
+                                    <p><b>IMAGEN</b><img class="card-img-top" src="{{track.image}}"alt="track image"></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </section>
+    </div>
 </form>
 

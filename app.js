@@ -35,7 +35,7 @@ require("./config/passport.config")
 //Configuramos la instacia de express
 const app = express();
 
-//Middleware para solicitudes POST que envía datos al servidor y le pide que acepte o almacene esos datos (objeto),
+//Middleware para solicitudes POST que envía datos al servidor y le pide que acepte o almacene esos datos en formato JSON   (objeto),
 //que están incluidos en el cuerpo (es decir, req.body) de esa solicitud (POST) 
 // ¡¡¡CONFLICTO SI USAMOS BODY PARSER PORQUE YA VIENE IMPLICITO!!!
 app.use(express.json());

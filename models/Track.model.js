@@ -17,15 +17,15 @@ const trackSchema = new mongoose.Schema(
             required: false,
 
         },
-        // image: {
-        //     type: String,
-        //     validate: {
-        //         validator: (text) => {
-        //             return text.startsWith("http");
-        //         },
-        //         message: "URL start with HTTP/HTTPS"
-        //     },
-        // },
+         image: {
+             type: String,
+            /*  validate: {
+                 validator: (text) => {
+                     return text.startsWith("http");
+                 },
+                 message: "URL start with HTTP/HTTPS"
+             }, */
+         },
 
         // tags: [String],
 
