@@ -68,6 +68,8 @@ app.set("view engine", "hbs");
 //Registramos los partials
 hbs.registerPartials(__dirname + "/views/partials");
 
+
+
 app.use((req,res,next) =>{
   req.currentUser = req.user;
   res.locals.currentUser = req.user;
@@ -93,6 +95,7 @@ app.use(sessionMiddleware.findUser)
 app.use("/", routes);
 app.use("/users", userRoutes)
 app.use("/tracks", trackRoutes)
+
 
 // Error handler
 app.use((req, res, next) => {

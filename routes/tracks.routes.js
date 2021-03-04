@@ -13,8 +13,11 @@ router.get("/", secure.isAuthenticated, tracksController.tracksPage);
 router.get("/create", secure.isAuthenticated, tracksController.create);
 router.post("/create", secure.isAuthenticated, upload.single("image"), tracksController.doCreate);
 
-router.get('/:id', secure.isAuthenticated, tracksController.trackDetails)
+router.get("/:id/edit", secure.isAuthenticated, tracksController.edit);
+router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksController.doEdit);
 
+
+router.get('/:id', secure.isAuthenticated, tracksController.trackDetails)
 router.post('/:id/delete', tracksController.trackDelete)
 
 module.exports = router;
