@@ -71,6 +71,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use((req,res,next) =>{
   req.currentUser = req.user;
   res.locals.currentUser = req.user;
+  res.locals.mapsKey = process.env.G_MAPS_KEY
 
   next()
 })
