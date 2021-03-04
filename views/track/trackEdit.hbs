@@ -1,24 +1,22 @@
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
 
-  <form method="POST" action="/track/trackEdit">
+  <form method="GET" action="/track/trackEdit">
 
     <div id="map"></div>
     <div id="right-panel">
       <div>
         <b>Start:</b>
         <select id="start">
-          <option value="Halifax, NS">Halifax, NS</option>
-          <option value="Boston, MA">Boston, MA</option>
-          <option value="New York, NY">New York, NY</option>
-          <option value="Miami, FL">Miami, FL</option>
+          <option value="Madrid">madrid</option>
+         
         </select>
         <br />
         <b>Waypoints:</b> <br />
         <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br />
         <select multiple id="waypoints">
-          <option value="montreal, quebec">Montreal, QBC</option>
-          <option value="toronto, ont">Toronto, ONT</option>
+          <option value="Cuenca">cuenca</option>
+          <option value="Ciudad Real">Toronto, ONT</option>
           <option value="chicago, il">Chicago</option>
           <option value="winnipeg, mb">Winnipeg</option>
           <option value="fargo, nd">Fargo</option>
@@ -28,13 +26,11 @@
         <br />
         <b>End:</b>
         <select id="end">
-          <option value="Vancouver, BC">Vancouver, BC</option>
-          <option value="Seattle, WA">Seattle, WA</option>
-          <option value="San Francisco, CA">San Francisco, CA</option>
-          <option value="Los Angeles, CA">Los Angeles, CA</option>
+          <option value="Barcelona">Barcelona</option>
+        
         </select>
         <br />
-        <input type="submit" id="submit" />
+        <input type="submit" id="submit"/>
       </div>
       <div id="directions-panel"></div>
     </div>
@@ -54,7 +50,7 @@
 
 <script src="/js/map.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
+<script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap&libraries=&v=weekly"
   async></script>
 <div class="align-end text-center">
   <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
