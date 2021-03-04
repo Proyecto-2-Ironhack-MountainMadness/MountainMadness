@@ -3,10 +3,6 @@ const router = require("express").Router();
 const miscController = require("../controllers/misc.controller");
 const usersController = require("../controllers/users.controller");
 
-/* const multer = require("multer");
-const upload = multer({dest: "./public/uploads/"}) */
-
-
 const GOOGLE_SCOPES = [
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/userinfo.email"

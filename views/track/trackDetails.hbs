@@ -1,62 +1,93 @@
 <div class="container" id="route">
-	<h1>{{track.title}}</h1>
-
-<div id="map"></div>
-    <div id="right-panel">
-      <div>
-        <b>Start:</b>
-        <select id="start">
-          <option value="Halifax, NS">Halifax, NS</option>
-          <option value="Boston, MA">Boston, MA</option>
-          <option value="New York, NY">New York, NY</option>
-          <option value="Miami, FL">Miami, FL</option>
-        </select>
-        <br />
-        <b>Waypoints:</b> <br />
-        <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br />
-        <select multiple id="waypoints">
-          <option value="montreal, quebec">Montreal, QBC</option>
-          <option value="toronto, ont">Toronto, ONT</option>
-          <option value="chicago, il">Chicago</option>
-          <option value="winnipeg, mb">Winnipeg</option>
-          <option value="fargo, nd">Fargo</option>
-          <option value="calgary, ab">Calgary</option>
-          <option value="spokane, wa">Spokane</option>
-        </select>
-        <br />
-        <b>End:</b>
-        <select id="end">
-          <option value="Vancouver, BC">Vancouver, BC</option>
-          <option value="Seattle, WA">Seattle, WA</option>
-          <option value="San Francisco, CA">San Francisco, CA</option>
-          <option value="Los Angeles, CA">Los Angeles, CA</option>
-        </select>
-        <br />
-        <input type="submit" id="submit" />
-      </div>
-      <div id="directions-panel"></div>
-    </div>
-
-	<div class="mb-3">
-		<p><b>Descripción: </b>{{track.description}}</p>
-	</div>
-	<div class="mb-3">
-		<p><b>Autor: </b>{{track.author}}</p>
-	</div>
-	<div class="mb-3">
-		<p class="imagedetails"><b>Imagen: </b><img src="{{track.image}}" alt="Route image"></p>
-	</div>
-	
-	
-	<form action="/tracks/{{track._id}}/delete" method="POST">
-		<button class="btn btn-danger">Borrar Track</button>
-	</form>
-{{!-- 	<form action="/trackDelete" method="GET">
-		<button class="btn btn-danger">Editar Track</button>
-
-	</form> --}}
-	
+  <h1>{{track.title}}</h1>
+  <div id="map">
+    
+  </div>
 </div> 
+
+<div class="card" style="width: 22rem; mt-5 ">
+  <div class="card-body">
+    <h5 class="card-title">Datos</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="mb-3">
+        <p><b>Autor: </b>{{track.author}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="mb-3">
+        <p><b>Distancia: </b>{{track.author}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="mb-3">
+        <p><b>Dificultad: </b>{{track.author}}</p>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="mb-3">
+        <p><b>Valoración: </b>{{track.author}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="align-items-center">
+  <div class="btn-group ">
+    <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
+      <button class="btn btn-danger">Borrar Track</button>
+    </form>
+    <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
+      <button class="btn btn-danger">Editar Track</button>
+    </form>
+  </div>
+</div>
+    	
+
+
+<section >
+  <div class="card-horizontal ">
+  
+    <div class="card-body pt-10">
+  
+      <p class="t">Descripción: {{track.description}}</p>
+  
+    </div>
+  </div>
+</section>
+    <img class="box-track-img" src="{{track.image}}" alt="track image">
+
+{{!-- <div class="col-2">
+<div class="container-fluid" id="main-content">
+  <div class="container">
+    <div class="rowtrackdetail">
+      <div class="trackdetaildescription">
+        <p><b>Descripción:</b>{{track.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="trackdetailimg">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="mb-3">
+          <img class="trackdetailimg" src="{{track.image}}" alt="Route image">
+        </div>
+      </li>
+  </div>
+  </ul>
+</div>
+</div> --}}
+{{!--
+		<p><b>Imagen:</b><img class="trackdetailimg" src="{{track.image}}" alt="Route image"></p>
+		<p><b>Descripción:</b>{{track.description}}</p> --}}
+	
+	
+
+	
 
 	<script src="/js/map.js"></script>
 

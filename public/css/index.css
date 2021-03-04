@@ -19,26 +19,8 @@ body {
 }
 
 
-/* .footer {
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
-}
- */
-.footer
-{
-    height: 0px;
-    background-color: black;
-    position: absolute;
-    
-    
-    width: 100%;
-   /*  left: 0;
-    right: 0;
-    width: 100%; */
-    
-}
+/*============= profile =================*/
+
 .profile-img {
     width: 100%;
     margin-bottom: -60px;
@@ -51,15 +33,16 @@ body {
     background-position: center !important;
 }
 
-.nopadding {
-    padding: 0 !important;
-    margin: 0 !important;
- }
 
 .form-control {
     resize: none;
 }
 
+/* ==================navbarhome==================== */
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
 .video-home {
     height: 75%;
     z-index: -100;
@@ -83,6 +66,21 @@ body {
     z-index: 1;
 }
 
+.footer
+{
+    height: 0px;
+    background-color: black;
+    position: absolute;
+    
+    
+    width: 100%;
+   /*  left: 0;
+    right: 0;
+    width: 100%; */
+    
+}
+
+/* ================= tracks ===============================*/
 
 .card-horizontal {
     display: flex;
@@ -101,11 +99,33 @@ body {
     object-fit: cover;
 }
 
-.imagedetails{
-    max-width: 400px;
+
+.trackdetailimg{
+    border: white;
+    background: grey;
+    width: 50%;
+}
+
+.trackdetaildescription{
+        background: grey;
+        width: 15%;
+     
+}
+
+.rowtrackdetail {
+    display: flex;
+    width: 100%;
+  }
+
+.card-body {
+    display: inline-block;
 }
 
 
+  
+
+
+/* ================= MAPS CSS ===============================*/
 #right-panel {
     font-family: "Roboto", "sans-serif";
     line-height: 30px;

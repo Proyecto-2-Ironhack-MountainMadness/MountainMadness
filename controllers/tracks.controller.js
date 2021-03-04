@@ -79,6 +79,27 @@ module.exports.doCreate = (req, res, next) => {
 //===========================================================
 
 //====================================================UPDATE-EDITAR TRACKS========================================================
+module.exports.edit = (req, res, next) =>{
+  res.render('track/trackEdit')
+}
+
+module.exports.doEdit = (req, res, next) => {
+  console.log('pepe');
+  User.findByIdAndUpdate(req.user.id, req.body,
+    {
+      safe: true,
+      upsert: true,
+      new: true,
+    })
+    .then(user => {
+      if (!user) {
+        next(createError(404, 'User not found'));
+      } else {
+        res.redirect('/track/trackEdit')
+      }})
+      .catch(error => next(error));
+  
+}
 
 //====================================================DELETE TRACKS========================================================
 
