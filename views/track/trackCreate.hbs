@@ -10,6 +10,24 @@
 			</div>
 			{{/if}}
 		</div>
+
+		<div class="mb-3">
+			<label for="categories"  class="form-label">Categoría</label>
+			<select name="categories" >
+
+				<option selected value="0"> Elige una categoría </option>
+				{{#each categories as |category|}}
+
+				<option value="{{ category }}">{{ category }}</option>
+				
+				{{/each}}
+
+			</select>
+
+		</div>
+
+
+				
 		<div class="mb-3">
 			<label for="description" class="form-label">Descripción</label>
 			<input type="text" name="description" value="{{track.description}}"
@@ -30,7 +48,7 @@
 			</div>
 			{{/if}}
 		</div>
-		<button type="submit" class="btn btn-primary"> Ruta</button>
+		<button type="submit" class="btn btn-primary">Crear Ruta</button>
 	</form>
 
 </div>

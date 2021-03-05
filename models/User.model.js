@@ -77,12 +77,21 @@ const userSchema = new mongoose.Schema({
       );
     },
   },
+}, {
+  toJSON: { virtuals: true }
 });
     
 
 userSchema.methods.checkPassword = function (passwordToCheck) {
     return bcrypt.compare(passwordToCheck, this.password);
 };
+
+userSchema.virtual("tracks", {
+  ref: "Track",
+  foreignField: "author",
+  localField: "_id",
+  
+})
 
 userSchema.pre("save", function (next) {
     /* if (this.email === process.env.ADMIN_EMAIL) {
