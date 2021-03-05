@@ -3,7 +3,7 @@ const secure = require('../middlewares/secure.middleware');
 const upload = require('../config/storage.config');
 const tracksController = require("../controllers/tracks.controller");
 
-router.get("/", secure.isAuthenticated, tracksController.tracksPage);
+router.get("/", tracksController.tracksPage);
 
 //Tenemos que configurar MULTER solo en las rutas en las que necesitemos subir una imagen !! (min_1:25 de la clase 13-Febrero)
 //Siempre que tengamos una ruta en el que usemos un archivo img debemos añadirle el middleware --> upload.single("image"),
@@ -17,7 +17,7 @@ router.get("/:id/edit", secure.isAuthenticated, tracksController.edit);
 router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksController.doEdit);
 
 
-router.get('/:id', secure.isAuthenticated, tracksController.trackDetails)
+router.get('/:id', tracksController.trackDetails)
 router.post('/:id/delete', tracksController.trackDelete)
 
 module.exports = router;

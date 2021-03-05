@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
+const categories = require("../data/categories");
+const User = require("../models/User.model");
+
 
 
 //======================================================MOSTRAR TODAS LAS TRACKS=============================================
 module.exports.tracksPage = (req, res, next) => {
   Track.find({})
+  .populate('author')
     .then((tracks) => {
-      res.render("track/list", { tracks });
+      
+      res.render("track/list", { tracks , categories: categories, isAuthor: true});
     })
     .catch((e) => {
       console.log(e);
@@ -16,12 +21,21 @@ module.exports.tracksPage = (req, res, next) => {
 //======================================================MOSTRAR DETAIL DE UNA TRACK=============================================
 module.exports.trackDetails = (req, res, next) => {
   const id = req.params.id;
+  
+
   Track.findById(id)
+  .populate('author')
     .then((track) => {
-      res.render("track/trackDetails", { track });
+      if (req.currentUser) { 
+          track.author._id.equals(req.currentUser._id) 
+          ? res.render("track/trackDetails", { track, isAuthor: true }) 
+          : res.render("track/trackDetails", { track })
+      } else {
+        res.render("track/trackDetails", { track })
+      }
     })
-    .catch((e) => {
-      console.log(e);
+    .catch((ines) => {
+      next(ines)
     });
 };
 
@@ -48,7 +62,7 @@ module.exports.trackDetails = (req, res, next) => {
 
 //=======================================================CREATE================================================================
 module.exports.create = (req, res, next) => {
-  res.render("track/trackCreate");
+  res.render("track/trackCreate", {categories: categories});
 };
 
 module.exports.doCreate = (req, res, next) => {
@@ -56,6 +70,7 @@ module.exports.doCreate = (req, res, next) => {
   //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
     req.body.image = req.file.path;/* `/uploads/${req.file.filename}`; */ //Antes usabamos antes con el multer pero con cloudinary usamos <--
   }
+  console.log(req.body)
 
   function renderWithErrors(errors) {
     res.status(400).render("/", {
@@ -63,6 +78,8 @@ module.exports.doCreate = (req, res, next) => {
       route: req.body,
     });
   }
+  
+  req.body.author = req.currentUser._id
 
   Track.create(req.body)
     .then(() => {

@@ -1,97 +1,75 @@
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
-  <div id="map">
-    
-  </div>
-</div> 
+  <div class="p-10">
+    <div id="map">
 
-<div class="card" style="width: 22rem; mt-5 ">
-  <div class="card-body">
-    <h5 class="card-title">Datos</h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <div class="mb-3">
-        <p><b>Autor: </b>{{track.author}}</p>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="mb-3">
-        <p><b>Distancia: </b>{{track.author}}</p>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="mb-3">
-        <p><b>Dificultad: </b>{{track.author}}</p>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="mb-3">
-        <p><b>Valoración: </b>{{track.author}}</p>
-      </div>
-    </li>
-  </ul>
-</div>
-
-<div class="align-items-center">
-  <div class="btn-group ">
-    <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
-      <button class="btn btn-danger">Borrar Track</button>
-    </form>
-    <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
-      <button class="btn btn-danger">Editar Track</button>
-    </form>
-  </div>
-</div>
-    	
-
-
-<section >
-  <div class="card-horizontal ">
-  
-    <div class="card-body pt-10">
-  
-      <p class="t">Descripción: {{track.description}}</p>
-  
     </div>
   </div>
-</section>
-    <img class="box-track-img" src="{{track.image}}" alt="track image">
 
-{{!-- <div class="col-2">
-<div class="container-fluid" id="main-content">
-  <div class="container">
-    <div class="rowtrackdetail">
-      <div class="trackdetaildescription">
-        <p><b>Descripción:</b>{{track.description}}</p>
-      </div>
+
+  <div class="card" style="width: 22rem; mt-5 ">
+    <div class="card-body">
+      <h5 class="card-title">Datos</h5>
     </div>
-  </div>
-</div>
-
-<div class="trackdetailimg">
-  <div class="card" style="width: 18rem;">
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="mb-3">
-          <img class="trackdetailimg" src="{{track.image}}" alt="Route image">
+          <p><b>Autor: </b>{{track.author.email}}</p>
         </div>
       </li>
+      <li class="list-group-item">
+        <div class="mb-3">
+          <p><b>Distancia: </b>Pepep</p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="mb-3">
+          <p><b>Dificultad: </b>{{track.description}}</p>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="mb-3">
+          <p><b>Valoración: </b></p>
+        </div>
+      </li>
+    </ul>
   </div>
-  </ul>
+
+{{#if isAuthor}}
+  <div class="align-items-center">
+    <div class="btn-group ">
+      <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
+        <button class="btn btn-danger">Borrar Track</button>
+      </form>
+      <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
+        <button class="btn btn-danger">Editar Track</button>
+      </form>
+    </div>
+  </div>
+  {{/if}}
+
+
+
+  <section>
+    <div class="card-horizontal ">
+
+      <div class="card-body pt-10">
+
+        <p class="t">Descripción: {{track.description}}</p>
+
+      </div>
+    </div>
+  </section>
+  <img class="box-track-img" src="{{track.image}}" alt="track image">
+
+
+
+
+
+ 
+
 </div>
-</div> --}}
-{{!--
-		<p><b>Imagen:</b><img class="trackdetailimg" src="{{track.image}}" alt="Route image"></p>
-		<p><b>Descripción:</b>{{track.description}}</p> --}}
-	
-	
+<script src="/js/map.js"></script>
 
-	
-
-	<script src="/js/map.js"></script>
-
-<script
-      src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
+  async></script>
