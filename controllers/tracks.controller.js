@@ -70,7 +70,11 @@ module.exports.doCreate = (req, res, next) => {
   //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
     req.body.image = req.file.path;/* `/uploads/${req.file.filename}`; */ //Antes usabamos antes con el multer pero con cloudinary usamos <--
   }
-  console.log(req.body)
+  // console.log(req.body)
+  if (req.body.path) {
+    req.body.path = req.body.path.map(x => x.split(",").map(n => Number(n)));
+  }
+  console.log(req.body.path)
 
   function renderWithErrors(errors) {
     res.status(400).render("/", {
@@ -78,11 +82,14 @@ module.exports.doCreate = (req, res, next) => {
       route: req.body,
     });
   }
+
+
   
   req.body.author = req.currentUser._id
 
   Track.create(req.body)
     .then(() => {
+      
       res.redirect(`/tracks`);
     })
     .catch((e) => {

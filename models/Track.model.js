@@ -22,40 +22,44 @@ const trackSchema = new mongoose.Schema({
   categories: {
     type: String,
     enum: categories,
-    
+
+  },
+
+  location: {
+    type: { type: String, default: "LineString" },
+    coordinates: [[Number]]
+  },
+},
+{timestamps: true,
+  toObject: {
+    virtuals: true
   }
-
-  // tags: [String],
-
-  //     origin: {
-  //         type: String,
-  //         required: true,
-  //     },
-  //     destinations: { Waypoints
-  //         type: String,
-  //         required: true,
-  //     },
-  //     distance: {
-  //         type: String,
-  //         required: true,
-  //     },
-  //     time: {
-  //         type: String,
-  //         required: true,
-  //     },
-  //     altitude: {
-  //         type: String,
-  //         required: true,
-  //     },
-  //     latitude: {
-  //         type: String,
-  //         required: true,
-  //     },
-  //     longitude: {
-  //         type: String,
-  //         required: true,
-  //     },
 });
+
+
+
+  // location: {
+  //   type: {
+  //     type: String,
+  //     enum: ['Point'],
+  //     required: true
+  //   },
+  //   coordinates: {
+  //     type: [Number],
+  //     required: true
+  //   }
+  // },
+
+
+
+ 
+  
+    
+    
+  
+
+
+
 
 
 const Track = mongoose.model("Track", trackSchema);
