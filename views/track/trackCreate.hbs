@@ -25,6 +25,10 @@
 			</select>
 
 		</div>
+    <div id="map"></div>
+    <div id="right-panel">
+      <p>Total Distance: <span id="total"></span></p>
+    </div>
 
 
 				
@@ -52,5 +56,10 @@
 	</form>
 
 </div>
+
+<script src="/js/map.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
+  async></script>
 
 <!--hay que configurarlo para la route-->
