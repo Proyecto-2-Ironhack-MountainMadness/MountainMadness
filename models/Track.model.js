@@ -24,23 +24,42 @@ const trackSchema = new mongoose.Schema({
     enum: categories,
 
   },
-  
+
   location: {
-    type: {
-      type: String,
-      enum: ['Point'],
-      required: true
-    },
-    coordinates: {
-      type: [Number],
-      required: true
-    }
+    type: { type: String, default: "LineString" },
+    coordinates: [[Number]]
   },
+},
+{timestamps: true,
+  toObject: {
+    virtuals: true
+  }
+});
+
+
+
+  // location: {
+  //   type: {
+  //     type: String,
+  //     enum: ['Point'],
+  //     required: true
+  //   },
+  //   coordinates: {
+  //     type: [Number],
+  //     required: true
+  //   }
+  // },
 
 
 
  
-});
+  
+    
+    
+  
+
+
+
 
 
 const Track = mongoose.model("Track", trackSchema);
