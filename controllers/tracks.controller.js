@@ -28,11 +28,11 @@ module.exports.trackDetails = (req, res, next) => {
     .then((track) => {
       if (req.currentUser) {
         track.author._id.equals(req.currentUser._id)
-          ? res.render("track/trackDetails", { 
-            track, 
-            isAuthor: true, 
+          ? res.render("track/trackDetails", {
+            track,
+            isAuthor: true,
             pointsJSON: encodeURIComponent(JSON.stringify(track.path))
-           },
+          },
           )
           : res.render("track/trackDetails", { track })
       } else {
@@ -75,7 +75,7 @@ module.exports.doCreate = (req, res, next) => {
     //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
     req.body.image = req.file.path;/* `/uploads/${req.file.filename}`; */ //Antes usabamos antes con el multer pero con cloudinary usamos <--
   }
-  // console.log(req.body)
+
   if (req.body.path) {
     req.body.path = req.body.path.map(x => x.split(",").map(n => Number(n)));
   }
@@ -112,18 +112,17 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-  console.log('pepe');
-  User.findByIdAndUpdate(req.user.id, req.body,
+  Track.findByIdAndUpdate(req.body.id, req.body,
     {
       safe: true,
       upsert: true,
       new: true,
     })
-    .then(user => {
-      if (!user) {
-        next(createError(404, 'User not found'));
+    .then(track => {
+      if (!track) {
+        next(createError(404, 'Track not found'));
       } else {
-        res.redirect('/track/trackEdit')
+        res.redirect('/track/Details')
       }
     })
     .catch(error => next(error));

@@ -1,11 +1,11 @@
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
 
-  <form method="POST" action="/track/trackEdit">
+  <form method="POST" action="/tracks/{{track._id}}/edit">
 
     <div id="map"></div>
     <div id="right-panel">
-      <p>Total Distance: <span id="total"></span></p>
+      <p><span id="total"></span></p>
     </div>
 
     <div class="mb-3">
@@ -18,15 +18,22 @@
       <p class="imagedetails"><b>Imagen: </b><img src="{{currentTrack.image}}" alt="Route image"></p>
     </div>
 
+    <div class="align-end text-center">
 
+      <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f"  type="submit">Save Changes <span
+          class="fa fa-check nt-w ml-2"></span></button>
+    </div>
+
+  </form>
 </div>
+
+<script>
+  var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
+  var jsonObj = JSON.parse(decodedJson);
+  window.points = jsonObj;
+</script>
 
 <script src="/js/map.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
   async></script>
-<div class="align-end text-center">
-  <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
-      class="fa fa-check nt-w ml-2"></span></button>
-
-  </form>
