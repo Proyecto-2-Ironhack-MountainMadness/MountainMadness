@@ -8,10 +8,10 @@ const User = require("../models/User.model");
 //======================================================MOSTRAR TODAS LAS TRACKS=============================================
 module.exports.tracksPage = (req, res, next) => {
   Track.find({})
-  .populate('author')
+    .populate('author')
     .then((tracks) => {
-      
-      res.render("track/list", { tracks , categories: categories, isAuthor: true});
+
+      res.render("track/list", { tracks, categories: categories, isAuthor: true });
     })
     .catch((e) => {
       console.log(e);
@@ -21,14 +21,19 @@ module.exports.tracksPage = (req, res, next) => {
 //======================================================MOSTRAR DETAIL DE UNA TRACK=============================================
 module.exports.trackDetails = (req, res, next) => {
   const id = req.params.id;
-  
+
 
   Track.findById(id)
-  .populate('author')
+    .populate('author')
     .then((track) => {
-      if (req.currentUser) { 
-          track.author._id.equals(req.currentUser._id) 
-          ? res.render("track/trackDetails", { track, isAuthor: true }) 
+      if (req.currentUser) {
+        track.author._id.equals(req.currentUser._id)
+          ? res.render("track/trackDetails", { 
+            track, 
+            isAuthor: true, 
+            pointsJSON: encodeURIComponent(JSON.stringify(track.path))
+           },
+          )
           : res.render("track/trackDetails", { track })
       } else {
         res.render("track/trackDetails", { track })
@@ -62,12 +67,12 @@ module.exports.trackDetails = (req, res, next) => {
 
 //=======================================================CREATE================================================================
 module.exports.create = (req, res, next) => {
-  res.render("track/trackCreate", {categories: categories});
+  res.render("track/trackCreate", { categories: categories });
 };
 
 module.exports.doCreate = (req, res, next) => {
-  if(req.file) {
-  //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
+  if (req.file) {
+    //==================Acordarse de requerir esto en los controladores que precisemos usar img===================
     req.body.image = req.file.path;/* `/uploads/${req.file.filename}`; */ //Antes usabamos antes con el multer pero con cloudinary usamos <--
   }
   // console.log(req.body)
@@ -84,12 +89,11 @@ module.exports.doCreate = (req, res, next) => {
   }
 
 
-  
+
   req.body.author = req.currentUser._id
 
   Track.create(req.body)
     .then(() => {
-      
       res.redirect(`/tracks`);
     })
     .catch((e) => {
@@ -103,7 +107,7 @@ module.exports.doCreate = (req, res, next) => {
 //===========================================================
 
 //====================================================UPDATE-EDITAR TRACKS========================================================
-module.exports.edit = (req, res, next) =>{
+module.exports.edit = (req, res, next) => {
   res.render('track/trackEdit')
 }
 
@@ -120,9 +124,10 @@ module.exports.doEdit = (req, res, next) => {
         next(createError(404, 'User not found'));
       } else {
         res.redirect('/track/trackEdit')
-      }})
-      .catch(error => next(error));
-  
+      }
+    })
+    .catch(error => next(error));
+
 }
 
 //====================================================DELETE TRACKS========================================================
@@ -134,7 +139,7 @@ module.exports.trackDelete = (req, res, next) => {
   Track.findByIdAndRemove(id)
     .then(track => {
       if (!track) {
-        next(console.log( 'Track not found'));
+        next(console.log('Track not found'));
       } else {
         res.redirect('/tracks');
       }
