@@ -24,43 +24,43 @@ const trackSchema = new mongoose.Schema({
     enum: categories,
 
   },
+  distance: {
+    type: Number
+  },
 
-  // location: {
-  //   type: { type: String, default: "LineString" },
-  //   coordinates: [[Number]]
-  // },
 
-  path : {
+  path: {
     type: [[Number]]
   },
 },
-{timestamps: true,
-  toObject: {
-    virtuals: true
-  }
-});
+  {
+    timestamps: true,
+    toObject: {
+      virtuals: true
+    }
+  });
 
 
 
-  // location: {
-  //   type: {
-  //     type: String,
-  //     enum: ['Point'],
-  //     required: true
-  //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     required: true
-  //   }
-  // },
+// location: {
+//   type: {
+//     type: String,
+//     enum: ['Point'],
+//     required: true
+//   },
+//   coordinates: {
+//     type: [Number],
+//     required: true
+//   }
+// },
 
 
 
- 
-  
-    
-    
-  
+
+
+
+
+
 
 
 
