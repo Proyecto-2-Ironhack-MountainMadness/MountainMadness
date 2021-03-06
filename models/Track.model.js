@@ -25,9 +25,13 @@ const trackSchema = new mongoose.Schema({
 
   },
 
-  location: {
-    type: { type: String, default: "LineString" },
-    coordinates: [[Number]]
+  // location: {
+  //   type: { type: String, default: "LineString" },
+  //   coordinates: [[Number]]
+  // },
+
+  path : {
+    type: [[Number]]
   },
 },
 {timestamps: true,

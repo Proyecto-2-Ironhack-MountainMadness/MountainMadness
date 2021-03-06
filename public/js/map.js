@@ -9,56 +9,37 @@ function initMap() {
   });
 
 // infoWindow = new google.maps.InfoWindow;
+poly = new google.maps.Polyline({
+  path: window.points ? window.points.map(function (point) {
+    return {
+      lat: point[1],
+      lng: point[0],
+    }
+  }) : null,
+  geodesic: true,
+  strokeColor: '#2EC98C',
+  strokeOpacity: 1.0,
+  strokeWeight: 3,
+  draggable: true,
+});
 
-  poly = new google.maps.Polyline({
-    // path: window.points ? window.points.map(function (point) {
-      // return {
-      //   lat: point[1],
-      //   lng: point[0],
-      // }
-      // geodesic: true,
-    strokeColor: "#000000",
-    strokeOpacity: 1.0,
-    strokeWeight: 3,
-    // draggable: true,
-  });
+  if (window.points) {
+    poly
+    var bounds = new google.maps.LatLngBounds()
 
-  // if (window.points) {
-  //   poly
-  //   var bounds = new google.maps.LatLngBounds()
+    window.points.forEach(function (location) {
+      var position = new google.maps.LatLng(location[1], location[0])
+      new google.maps.Marker({
+       icon:"/images/icon.png",
+        position: position,
+        map: map
+      })
+      bounds.extend(position)
+    })
 
-  //   window.points.forEach(function (location) {
-  //     var position = new google.maps.LatLng(location[1], location[0])
-  //     new google.maps.Marker({
-  //       icon: '/img/icon.png',
-  //       position: position,
-  //       map: map
-  //     })
-  //     bounds.extend(position)
-  //   })
-
-  //   map.fitBounds(bounds)
-  // } else if (navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(function (position) {
-  //     var pos = {
-  //       lat: position.coords.latitude,
-  //       lng: position.coords.longitude
-  //     };
-
-  //     infoWindow.setPosition(pos);
-  //     infoWindow.setContent('Estás aquí');
-  //     infoWindow.open(map);
-  //     infoWindow.open(map2);
-  //     map.setCenter(pos);
-  //     map.setZoom(16);
-
-  //   }, function () {
-  //     handleLocationError(true, infoWindow, map.getCenter());
-  //   });
-  // } else {
-  //   // Browser doesn't support Geolocation
-  //   handleLocationError(false, infoWindow, map.getCenter());
-  // }
+    map.fitBounds(bounds)
+  } 
+  
 
   // var SILVER_MAP = new google.maps.StyledMapType(
   //   SILVER_STYLE, {
@@ -69,32 +50,32 @@ function initMap() {
   // Add a listener for the click event
   map.addListener("click", addLatLng);
 
-  map.mapTypes.set('styled_map', SILVER_MAP);
-  map.setMapTypeId('styled_map');
+  
+  // map.setMapTypeId('styled_map');
 
-  var drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.POLYLINE,
-    drawingControl: true,
-    drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_CENTER,
-      drawingModes: [
-        google.maps.drawing.OverlayType.MARKER,
-        google.maps.drawing.OverlayType.CIRCLE,
-        google.maps.drawing.OverlayType.POLYGON,
-        google.maps.drawing.OverlayType.POLYLINE,
-        google.maps.drawing.OverlayType.RECTANGLE
-      ]
-    },
-    markerOptions: {},
-    circleOptions: {
-      fillColor: '#ffff00',
-      fillOpacity: 1,
-      strokeWeight: 5,
-      clickable: false,
-      editable: true,
-      zIndex: 1
-    }
-  });
+//   var drawingManager = new google.maps.drawing.DrawingManager({
+//     drawingMode: google.maps.drawing.OverlayType.POLYLINE,
+//     drawingControl: true,
+//     drawingControlOptions: {
+//       position: google.maps.ControlPosition.TOP_CENTER,
+//       drawingModes: [
+//         google.maps.drawing.OverlayType.MARKER,
+//         google.maps.drawing.OverlayType.CIRCLE,
+//         google.maps.drawing.OverlayType.POLYGON,
+//         google.maps.drawing.OverlayType.POLYLINE,
+//         google.maps.drawing.OverlayType.RECTANGLE
+//       ]
+//     },
+//     markerOptions: {},
+//     circleOptions: {
+//       fillColor: '#ffff00',
+//       fillOpacity: 1,
+//       strokeWeight: 5,
+//       clickable: false,
+//       editable: true,
+//       zIndex: 1
+//     }
+//  });
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -118,6 +99,12 @@ function removeLine() {
 function addLatLng(event) {
   console.log(event)
   const path = poly.getPath();
+  console.log(poly.getPath())
+  if (path.Fb[0]){
+    console.log("holaaa",path.Fb[0].lat())
+    console.log("holaaa",path.Fb[0].lng())
+  }
+  
   // Because path is an MVCArray, we can simply append a new coordinate
   // and it will automatically appear.
   path.push(event.latLng);
@@ -131,7 +118,13 @@ function addLatLng(event) {
 }
 
 function addPathToForm(form) {
-  poly.getPath().forEach(el => {
+
+  // var input = document.createElement("input")
+  // input.name = "paths"
+  // input.value = poly.getPath().Fb[0].lat()
+  // form.append(input)
+  
+  poly.getPath().Fb.forEach(el => {
     var input = document.createElement("input");
     input.name = "path[]";
     input.value = [el.lng(), el.lat()];

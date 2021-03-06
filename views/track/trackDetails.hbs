@@ -1,7 +1,7 @@
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
   <div class="p-10">
-    <div id="map">
+    <div id="map" style="pointer-events: none;">
 
     </div>
   </div>
@@ -69,6 +69,14 @@
  
 
 </div>
+
+
+<script>
+  var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
+  var jsonObj = JSON.parse(decodedJson);
+  window.points = jsonObj;
+</script>
+
 <script src="/js/map.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
