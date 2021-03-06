@@ -83,6 +83,7 @@ module.exports.doCreate = (req, res, next) => {
 
   Track.create(req.body)
     .then(() => {
+      
       res.redirect(`/tracks`);
     })
     .catch((e) => {
