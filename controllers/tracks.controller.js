@@ -112,7 +112,8 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doEdit = (req, res, next) => {
-  Track.findByIdAndUpdate(req.body.id, req.body,
+  Track.findByIdAndUpdate(req.body.path, req.body,
+    console.log(path),
     {
       safe: true,
       upsert: true,
