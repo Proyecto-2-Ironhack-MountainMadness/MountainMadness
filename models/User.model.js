@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     required: "La contraseña es requerida",
     match: [
       PASSWORD_PATTERN,
-      "Tu contraseña debe conteneral menos 1 número, 1 mayúscula, 1 minúscula y 8 caracteres",
+      "Tu contraseña debe contener al menos 1 número, 1 mayúscula, 1 minúscula y 8 caracteres",
     ],
   },
   nickName: {
@@ -40,16 +40,16 @@ const userSchema = new mongoose.Schema({
     default: "",
   },
   birth: {
-    type: String
+    type: Date
   },
-  about: {
+  aboutMe: {
     type: String
   },
   country: {
     type: String
   },
   phone: {
-    type: String
+    type: Number
   },
   //=======================nodemailer===================
   active: {
