@@ -12,7 +12,7 @@ module.exports.home = (req, res, next) => {
     });
 
 }
-
+//=================================CONTACT US ===============================================
 module.exports.contactus = (req, res, next) => {
   res.render('partials/contactus')
 }
@@ -23,4 +23,18 @@ module.exports.docontactus = (req, res, next) => {
   const { email, subject } = req.body;
   contactUsEmail(email, subject);
   res.render('home')
+}
+
+
+
+//======================================ABOUT US============================================
+
+module.exports.aboutus = (req, res, next) => {
+  res.render('partials/aboutUs')
+}
+
+//==================================== TERMS  ==============================================
+
+module.exports.terms = (req, res, next) => {
+  res.render('partials/terms')
 }

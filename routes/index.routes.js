@@ -26,5 +26,12 @@ router.post("/contactus",miscController.docontactus);
 
 
 
+//========================about us ====================//
+router.get("/aboutUs",miscController.aboutus);
+
+
+//========================terms ====================//
+router.get("/terms",miscController.terms);
+
 
 module.exports = router;
