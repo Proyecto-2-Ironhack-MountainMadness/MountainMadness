@@ -86,7 +86,7 @@ function addLatLng(event) {
     position: event.latLng,
     title: "#" + path.getLength(),
     map: map,
-    icon: '../images/icon.png',
+    icon: '/images/icon.png',
   });
 }
 

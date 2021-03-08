@@ -1,0 +1,50 @@
+<div class="container login-register-container" id="login-display">
+  <div class="card-home rounded" style=" height: 26rem;">
+    <button type="button" class="close" aria-label="Close" id="hide-login-close-icon">
+      <span class="close-icon text-white"><i class="fa fa-times"></i></span>
+    </button>
+    <br/>
+    <form class="pt-5 pl-1 pr-1 w-100" action="/users/login" method="POST">
+      <div class="mb-3 row">
+        <label for="inputEmail" style="font" class="col-sm-3 col-form-label text-white">Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" name="password" id="email" value="" required>
+        </div>
+      </div>
+      <div class="mb-1 row pb-5">
+        <label for="inputPassword" class="col-sm-3 col-form-label text-white">Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" name="password" id="password" required>
+        </div>
+      </div>
+      <div class="mb-3 mt-3 row">
+        <button type="submit" class="btn btn-primary form-button">Iniciar sesión</button>
+      </div>
+      <div class="mb-3 row">
+        <button class="btn btn-danger form-button"><a href="/authenticate/google">Iniciar sesión con Google</a></button>
+      </div>
+    </form>
+  </div>
+</div>
+{{!-- <div class="mb-3">
+  <label for="email" class="form-label">Correo electrónico</label>
+  <input type="email" name="email" value="{{user.email}}" class="form-control" id="email" required>
+</div>
+<div class="mb-3">
+  <label for="password" class="form-label">Contraseña</label>
+  <input type="password" name="password" class="form-control" id="password" required>
+</div>
+
+{{#if error}}
+<p class="error-message">{{error}}</p>
+{{/if}}
+
+{{#if message}}
+<p class="success-message">{{message}}</p>
+{{/if}}
+<button type="submit" class="btn btn-primary">Iniciar sesión</button>
+<a href="/authenticate/google" class="btn btn-danger">Iniciar sesión con Google</a>
+
+
+</form>
+</div> --}}

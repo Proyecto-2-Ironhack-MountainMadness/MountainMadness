@@ -1,39 +1,77 @@
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
 
-  <form method="POST" action="/tracks/{{track._id}}/edit">
+  <form method="POST" action="/tracks/{{track._id}}/edit" onsubmit="addPathToForm(this)" enctype="multipart/form-data"> 
+		<div class="mb-3">
+			<label for="name" class="form-label">Nombre</label>
+			<input type="text" name="title" value="{{track.title}}"
+				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
+			{{#if errors.name}}
+			<div class="invalid-feedback">
+				{{errors.name}}
+			</div>
+			{{/if}}
+		</div>
 
-    <div id="map"></div>
-    <div id="right-panel">
-      <p><span id="total"></span></p>
-    </div>
+		<div class="mb-3">
+			<label for="categories" class="form-label">Categoría</label>
+			<select name="categories">
 
-    <div class="mb-3">
-      <p><b>Descripción: </b>{{currentTrack.description}}</p>
-    </div>
-    <div class="mb-3">
-      <p><b>Autor: </b>{{currentTrack.author}}</p>
-    </div>
-    <div class="mb-3">
-      <p class="imagedetails"><b>Imagen: </b><img src="{{currentTrack.image}}" alt="Route image"></p>
-    </div>
+				<option selected value="0"> Elige una categoría </option>
+				{{#each categories as |category|}}
 
+				<option value="{{ category }}">{{ category }}</option>
+
+				{{/each}}
+
+			</select>
+
+		</div>
+		
+		{{!-- <div class=>
+			<input type="string" name="lat" value="{{lat}}" />
+			<input type="string" name="lng" value="{{lng}}" />
+		</div> --}}
+		<div id="map"></div>
+
+		
+
+
+		<div class="mb-3">
+			<label for="description" class="form-label">Descripción</label>
+			<input type="text" name="description" value="{{track.description}}"
+				class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" required>
+			{{#if errors.description}}
+			<div class="invalid-feedback">
+				{{errors.description}}
+			</div>
+			{{/if}}
+		</div>
+		<div class="mb-3">
+			<label for="image" class="form-label">Imagen</label>
+			<input type="file" name="image" value="{{track.image}}"
+				class="form-control {{#if errors.image}}is-invalid{{/if}}" id="image">
+			{{#if errors.image}}
+			<div class="invalid-feedback">
+				{{errors.image}}
+			</div>
+			{{/if}}
     <div class="align-end text-center">
 
-      <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f"  type="submit">Save Changes <span
+      <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
           class="fa fa-check nt-w ml-2"></span></button>
     </div>
-
+		</div>
+		
   </form>
 </div>
+<script src="/js/map.js"></script>
 
-<script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
+	async></script>
+
+	<script>
   var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
   var jsonObj = JSON.parse(decodedJson);
   window.points = jsonObj;
 </script>
-
-<script src="/js/map.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
-  async></script>
