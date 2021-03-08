@@ -2,35 +2,37 @@
 
 </nav>
 --}}
-<div {{#if isHome}} class="navbarhome p-0" {{else}} class="bghome p-0" {{/if}}> 
+<div {{#if isHome}} class="navbarhome p-0" {{else}} class="bghome p-0" {{/if}}>
   <div>
-    <nav class="navbar navbar-expand-lg {{!-- bg-dark --}}">
+    <nav class="navbar navbar-expand-lg p-10">
       <div class="container">
         <a class="navbar-brand" href="/">
           <img src="/images/Logoprueba.png" width="200" height="200" class="img-fluid" alt="">
         </a>
 
         <a class="navbar-brand" href="/">MountainMadness</a>
-        <div class="collapse navbar-collapse justify-content-md-end" id="navbarNavDropdown">
+
+        <div class="collapse navbar-collapse justify-content-md" id="navbarNavDropdown">
           <div class=class="container-fluid">
             <form class="d-flex" style="width: 700px;">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control me-2 container mr-20" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success " type="submit">Search</button>
             </form>
           </div>
+          
           <ul class="navbar-nav" class="container-fluid">
             <li class="nav-item">
               {{#if currentUser}}
               <a class="nav-link" href="/users/profile">Mi perfil</a>
               <a class="nav-link" href="/tracks/create">Añadir ruta</a>
             </li>
-              
+
             <form action="/users/logout" method="POST">
               <li><button class="btn btn-danger">Cerrar sesión</button></li>
             </form>
             {{else}}
             <a class="nav-link" href="/users/register">SignUp</a></li>
-            <a class="nav-link" href="/users/login">LogIn</a></li>
+            <button id='login-button' class="nav-link">LogIn</button>
             {{/if}}
 
           </ul>

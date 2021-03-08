@@ -1,5 +1,6 @@
 <div class="container-fluid">
     <h1 class="align-center"> Routes</h1>
+
     <section id="tracks">
         {{#each tracks as |track|}}
         <div class="track">
@@ -10,7 +11,7 @@
 
                             <div class="card-body">
                                 <div class="track__title">
-                                    <a href="/tracks/{{track._id}}/">
+                                    <a href="/tracks/{{track._id}}">
                                         <h4>Titulo: {{track.title}}</h4>
                                     </a>
                                 </div>
