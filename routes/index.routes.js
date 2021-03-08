@@ -18,5 +18,20 @@ router.get('/authenticate/google/cb', usersController.doLoginGoogle);
 //=======================nodemailer-activarToken=====================
 router.get("/activate/:token",usersController.activate);
 
- 
+ //========================contact us ====================//
+
+router.get("/contactus",miscController.contactus);
+
+router.post("/contactus",miscController.docontactus);
+
+
+
+//========================about us ====================//
+router.get("/aboutUs",miscController.aboutus);
+
+
+//========================terms ====================//
+router.get("/terms",miscController.terms);
+
+
 module.exports = router;

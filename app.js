@@ -31,7 +31,7 @@ const trackRoutes = require('./routes/tracks.routes')
 //Requerimos la instancia db.config donde está la configuración de la base de datos
 require('./config/db.config')
 
-
+const { contactUsEmail } = require("./config/mailer.config");
 
 
 //=================Configuracion de Express=========================
