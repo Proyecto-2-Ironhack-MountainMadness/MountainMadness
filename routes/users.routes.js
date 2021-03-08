@@ -21,4 +21,7 @@ router.get('/editProfile', secure.isAuthenticated, usersController.editProfile)
 
 router.post('/editProfile', secure.isAuthenticated, upload.single("image"), usersController.doEditProfile)
 
+
+
+
 module.exports = router;
