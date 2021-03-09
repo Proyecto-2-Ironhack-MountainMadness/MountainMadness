@@ -1,5 +1,7 @@
-<div class="container-fluid">
-    <h1 class="align-center"> Routes</h1>
+<div class="container-fluid-list">
+    <div class="container">
+    <h1 class="titulo-lista-tracks">Rutas</h1>
+    </div>
 
     <section id="tracks">
         {{#each tracks as |track|}}
@@ -21,10 +23,10 @@
                                 <p class="track__description">Valoración: </p>
 
                             </div>
-                            <img class="box-track-img" src="{{track.image}}" alt="track image">
+                            <img class="box-track-img" src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}" alt="track image">
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Subido por {{track.nickname}}</small>
+                            <small class="text-muted">Subido por {{track.author.nickName}}</small>
                         </div>
                     </div>
                 </div>

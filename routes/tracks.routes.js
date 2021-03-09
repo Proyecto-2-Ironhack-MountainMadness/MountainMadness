@@ -5,6 +5,8 @@ const tracksController = require("../controllers/tracks.controller");
 
 router.get("/", tracksController.tracksPage);
 
+
+
 //Tenemos que configurar MULTER solo en las rutas en las que necesitemos subir una imagen !! (min_1:25 de la clase 13-Febrero)
 //Siempre que tengamos una ruta en el que usemos un archivo img debemos añadirle el middleware --> upload.single("image"),
 
