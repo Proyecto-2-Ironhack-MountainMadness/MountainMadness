@@ -1,0 +1,23 @@
+<h2>Cuentenos en que podemos ayudarle</h2>
+{{#if message}}
+<div class="message">{{message}}</div>
+{{/if}}
+<form action="/contactus" method="POST">
+	<div class="form-group">
+		<label for="name">Nombre: </label>
+		<input class="form-control" id="name" name="name" type="text">
+	</div>
+	<div class="form-group">
+		<label for="email">Correo Electrónico: </label>
+		<input class="form-control" id="email" name="email" type="email">
+	</div>
+	<div class="form-group">
+		<label for="subject">Motivo: </label>
+		<input class="form-control" id="subject" name="subject" type="text">
+	</div>
+	<div class="form-group">
+		<label for="description"> Cuentenos: </label>
+		<input class="form-control" id="description" name="description" type="text"></input>
+	</div>
+	<button class="btn btn-success" type="submit">Enviar Mensaje: </button>
+</form>

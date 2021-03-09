@@ -277,3 +277,11 @@ body {
   from{border-right-color: rgba(255,255,255,.75);}
   to{border-right-color: transparent;}
 }
+
+
+/*FOOTER*/
+
+.p-4{
+    background-color:black;
+    
+}

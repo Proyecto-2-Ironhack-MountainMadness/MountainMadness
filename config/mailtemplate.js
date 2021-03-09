@@ -205,7 +205,7 @@ module.exports.generateTemplate = (token) => {
 	
 							</td>
 						</tr>
-					
+						router.post("/contactus",miscController.docontactus);
 			</tbody>
 		</table>
 	
