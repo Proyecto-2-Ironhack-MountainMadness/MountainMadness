@@ -25,9 +25,13 @@ const trackSchema = new mongoose.Schema({
 
   },
   distance: {
-    type: Number
+    type: String
   },
 
+  comments: {
+    type: String,
+    required: false,
+  },
 
   path: {
     type: [[Number]]

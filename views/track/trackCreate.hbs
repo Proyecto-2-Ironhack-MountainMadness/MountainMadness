@@ -25,14 +25,14 @@
 			</select>
 
 		</div>
-		
+
 		{{!-- <div class=>
 			<input type="string" name="lat" value="{{lat}}" />
 			<input type="string" name="lng" value="{{lng}}" />
 		</div> --}}
 		<div id="map"></div>
 
-		
+
 
 
 		<div class="mb-3">
@@ -45,6 +45,19 @@
 			</div>
 			{{/if}}
 		</div>
+
+		<div class="mb-3">
+			<label for="distance" class="form-label">Distancia</label>
+			<input type="text" name="distance" value="{{track.distance}}"
+				class="form-control {{#if errors.distance}}is-invalid{{/if}}" id="distance" required>
+			{{#if errors.distance}}
+			<div class="invalid-feedback">
+				{{errors.distance}}
+			</div>
+			{{/if}}
+		</div>
+
+
 		<div class="mb-3">
 			<label for="image" class="form-label">Imagen</label>
 			<input type="file" name="image" value="{{track.image}}"
@@ -65,10 +78,10 @@
 <script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
 	async></script>
 
-	<script>
-  var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
-  var jsonObj = JSON.parse(decodedJson);
-  window.points = jsonObj;
+<script>
+	var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
+	var jsonObj = JSON.parse(decodedJson);
+	window.points = jsonObj;
 </script>
 
 <!--hay que configurarlo para la route-->

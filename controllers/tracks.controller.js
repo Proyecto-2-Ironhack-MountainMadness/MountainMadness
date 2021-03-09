@@ -115,19 +115,18 @@ module.exports.edit = (req, res, next) => {
 };
 
 module.exports.doEdit = (req, res, next) => {
-  console.log(req.body)
   const id = req.params.id;
   if (req.body.path) {
     req.body.path = req.body.path.map((x) =>
       x.split(",").map((n) => Number(n))
     );
   }
-  const {title, description, path} = req.body;
+  const {title, description, path, distance,} = req.body;
   Track.findByIdAndUpdate(id, {
     title,
     description,
     path,
-
+    distance,
   })
 
     .then((track) => {
@@ -155,4 +154,20 @@ module.exports.trackDelete = (req, res, next) => {
     })
     .catch((error) => next(error));
 };
-//===========================================================
+//======================================================ADD COMMENTS=====
+module.exports.comments = (req, res, next) => {
+  const id = req.params.id;
+  const {comments} = req.body;
+  Track.findByIdAndUpdate(id, {
+    comments
+  })
+
+    .then((track) => {
+      if (!track) {
+        next((404, "Track not found"));
+      } else {
+        res.redirect(`/tracks`);
+      }
+    })
+    .catch((error) => next(error));
+};

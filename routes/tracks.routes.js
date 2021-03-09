@@ -21,4 +21,8 @@ router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksC
 router.get('/:id', tracksController.trackDetails)
 router.post('/:id/delete', tracksController.trackDelete)
 
+//=========================Comments================================0
+
+router.post("/:id/comments",secure.isNotAuthenticated,tracksController.comments);
+
 module.exports = router;
