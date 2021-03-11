@@ -24,14 +24,17 @@ const trackSchema = new mongoose.Schema({
     enum: categories,
 
   },
+
+  comments: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Comment',
+  },
+
+
   distance: {
     type: String
   },
 
-  comments: {
-    type: String,
-    required: false,
-  },
 
   path: {
     type: [[Number]]
