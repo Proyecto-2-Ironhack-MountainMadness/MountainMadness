@@ -2,27 +2,59 @@ const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
 const categories = require("../data/categories");
 const User = require("../models/User.model");
+const Like = require("../models/Like.model");
 
 //======================================================MOSTRAR TODAS LAS TRACKS=============================================
 module.exports.tracksPage = (req, res, next) => {
   Track.find({})
     .populate("author")
+    .populate("likes")
     .then((tracks) => {
       res.render("track/list", {
-        tracks,
         categories: categories,
         isAuthor: true,
+        tracks: tracks.map((track) => {
+          track.likeCount = track.likes.length;
+          track.disabled = req.currentUser;
+          /* ? track.author.toString() === req.currentUser._id.toString()
+            : true;
+            track.likedByUser = req.currentUser
+            ? track.likes.some(
+                (l) => l.user.toString() == req.currentUser._id.toString()
+              )
+            : false; */
+          return track;
+        }),
       });
     })
-    .catch((e) => {
-      console.log(e);
-    });
+    .catch((e) => console.log(e));
+};
+
+module.exports.like = (req, res, next) => {
+  Like.findOne({ track: req.params.trackId, user: req.currentUser._id })
+    .then((like) => {
+      if (!like) {
+        return Like.create({
+          track: req.params.trackId,
+          user: req.currentUser._id,
+        }).then(() => {
+          // Dándole a like
+          res.json({ add: 1 });
+        });
+      } else {
+        return Like.findByIdAndDelete(like._id).then(() => {
+          // Dándole a dislike
+          res.json({ add: -1 });
+        });
+      }
+    })
+    .catch((e) => next(e));
 };
 //==================================================================================================
 //======================================================MOSTRAR DETAIL DE UNA TRACK=============================================
 module.exports.trackDetails = (req, res, next) => {
   const id = req.params.id;
-  console.log(id)
+  console.log(id);
   Track.findById(id)
     .populate("author")
     .then((track) => {
@@ -43,24 +75,6 @@ module.exports.trackDetails = (req, res, next) => {
     });
 };
 
-/* module.exports.get = (req, res, next) => {
-  const id = req.params.id;
-  Experience.findById(id)
-    .populate('user')
-    .populate({
-      path: 'comments',
-      populate: {
-        path: 'user',
-      }
-    })
-    .then(experience => {
-      res.render('experiences/detail', {
-        experience,
-        pointsJSON: encodeURIComponent(JSON.stringify(experience.location.coordinates))
-      })
-    })
-    .catch(err => next(err));
-} */
 //==================================================================================================
 
 //=======================================================CREATE================================================================
@@ -108,26 +122,24 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.edit = (req, res, next) => {
   const id = req.params.id;
 
-  Track.findById(id)
-  .then((track) => {
-    res.render("track/trackEdit", {track, categories});
+  Track.findById(id).then((track) => {
+    res.render("track/trackEdit", { track, categories });
   });
 };
 
 module.exports.doEdit = (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   const id = req.params.id;
   if (req.body.path) {
     req.body.path = req.body.path.map((x) =>
       x.split(",").map((n) => Number(n))
     );
   }
-  const {title, description, path} = req.body;
+  const { title, description, path } = req.body;
   Track.findByIdAndUpdate(id, {
     title,
     description,
     path,
-
   })
 
     .then((track) => {
@@ -155,4 +167,22 @@ module.exports.trackDelete = (req, res, next) => {
     })
     .catch((error) => next(error));
 };
-//===========================================================
+//====================================================SEARCH BY TITLE========================================================
+module.exports.results = (req, res, next) => {
+  const { title } = req.query;
+  const criteria = {};
+  console.log(title);
+  if (title) {
+    criteria.title = new RegExp(title, "i");
+  }
+
+  Track.find(criteria)
+    /* .populate("user") */
+    .then((tracks) =>
+      res.render("track/list", {
+        tracks,
+        title,
+      })
+    )
+    .catch((error) => next(error));
+};

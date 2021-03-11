@@ -2,7 +2,7 @@
 
 <div id="video-container-home">
 
-  <video class="video-home" width="100%" playsinline="playsinline"  autoplay="autoplay" muted="muted" loop="loop">
+  <video class="video-home" width="100%" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     <source src="/images/videoHome.mp4" type="video/mp4">
   </video>
   <div id="tracks-home-link">
@@ -19,132 +19,134 @@
 
 <div class="home">
   {{> login}}
+  {{> register}}
 </div>
 <div class="container">
-  
-  <h2 class="titulo-categorias">Explora la actividad que más te guste</h2>
-  <div class="row">
-    <div class="col-sm">
-      <a href="/categories/Trekking">
-        <input type="image" width="100" height="100"
-          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/hiker_i6hab1.svg"
-           id="camping" >
-      </a>
-      <div class="category-card">
 
-        <span class="icon-001"></span>
-        <p class="category-name">Trekking </p>
+  <h2 class="titulo-categorias">Explora la categoría que más te guste</h2>
+  <hr class="hr">
+  <div class="categoria-box container">
+    <div class="firstrou row">
+      <div class="col-sm">
+        <a href="/categories/Trekking">
+          <input type="image" width="100" height="100" class="container"
+            src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/hiker_i6hab1.svg"
+            id="camping">
+        </a>
+        <div class="category-card">
+
+          <span class="icon-001"></span>
+          <p class="category-name">Trekking </p>
+        </div>
+      </div>
+
+      <div class="col-sm ">
+        <a href="/categories/Alpinismo">
+          <input type="image" width="100" height="100" class="container"
+            src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/piolet_auwciq.svg"
+            id="forest">
+        </a>
+        <div class="category-card">
+
+          <span class="icon-002"></span>
+          <p class="category-name">Alpinismo</p>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <a href="/categories/Barranquismo"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/river_czbuej.svg"
+          id="your bag">
+        <div class="category-card">
+
+
+          <p class="category-name">Barranquismo</p>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <a href="/categories/Víaferrata"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615464523/IRON%20HACK/MountainMadness/climbing_ac8oao.svg"
+          id="mountains" value="mountains">
+        <div class="category-card">
+
+          <span class="icon-004"></span>
+          <p class="category-name">Vía ferrata</p>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <a href="/categories/Escalada"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615464592/IRON%20HACK/MountainMadness/climb_tcfoyi.svg"
+          id="walking" value="walking">
+        <div class="category-card">
+
+          <span class="icon-005"></span>
+          <p class="category-name">Escalada</p>
+        </div>
       </div>
     </div>
+    <div class="secondrou row">
+      <div class="col-sm">
+        <a href="/categories/Motocross"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/motocross_braiwx.svg"
+          id="camping" value="camping">
+        <div class="category-card">
 
-    <div class="col-sm">
-      <a href="/categories/Alpinismo">
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/piolet_auwciq.svg"
-         id="forest">
-         </a>
-      <div class="category-card">
-
-        <span class="icon-002"></span>
-        <p class="category-name">Alpinismo</p>
+          <p class="category-name">Motocross</p>
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm">
-      <a href="/categories/Barranquismo"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/river_czbuej.svg"
-         id="your bag">
-      <div class="category-card">
+      <div class="col-sm">
+        <a href="/categories/Espeleogía"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615463838/IRON%20HACK/MountainMadness/cave_zho9fj.svg"
+          id="forest" value="forest">
+        <div class="category-card">
 
-        <span class="icon-003"></span>
-        <p class="category-name">Barranquismo</p>
+          <span class="icon-002"></span>
+          <p class="category-name">Espeleogía</p>
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm">
-      <a href="/categories/Víaferrata"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615232510/IRON%20HACK/MountainMadness/climbing_1_qxuauk.svg"
-         id="mountains" value="mountains">
-      <div class="category-card">
+      <div class="col-sm">
+        <a href="/categories/TrailRunning"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615464394/IRON%20HACK/MountainMadness/trail_q7hi3w.svg"
+          id="your bag" value="your bag">
+        <div class="category-card">
 
-        <span class="icon-004"></span>
-        <p class="category-name">Vía ferrata</p>
+
+          <p class="category-name container">TrailRunning</p>
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm">
-      <a href="/categories/Escalada"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/climbing_e2u01p.svg"
-         id="walking" value="walking">
-      <div class="category-card">
+      <div class="col-sm">
+        <a href="/categories/Rutas4x4"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615463628/IRON%20HACK/MountainMadness/4x4_tefbew.svg"
+          id="mountains" value="mountains">
+        <div class="category-card container">
 
-        <span class="icon-005"></span>
-        <p class="category-name">Escalada</p>
+          <p class="category-name">Rutas 4x4 </p>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <a href="/categories/Kayak"></a>
+        <input type="image" width="100" height="100" class="container"
+          src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615464691/IRON%20HACK/MountainMadness/kayak_r660vs.svg"
+          id="walking" value="walking">
+        <div class="category-card">
+
+          <p class="category-name">Kayak </p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm">
-      <a href="/categories/Motocross"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/motocross_braiwx.svg"
-         id="camping" value="camping">
-      <div class="category-card">
-
-        <span class="icon-001"></span>
-        <p class="category-name">Motocross</p>
-      </div>
-    </div>
-
-    <div class="col-sm">
-      <a href="/categories/Espeleogía"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231437/IRON%20HACK/MountainMadness/rock_dd3knm.svg"
-         id="forest" value="forest">
-      <div class="category-card">
-
-        <span class="icon-002"></span>
-        <p class="category-name">Espeleogía</p>
-      </div>
-    </div>
-
-    <div class="col-sm">
-      <a href="/categories/TrailRunning"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231437/IRON%20HACK/MountainMadness/running_yjpobo.svg"
-         id="your bag" value="your bag">
-      <div class="category-card">
-
-        <span class="icon-003"></span>
-        <p class="category-name">TrailRunning</p>
-      </div>
-    </div>
-
-    <div class="col-sm">
-      <a href="/categories/Rutas4x4"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615227025/IRON%20HACK/MountainMadness/four-wheel-drive-on-mountain_a9oifd.svg"
-         id="mountains" value="mountains">
-      <div class="category-card">
-
-        <span class="icon-004"></span>
-        <p class="category-name">Rutas 4x4</p>
-      </div>
-    </div>
-
-    <div class="col-sm">
-      <a href="/categories/Kayak"></a>
-      <input type="image" width="100" height="100"
-        src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/kayak_s3fhpl.svg"
-         id="walking" value="walking">
-      <div class="category-card">
-
-        <span class="icon-005"></span>
-        <p class="category-name">Kayak </p>
-      </div>
-    </div>
-  </div>
+  <hr class="hr">
 </div>

@@ -1,46 +1,42 @@
 const mongoose = require("mongoose");
-const categories = require('../data/categories');
-// const Like = require("./Like.model")
+const categories = require("../data/categories");
+const Like = require("./Like.model")
 
-const trackSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: false,
+const trackSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: false,
+    },
+    description: {
+      type: String,
+      required: false,
+    },
+    author: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+    },
+    image: {
+      type: String,
+    },
+    categories: {
+      type: String,
+      enum: categories,
+    },
+    distance: {
+      type: Number,
+    },
+    path: {
+      type: [[Number]],
+    },
   },
-  description: {
-    type: String,
-    required: false,
-  },
-  author: {
-    type: mongoose.SchemaTypes.ObjectId,
-    ref: "User",
-  },
-  image: {
-    type: String,
-
-  },
-  categories: {
-    type: String,
-    enum: categories,
-
-  },
-  distance: {
-    type: Number
-  },
-
-
-  path: {
-    type: [[Number]]
-  },
-},
   {
     timestamps: true,
     toObject: {
-      virtuals: true
-    }
-  });
-
-
+      virtuals: true,
+    },
+  }
+);
 
 // location: {
 //   type: {
@@ -54,21 +50,16 @@ const trackSchema = new mongoose.Schema({
 //   }
 // },
 
+trackSchema.index({ location: "2dsphere" });
 
-
-
-
-
-
-
-
-
-
-
+trackSchema.virtual("likes", {
+  ref: "Like",
+  localField: "_id",
+  foreignField: "track",
+});
 
 const Track = mongoose.model("Track", trackSchema);
 
 module.exports = Track;
-
 
 //No se me ocurre mas información para el modelo xDDD
