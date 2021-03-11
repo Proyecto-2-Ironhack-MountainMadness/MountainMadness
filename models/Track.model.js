@@ -29,7 +29,13 @@ const trackSchema = new mongoose.Schema(
     path: {
       type: [[Number]],
     },
-  },
+  
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }],
+},
+
   {
     timestamps: true,
     toObject: {

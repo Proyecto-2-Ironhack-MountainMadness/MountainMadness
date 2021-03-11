@@ -2,7 +2,7 @@
 	<form action="/tracks/create" method="POST" onsubmit="addPathToForm(this)" enctype="multipart/form-data">
 		<div class="spacetracktop mb-3">
 			<h3 for="name" class="form-label">Nombre de la Ruta</h3>
-			<input type="text" labelme="title" value="{{track.title}}"
+			<input type="text" labelme="title" name="title" value="{{track.title}}"
 				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
 			{{#if errors.name}}
 			<div class="invalid-feedback">
