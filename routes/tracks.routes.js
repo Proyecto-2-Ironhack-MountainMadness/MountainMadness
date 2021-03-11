@@ -23,6 +23,6 @@ router.post('/:id/delete', tracksController.trackDelete)
 
 //=========================Comments================================0
 
-router.post("/:id/comments",secure.isNotAuthenticated,tracksController.comments);
+router.post("/:id/comments",secure.isAuthenticated,tracksController.comments);
 
 module.exports = router;

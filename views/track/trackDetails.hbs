@@ -39,8 +39,7 @@
   <form method="POST" action="/tracks/{{track._id}}/comments">
     <div class="mb-3">
       <label for="comments" class="form-label">Añade tu Opinión sobre esta ruta</label>
-      <input type="text" name="comments" value="{{track.comments}}"
-        class="form-control {{#if errors.comments}}is-invalid{{/if}}" id="comments">
+      <input type="textArea" name="message" class="form-control {{#if errors.comments}}is-invalid{{/if}}" id="comments">
 
       <div class="align-end text-center">
         <button class="btn btn-primary" type="submit">Enviar opinión <span
@@ -73,16 +72,17 @@
 {{/if}}
 
 <h3>Comentarios</h3>
-<li class="list-group-item">
-  <div class="mb-3">
-    <p>{{track.comments}}</p>
+
+{{#each track.comments }}
+<div>
+  <div class="flex-row align-items-center mb-3">
+    <h1>hOLAAAAA </h1>
   </div>
-</li>
-
-
-
-
 </div>
+<hr>
+{{/each}}
+
+
 
 
 <script>
