@@ -21,7 +21,7 @@ router.get('/editProfile', secure.isAuthenticated, usersController.editProfile)
 
 router.post('/editProfile', secure.isAuthenticated, upload.single("image"), usersController.doEditProfile)
 
-
+router.get("/wishlist", secure.isAuthenticated, usersController.wishlist);
 
 
 module.exports = router;

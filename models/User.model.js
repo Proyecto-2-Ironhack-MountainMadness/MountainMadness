@@ -11,6 +11,8 @@ const PASSWORD_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
 //Nº de veces que algoritmo cifra la contraseña 
 const SALT_ROUNDS = 10;
 
+const Like = require("./Like.model")
+
 
 //============Schema que guardamos en const e importamos de mongoose===================
 
@@ -106,6 +108,12 @@ userSchema.pre("save", function (next) {
     } else {
       next();
     }
+  });
+
+  userSchema.virtual('likes', {
+    ref: 'Like',
+    localField: '_id',
+    foreignField: 'user'
   });
 
 //======================exportamos el schema del modelo=========================

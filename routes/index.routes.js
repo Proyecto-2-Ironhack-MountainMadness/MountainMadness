@@ -1,8 +1,11 @@
 const passport = require('passport');
 const router = require("express").Router();
 const miscController = require("../controllers/misc.controller");
+const secure = require('../middlewares/secure.middleware');
 const usersController = require("../controllers/users.controller");
 const categoriesController = require("../controllers/categories.controller");
+
+
 
 
 const GOOGLE_SCOPES = [
@@ -36,6 +39,9 @@ router.get("/aboutUs",miscController.aboutus);
 
 //========================terms ====================//
 router.get("/terms",miscController.terms);
+
+//* /========================likes ====================//
+
 
 
 module.exports = router;

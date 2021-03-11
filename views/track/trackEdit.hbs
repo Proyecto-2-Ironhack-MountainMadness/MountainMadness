@@ -1,7 +1,8 @@
 <div class="container" id="route">
-  <h1>{{track.title}}</h1>
+	<h1>{{track.title}}</h1>
 
-  <form method="POST" action="/tracks/{{track._id}}/edit" onsubmit="addPathToForm(this)" enctype="multipart/form-data"> 
+	<form method="POST" action="/tracks/{{track._id}}/edit" onsubmit="addPathToForm(this)"
+		enctype="multipart/form-data">
 		<div class="mb-3">
 			<label for="name" class="form-label">Nombre</label>
 			<input type="text" name="title" value="{{track.title}}"
@@ -27,14 +28,14 @@
 			</select>
 
 		</div>
-		
+
 		{{!-- <div class=>
 			<input type="string" name="lat" value="{{lat}}" />
 			<input type="string" name="lng" value="{{lng}}" />
 		</div> --}}
 		<div id="map"></div>
 
-		
+
 
 
 		<div class="mb-3">
@@ -56,22 +57,22 @@
 				{{errors.image}}
 			</div>
 			{{/if}}
-    <div class="align-end text-center">
+			<div class="align-end text-center">
 
-      <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
-          class="fa fa-check nt-w ml-2"></span></button>
-    </div>
+				<button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
+						class="fa fa-check nt-w ml-2"></span></button>
+			</div>
 		</div>
-		
-  </form>
+
+	</form>
 </div>
 <script src="/js/map.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{mapsKey}}&callback=initMap&libraries=&v=weekly"
 	async></script>
 
-	<script>
-  var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
-  var jsonObj = JSON.parse(decodedJson);
-  window.points = jsonObj;
+<script>
+	var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
+	var jsonObj = JSON.parse(decodedJson);
+	window.points = jsonObj;
 </script>
