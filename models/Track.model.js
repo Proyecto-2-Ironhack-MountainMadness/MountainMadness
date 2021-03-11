@@ -2,40 +2,49 @@ const mongoose = require("mongoose");
 const categories = require("../data/categories");
 const Like = require("./Like.model")
 
-const trackSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: false,
-    },
-    description: {
-      type: String,
-      required: false,
-    },
-    author: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: "User",
-    },
-    image: {
-      type: String,
-    },
-    categories: {
-      type: String,
-      enum: categories,
-    },
-    distance: {
-      type: Number,
-    },
-    path: {
-      type: [[Number]],
-    },
+const trackSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: false,
   },
-  {
+  description: {
+    type: String,
+    required: false,
+  },
+  author: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "User",
+  },
+  image: {
+    type: String,
+
+  },
+  categories: {
+    type: String,
+    enum: categories,
+
+  },
+
+  comments: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Comment',
+  },
+
+
+  distance: {
+    type: String
+  },
+
+
+  path: {
+    type: [[Number]]
+  },
+  
     timestamps: true,
     toObject: {
       virtuals: true,
     },
-  }
+}
 );
 
 // location: {

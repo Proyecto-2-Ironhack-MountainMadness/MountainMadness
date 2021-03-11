@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
+const Comment = require("../models/Comments.model")
 const categories = require("../data/categories");
 const User = require("../models/User.model");
 const Like = require("../models/Like.model");
@@ -61,10 +62,10 @@ module.exports.trackDetails = (req, res, next) => {
       if (req.currentUser) {
         track.author._id.equals(req.currentUser._id)
           ? res.render("track/trackDetails", {
-              track,
-              isAuthor: true,
-              pointsJSON: encodeURIComponent(JSON.stringify(track.path)),
-            })
+            track,
+            isAuthor: true,
+            pointsJSON: encodeURIComponent(JSON.stringify(track.path)),
+          })
           : res.render("track/trackDetails", { track });
       } else {
         res.render("track/trackDetails", { track });
@@ -122,24 +123,26 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.edit = (req, res, next) => {
   const id = req.params.id;
 
-  Track.findById(id).then((track) => {
-    res.render("track/trackEdit", { track, categories });
-  });
+  Track.findById(id)
+    .then((track) => {
+      res.render("track/trackEdit", { track, categories });
+    });
 };
 
 module.exports.doEdit = (req, res, next) => {
-  console.log(req.body);
   const id = req.params.id;
   if (req.body.path) {
     req.body.path = req.body.path.map((x) =>
       x.split(",").map((n) => Number(n))
     );
   }
-  const { title, description, path } = req.body;
+ /*  const { title, description, path } = req.body; */
+  const { title, description, path, distance, } = req.body;
   Track.findByIdAndUpdate(id, {
     title,
     description,
     path,
+    distance,
   })
 
     .then((track) => {
@@ -186,3 +189,25 @@ module.exports.results = (req, res, next) => {
     )
     .catch((error) => next(error));
 };
+//======================================================ADD COMMENTS=====
+module.exports.comments = (req, res, next) => {
+
+  const commentData = {
+    message: req.body.message,
+    user: req.currentUser._id,
+    track: req.params.id,
+  };
+console.log("holaaa", commentData)
+
+  const comment = new Comment(commentData);
+  return comment
+    .save()
+          .then(comment => {Track.findByIdAndUpdate(req.params.id, {
+              $push: {"comments": comment.message}
+            })
+    })
+
+      
+      .catch(error => next(error));
+    }
+    
