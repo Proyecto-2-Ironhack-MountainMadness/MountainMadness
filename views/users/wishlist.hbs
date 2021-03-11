@@ -1,0 +1,43 @@
+<div class="container-fluid-list">
+    <div class="container">
+        <h1 class="titulo-lista-tracks">Rutas favoritas</h1>
+    </div>
+			<section id="tracks">
+				{{#each tracks as |track|}}
+				<div class="track">
+					<div class="row">
+						<div class="col-12 mt-3">
+							<div class="card">
+								<div class="card-horizontal">
+
+									<div class="card-body">
+										<div class="track__title">
+											<a href="/tracks/{{track._id}}">
+												<h4>Titulo: {{track.title}}</h4>
+											</a>
+										</div>
+										<p class="track__description">Descripción: {{track.description}}</p>
+										<p class="track__description">Categoria: {{track.categories}}</p>
+										<p class="track__description">Dificultad: </p>
+										<p class="track__description">Valoración: </p>
+										<button onclick="like(this)" {{#if disabled}}disabled{{/if}}
+											data-trackid="{{_id}}"
+											class="likes {{#unless likedByUser}}unliked{{/unless}}">😍
+											<span>{{track.likeCount}}</span></button>
+									</div>
+									<img class="box-track-img"
+										src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}"
+										alt="track image">
+								</div>
+								<div class="card-footer">
+									<small class="text-muted">Subido por {{track.author.nickName}}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</section>
+		</div>
+	</div>
+</div>

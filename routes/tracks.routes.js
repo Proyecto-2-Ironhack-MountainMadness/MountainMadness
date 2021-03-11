@@ -11,9 +11,13 @@ router.get("/", tracksController.tracksPage);
 //Siempre que tengamos una ruta en el que usemos un archivo img debemos añadirle el middleware --> upload.single("image"),
 
 //Routes create - edit - delete
+router.get('/list', tracksController.results);
 
 router.get("/create", secure.isAuthenticated, tracksController.create);
 router.post("/create", secure.isAuthenticated, upload.single("image"), tracksController.doCreate);
+
+
+
 
 router.get("/:id/edit", secure.isAuthenticated, tracksController.edit);
 router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksController.doEdit);
@@ -21,8 +25,9 @@ router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksC
 router.get('/:id', tracksController.trackDetails)
 router.post('/:id/delete', tracksController.trackDelete)
 
-//=========================Comments================================0
+//========================likes ====================//
+router.get("/:trackId/like", secure.isAuthenticated, tracksController.like);
 
-router.post("/:id/comments",secure.isAuthenticated,tracksController.comments);
+
 
 module.exports = router;

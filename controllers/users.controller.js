@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const User = require("../models/User.model");
 const passport = require("passport")
+const Like = require("../models/Like.model");
+const Track = require("../models/Track.model");
 
 const { sendActivationEmail } = require("../config/mailer.config"); //Nodemailer
 
@@ -146,6 +148,21 @@ module.exports.doLoginGoogle = (req, res, next) => {
   })(req, res, next)
 }
 
+//========================Wishlist=============================
 
 
+module.exports.wishlist = (req, res, next) => {
+  console.log("he llegao")
 
+  console.log(req.currentUser)
+  Like.find({ user: req.currentUser._id })
+  .populate("track")
+  .then((likes) => {
+    res.render("users/wishlist", {
+        
+        tracks: likes.map((l) => {
+          return { ...l.toJSON().track, likedByUser: true };
+        }),
+      });
+    });
+};
