@@ -27,6 +27,7 @@
           <p><b>Descripción: </b>{{track.description}}</p>
         </div>
       </li>
+
       <li class="list-group-item">
         <div class="mb-3">
           <p><b>Valoración: </b></p>
@@ -35,40 +36,53 @@
     </ul>
   </div>
 
-{{#if isAuthor}}
-  <div class="align-items-center">
-    <div class="btn-group ">
-      <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
-        <button class="btn btn-danger">Borrar Track</button>
-      </form>
-      <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
-        <button class="btn btn-danger">Editar Track</button>
-      </form>
-    </div>
+  <form method="POST" action="/tracks/{{track._id}}/comments">
+    <div class="mb-3">
+      <label for="comments" class="form-label">Añade tu Opinión sobre esta ruta</label>
+      <input type="textArea" name="message" class="form-control {{#if errors.comments}}is-invalid{{/if}}" id="comments">
+
+      <div class="align-end text-center">
+        <button class="btn btn-primary" type="submit">Enviar opinión <span
+            class="fa fa-check nt-w ml-2"></span></button>
+      </div>
+  </form>
+
+
+
+  {{#if errors.comments}}
+  <div class="invalid-feedback">
+    {{errors.comments}}
   </div>
   {{/if}}
-
-
-
-  <section>
-    <div class="card-horizontal ">
-
-      <div class="card-body pt-10">
-
-        <p class="t">Descripción: {{track.description}}</p>
-
-      </div>
-    </div>
-  </section>
-  <img class="box-track-img" src="{{track.image}}" alt="track image">
-
-
-
-
-
- 
-
 </div>
+
+
+
+{{#if isAuthor}}
+<div class="align-items-center">
+  <div class="btn-group ">
+    <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
+      <button class="btn btn-danger">Borrar Track</button>
+    </form>
+    <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
+      <button class="btn btn-danger">Editar Track</button>
+    </form>
+  </div>
+</div>
+{{/if}}
+
+<h3>Comentarios</h3>
+
+{{#each track.comments }}
+<div>
+  <div class="flex-row align-items-center mb-3">
+    <h1>hOLAAAAA </h1>
+  </div>
+</div>
+<hr>
+{{/each}}
+
+
 
 
 <script>

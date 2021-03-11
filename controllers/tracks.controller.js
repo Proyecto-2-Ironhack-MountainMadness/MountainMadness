@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
+const Comment = require("../models/Comments.model")
 const categories = require("../data/categories");
 const User = require("../models/User.model");
 const Like = require("../models/Like.model");
@@ -61,10 +62,10 @@ module.exports.trackDetails = (req, res, next) => {
       if (req.currentUser) {
         track.author._id.equals(req.currentUser._id)
           ? res.render("track/trackDetails", {
-              track,
-              isAuthor: true,
-              pointsJSON: encodeURIComponent(JSON.stringify(track.path)),
-            })
+            track,
+            isAuthor: true,
+            pointsJSON: encodeURIComponent(JSON.stringify(track.path)),
+          })
           : res.render("track/trackDetails", { track });
       } else {
         res.render("track/trackDetails", { track });
