@@ -1,153 +1,55 @@
-<div><a class="nav-link" href="/tracks">Rutas</a>
-  <div class="main-img">
-    <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="jumbotron bg-cover text-white">
-      <div class="container py-5 text-center">
+<div class="main-img">
+  <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="bg-profile jumbotron text-white">
+    <div class="container py-5 text-center">
 
-        <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.email}}</h1>
-        </p>
-        <div class="image-div-flex ">
-          <div class="profile-img mx-auto" data-image="{{currentUser.imgProfile}}"
-            style="background:url('{{currentUser.imgProfile}}') " alt="Profile Picture">
-          </div>
+      <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.nickName}}</h1>
+      </p>
+      <div class="image-div-flex ">
+        <div class="profile-img mx-auto" data-image="{{currentUser.imgProfile}}"
+          style="background:url('{{currentUser.imgProfile}}') " alt="Profile Picture">
         </div>
       </div>
-
     </div>
+
   </div>
-
-  <p> </p>
-  <form method="POST" action="/users/editProfile">
-    <div class="row">
-
-
-      <div class="col-xl-4 col-md-12 col-12 row mx-left ml-20">
-        <div class="form-group row">{{!-- <label for="" class="col-sm-2 col-form-label col-xs-2"></label> --}}
-          <div class="col-sm-10"><p>Nombre de Usuario: </p>
-            <input type="text" name="nickName" class="form-control" id="inputNickname" value="{{currentUser.nickName}}"
-              placeholder="{{currentUser.nickName}}">
-          </div>
-
-          <div class="col-sm-10"><p>Imagen de Perfil: </p>
-            <input type="file" name="image" class="form-control" id="image" value="{{currentUser.imgProfile}}"
-              placeholder="{{currentUser.imgProfile}}">
-          </div>
-
-          <div class="col-sm-10"><p>Numero de Telefono: </p>
-            <input type="number" name="phone" class="form-control" id="phone" value="{{currentUser.phone}}"
-              placeholder="{{currentUser.phone}}">
-          </div>
-
-          <div class="col-sm-10"><p>País:  </p>
-            <input type="text" name="country" class="form-control" id="country" value="{{currentUser.country}}"
-              placeholder="{{currentUser.country}}">
-          </div>
-
-
-          <div class="col-sm-10"><p>Fecha de Nacimiento:   </p>
-            <input type="date" name="birth" class="form-control" id="birth" value="{{currentUser.birth}}"
-              placeholder="{{currentUser.birth}}">
-          </div>
-
-
-          <div class="col-sm-10"><p>Sobre mi:  </p>
-            <input type="text" name="aboutMe" class="form-control" id="aboutMe" value="{{currentUser.aboutMe}}"
-              placeholder="{{currentUser.aboutMe}}">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="text-center">
-        <h1>Mis Rutas Favoritas</h1>
-
-        <div class="mx-auto">
-          <div class="row mx-auto">
-            <div class="card" style="width: 18rem;">
-              {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              {{!-- <img src="..." class="card-img-top" alt="..."> --}}
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's
-                  content.
-                </p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="align-end text-center">
-      <button class="btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
-          class="fa fa-check nt-w ml-2"></span></button>
-
-    </div>
-  </form>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <p class="espace-user text-center">👤 Nombre de Usuario: </p>
+      <p class="espace-user text-center">📱 Numero de Telefono: </p>
+      <p class="espace-user text-center">🗺️ País: </p>
+      <p class="espace-user text-center">📅 Fecha de Nacimiento: </p>
+      <p class="espace-user text-center">🖊️ Sobre mi: </p>
+    </div>
+    <form method="POST" action="/users/editProfile">
+      <div class="col-12">
+        <input type="text" name="nickName" class="form-control" id="inputNickname" value="{{currentUser.nickName}}"
+          placeholder="{{currentUser.nickName}}"> 
+        <input type="number" name="phone" class="form-control" id="phone" value="{{currentUser.phone}}"
+          placeholder="{{currentUser.phone}}">
+        <input type="text" name="country" class="form-control" id="country" value="{{currentUser.country}}"
+          placeholder="{{currentUser.country}}">
+          <br>
+        <input type="date" name="birth" class="form-control" id="birth" value="{{currentUser.birth}}"
+          placeholder="{{currentUser.birth}}">
+        <textarea name="aboutMe" class="form-control" id="aboutMe" value="{{currentUser.aboutMe}}"
+          placeholder="{{currentUser.aboutMe}}" class="form-control {{#if errors.description}}is-invalid{{/if}}"
+          id="description">{{track.description}}</textarea>
+
+        {{!-- <input type="text" name="aboutMe" class="form-control" id="aboutMe" value="{{currentUser.aboutMe}}" --}}
+          {{!-- placeholder="{{currentUser.aboutMe}}"> --}}
+
+      </div>
+  </div>
+</div>
+</div>
+
+<div>
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <button class=" btn-save btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
+        class="fa fa-check nt-w ml-2"></span></button>
+
+  </div>
+</div>
+</form>

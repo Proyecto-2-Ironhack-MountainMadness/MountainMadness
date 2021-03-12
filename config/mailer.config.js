@@ -2,7 +2,9 @@ const nodemailer = require("nodemailer");
 const { generateTemplate } = require("./mailtemplate");
 
 const transporter = nodemailer.createTransport({
-	service: "Gmail",
+	host: 'smtp.gmail.com',
+	secure: true,
+	// service: "Gmail",
 	auth: {
 		user: process.env.NM_USER,
 		pass: process.env.NM_PASSWORD
