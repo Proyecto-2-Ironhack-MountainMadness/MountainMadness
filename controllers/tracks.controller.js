@@ -57,6 +57,7 @@ module.exports.trackDetails = (req, res, next) => {
   console.log(id);
   Track.findById(id)
     .populate("author")
+    .populate("comments")
     .then((track) => {
       if (req.currentUser) {
         track.author._id.equals(req.currentUser._id)
@@ -105,6 +106,7 @@ module.exports.doCreate = (req, res, next) => {
 
   Track.create(req.body)
     .then(() => {
+      console.log(req.body)
       res.redirect(`/tracks`);
     })
     .catch((e) => {
@@ -184,3 +186,23 @@ module.exports.results = (req, res, next) => {
     )
     .catch((error) => next(error));
 };
+
+
+//================================================COMMENTS==============================================
+
+module.exports.sendComment = (req, res, next) =>{
+  const id = req.params.trackId;
+  console.log(id);
+  Comment.create(req.body)
+  .then((comment)=>{
+    console.log(comment)
+  
+  Track.findByIdAndUpdate(id, {$push:{"comments": comment._id}})
+    .then((track) => 
+    res.redirect(`/tracks/${track._id}`))  
+  
+    .catch((ines) => {
+      next(ines);
+    });
+  })
+ }

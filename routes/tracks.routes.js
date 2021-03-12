@@ -28,6 +28,12 @@ router.post('/:id/delete', tracksController.trackDelete)
 //========================likes ====================//
 router.get("/:trackId/like", secure.isAuthenticated, tracksController.like);
 
+//========================comment ====================//
+router.post("/:trackId/comments", secure.isAuthenticated, tracksController.sendComment);
+
+
+
+
 
 
 module.exports = router;
