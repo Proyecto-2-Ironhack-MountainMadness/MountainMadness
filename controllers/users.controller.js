@@ -47,7 +47,7 @@ module.exports.doRegister = (req, res, next) => {
 };
 //=======================================LOGIN===================================================
 module.exports.login = (req, res, next) => {
-  res.render("users/login");
+  res.render("users/login" );
 };
 
 module.exports.doLogin = (req, res, next) => {

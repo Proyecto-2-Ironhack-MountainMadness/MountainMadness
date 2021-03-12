@@ -12,6 +12,7 @@ module.exports.tracksPage = (req, res, next) => {
     .populate("likes")
     .then((tracks) => {
       res.render("track/list", {
+        
         categories: categories,
         isAuthor: true,
         tracks: tracks.map((track) => {

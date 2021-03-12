@@ -297,9 +297,10 @@ body {
     width: 100%;
     height: 180px;
     resize: none;
-    
-
 }
+
+
+
 .butoncrearruta {
     max-width: 100%;
     align-items: center;
@@ -430,7 +431,7 @@ body {
 
 
 .filelabel {
-    width: 300px;
+    width: 400px;
     height: 200px;
     border: 2px dashed grey;
     border-radius: 5px;
@@ -462,4 +463,39 @@ body {
 }
 #FileInput{
     display:none;
+}
+
+
+/* DASH LINE CREATE TRACKS */
+
+.columcreate{
+    height: 300px;
+}
+.rowcreate{
+    height: 300px;
+}
+
+.c-dashed-line__path {
+	animation: c-dashed-line-path 3s ease-in-out infinite alternate;
+	fill: none;
+	stroke: #31CC89;
+	stroke-dasharray: 940; /* this is the entire length of the line */
+	stroke-dashoffset: 940; /* this is the entire length of the line */
+	stroke-width: 10;
+}
+
+.c-dashed-line__dash {
+	fill: none;
+	stroke: #FFFFFF; /* this must match the background color */
+	stroke-dasharray: 16 10; /* draws a 10px dash line with a 16px gap between */
+	stroke-width: 19; /* make the dashed line slightly bigger than the one it's covering */
+}
+
+@keyframes c-dashed-line-path {
+	from {
+		stroke-dashoffset: 940;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
 }

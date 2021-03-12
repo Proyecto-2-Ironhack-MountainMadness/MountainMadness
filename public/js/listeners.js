@@ -48,7 +48,6 @@ function searchListeners() {
   const filterButton = document.getElementById("filter-button");
   if (filterButton) {
     filterButton.onclick = function (event) {
-      console.log("marcou");
       event.preventDefault();
       const filterWord = document.getElementById("filter-word");
       var filterWordValue = filterWord.value;

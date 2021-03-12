@@ -65,3 +65,5 @@ else if(extension == 'doc' || extension == 'docx'){
         $(".filelabel .title").text(labelVal);
     }
 });
+
+
