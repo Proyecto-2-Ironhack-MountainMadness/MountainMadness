@@ -4,26 +4,28 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img
-            src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615379026/IRON%20HACK/MountainMadness/logo_large_csppxs.png"
+            src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615475770/IRON%20HACK/MountainMadness/qxd16lkoknklrsnchgdo.png"
             width="350" height="350" class="img-fluid" alt="">
         </a>
 
         <div class="container">
           <div class=" container collapse navbar-collapse justify-content-md" id="navbarNavDropdown">
-            <form class="d-flex" style="width: 1000px;">
+            <form class="d-flex" style="width: 500px;">
               <input class="form-control me-2 container" type='text' name='' id="filter-word"
                 placeholder="Busca la ruta por su título" aria-label="Search">
               <button class="searchbtn btn btn-outline-success " id="filter-button">Search</button>
             </form>
-
-   
 
           </div>
         </div>
         <div class="float-right">
           <ul class="navbar-nav">
             <li class="nav-item-track">
-              {{#if currentUser}}
+            <li><a class="nav-link btn btn-outline-success" href="/tracks"><input type="image" width="25" height="25"
+                  style="vertical-align: middle; "
+                  src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615547803/IRON%20HACK/MountainMadness/destination_1_czexvo.svg">
+                Todas las rutas</a></li>
+            {{#if currentUser}}
             <li><a class="nav-link btn btn-outline-success" href="/users/profile"><input type="image" width="25"
                   height="25" style="vertical-align: middle; "
                   src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615390584/IRON%20HACK/MountainMadness/user_2_w3rlzg.svg">
@@ -31,11 +33,7 @@
             <li><a class="nav-link btn btn-outline-success text-align-right" href="/tracks/create"><input type="image"
                   width="25" height="25" style="vertical-align: middle; "
                   src="https://res.cloudinary.com/drls3a8oi/image/upload/v1615383830/IRON%20HACK/MountainMadness/success_1_putuj6.svg">
-                Añadir
-                ruta
-
-              </a>
-            </li>
+                Añadir ruta</a></li>
             </li>
 
             <form action="/users/logout" method="POST">
@@ -43,7 +41,12 @@
             </form>
             {{else}}
             <div>
-              <button id='signup-button' class="nav-link btn btn-outline-success " {{!-- href="/users/register" --}}>SignUp</button></li>
+              {{#if isHome}}
+              <button id='signup-button' class="nav-link btn btn-outline-success "
+                href="/users/register">SignUp</button></li>
+              {{else}}
+              <a id='signup-button' class="nav-link btn btn-outline-success " href="/users/register">SignUp</a></li>
+              {{/if}}
             </div>
             <div>
 
