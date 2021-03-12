@@ -43,5 +43,13 @@ router.get("/terms",miscController.terms);
 //* /========================likes ====================//
 
 
+//========================jobs ====================//
+router.get("/jobs",miscController.jobs);
+
+
+//========================donate ====================//
+router.get("/donate",miscController.donate);
+
+
 
 module.exports = router;

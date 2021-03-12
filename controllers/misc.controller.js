@@ -38,3 +38,13 @@ module.exports.aboutus = (req, res, next) => {
 module.exports.terms = (req, res, next) => {
   res.render('partials/terms')
 }
+
+//==================================== JOBS  ==============================================
+module.exports.jobs = (req, res, next) => {
+  res.render('partials/jobs')
+}
+
+//==================================== DONATE  ==============================================
+module.exports.donate = (req, res, next) => {
+ res.render('partials/donate')
+}

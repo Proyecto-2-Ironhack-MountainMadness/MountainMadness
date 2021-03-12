@@ -2,11 +2,11 @@
   <div style="background: url(https://i.postimg.cc/3N7wnb75/background.jpg)" class="bg-profile jumbotron text-white">
     <div class="container py-5 text-center">
 
-      <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.email}}</h1>
+      <h1 class="display-4 font-weight-bold">Bienvenido a tu perfil<br> {{currentUser.nickName}}</h1>
       </p>
       <div class="image-div-flex ">
         <div class="profile-img mx-auto" data-image="{{currentUser.imgProfile}}"
-          style="background:url('{{currentUser.imgProfile}}') " alt="Profile Picture">
+          style="background:url('{{currentUser.imgProfile}}')" alt="Profile Picture">
         </div>
       </div>
     </div>
@@ -14,71 +14,50 @@
   </div>
 </div>
 
-<p> </p>
-<div class="row">
-  <div class="align-end text-center">
-    <form action="/users/editProfile" method="GET">
-      <button class="btn btn-danger">Editar Perfil</button>
-    </form>
-  </div>
-
-  {{!-- FORMULARIO DE LA IZQUIERDA CON NOMBRE EMAIL MOVIL PAIS FECHA DE NACIMIENTO... --}}
-  <div class="col-xl-4 col-md-12 col-12 row mx-left ml-20">
-    <form>
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label col-xs-2"></label>
-        <div class="col-sm-10">
-          <p class=" ml-0 profile-paragraph">{{currentUser.nickName}}</p>
-          {{!-- <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-          --}}
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-          <p class=" ml-0 profile-paragraph">{{currentUser.email}}</p>
-          {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Telefono de contacto">
-          --}}
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-          <p class=" ml-0 profile-paragraph">{{currentUser.country}}</p>
-          {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Pais">
-          --}}
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-          <p class=" ml-0 profile-paragraph">{{currentUser.birth}}</p>
-          {{!-- <input type="password" class="form-control" id="inputPassword" placeholder="Fecha de nacimiento">
-          --}}
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="col-xl-8 col-md-12 col-12 row mx-right mr-20 ">
-    <div class="textArea">
-      <form>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">About me</label>
-          <p class=" ml-0 profile-paragraph">{{currentUser.aboutMe}}</p>
-          {{!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> --}}
-        </div>
-      </form>
+<div class="container">
+  <div class="space-profile row">
+    <div class="col">
+      <form action="/users/editProfile" method="GET"><button class="btn-edit btn btn-outline-danger">🖊️ Editar
+          Perfil</button> </form>
+    </div>
+    <div class="col">
+      <form action="/users/wishlist" method="GET"><button class="btn-fav btn btn-outline-danger">❤️ Mis Rutas
+          Favoritas</button></form>
+    </div>
+    <div class="col">
+      <form action="/users/delete" method="POST"> <button class="btn-del btn btn-outline-danger">☠️ Borrar
+          Cuenta</button></form>
     </div>
   </div>
 </div>
-<div class="align-end text-center">
-  <form action="/users/wishlist" method="GET">
-    <button class="btn btn-danger">Mis Rutas Favoritas</button>
+
+<div class="button-edit-profile row">
+</div>
+
+<hr class="hr-profile">
+
+{{!-- FORMULARIO DE LA IZQUIERDA CON NOMBRE EMAIL MOVIL PAIS FECHA DE NACIMIENTO... --}}
+<div class="container">
+  <form>
+    <div class=" form-group row">
+      <div class="col-6">
+        <p class="espace-user text-right">Nombre de usuario:</p>
+        <p class="espace-user text-right">Dirección de correo electronico: </p>
+        <p class="espace-user text-right">País: </p>
+        <p class="espace-user text-right">Fecha de nacimiento: </p>
+        <p class="espace-user text-right">Sobre mi: </p>
+      </div>
+      <div class="col-6">
+        <p class="espace-user">{{currentUser.nickName}}</p>
+        <p class="espace-user">{{currentUser.email}}</p>
+        <p class="espace-user">{{currentUser.country}}</p>
+        <p class="espace-user">{{currentUser.birth}}</p>
+        <p class="espace-user">{{currentUser.aboutMe}}</p>
+      </div>
+    </div>
   </form>
 </div>
-<div class="align-end text-center">
-  <form action="/users/delete" method="POST">
-    <button class="btn btn-danger">Borrar Cuenta</button>
-  </form>
-</div>
+
+<div class="espace-footer-user">
+
 </div>
