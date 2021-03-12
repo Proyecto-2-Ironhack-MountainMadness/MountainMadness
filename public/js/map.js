@@ -10,45 +10,46 @@ function initMap() {
 
   // infoWindow = new google.maps.InfoWindow;
   poly = new google.maps.Polyline({
-    path: window.points ? window.points.map(function (point) {
-      return {
-        lat: point[1],
-        lng: point[0],
-      }
-    }) : null,
+    path: window.points
+      ? window.points.map(function (point) {
+          return {
+            lat: point[1],
+            lng: point[0],
+          };
+        })
+      : null,
     geodesic: true,
-    strokeColor: 'red',
+    strokeColor: "red",
     strokeOpacity: 1.0,
     strokeWeight: 3,
     draggable: true,
   });
 
   if (window.points) {
-    poly
-    var bounds = new google.maps.LatLngBounds()
+    poly;
+    var bounds = new google.maps.LatLngBounds();
 
     window.points.forEach(function (location) {
-      var position = new google.maps.LatLng(location[1], location[0])
+      var position = new google.maps.LatLng(location[1], location[0]);
       new google.maps.Marker({
         icon: "/images/icon.png",
         position: position,
-        map: map
-      })
-      bounds.extend(position)
-    })
+        map: map,
+      });
+      bounds.extend(position);
+    });
 
-    map.fitBounds(bounds)
+    map.fitBounds(bounds);
   }
-
-
-
 
   poly.setMap(map);
   // Add a listener for the click event
-  map.addListener("click", addLatLng);
-
-
-
+  if (
+    window.location.href.includes("create") ||
+    window.location.href.includes("edit")
+  ) {
+    map.addListener("click", addLatLng);
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -62,6 +63,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function addLine() {
   poly.setMap(map);
 }
+
+
 
 function removeLine() {
   poly.setMap(null);

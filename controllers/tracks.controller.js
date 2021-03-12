@@ -12,6 +12,7 @@ module.exports.tracksPage = (req, res, next) => {
     .populate("likes")
     .then((tracks) => {
       res.render("track/list", {
+        
         categories: categories,
         isAuthor: true,
         tracks: tracks.map((track) => {
@@ -51,7 +52,6 @@ module.exports.like = (req, res, next) => {
     })
     .catch((e) => next(e));
 };
-//==================================================================================================
 //======================================================MOSTRAR DETAIL DE UNA TRACK=============================================
 module.exports.trackDetails = (req, res, next) => {
   const id = req.params.id;
@@ -77,7 +77,6 @@ module.exports.trackDetails = (req, res, next) => {
     });
 };
 
-//==================================================================================================
 
 //=======================================================CREATE================================================================
 module.exports.create = (req, res, next) => {
@@ -119,7 +118,6 @@ module.exports.doCreate = (req, res, next) => {
       }
     });
 };
-//===========================================================
 
 //====================================================UPDATE-EDITAR TRACKS========================================================
 module.exports.edit = (req, res, next) => {

@@ -4,16 +4,17 @@
     </div>
 
     <section id="tracks">
-        {{#each tracks as |track|}}
-        <div class="track">
-            <div class="row">
-                <div class="col-12 mt-3">
+        <div class="row">
+            {{#each tracks as |track|}}
+            <div class="col-5 mt-3">
+                <div class="track">
                     <div class="card">
                         <div class="card-horizontal">
 
                             <div class="card-body">
                                 <div class="track__title">
-                                    <a href="/tracks/{{track._id}}" style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
+                                    <a href="/tracks/{{track._id}}"
+                                        style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
                                         {{track.title}}
 
                                     </a>
@@ -22,8 +23,8 @@
                                 <p class="track__description">Categoria: {{track.categories}}</p>
                                 <p class="track__description">Dificultad: </p>
                                 <p class="track__description">Valoración: </p>
-                                <button onclick="like(this)" {{!-- {{#if disabled}}disabled{{/if}} --}} data-trackid="{{_id}}"
-                                    class="likes {{#unless likedByUser}}unliked{{/unless}}">😍
+                                <button onclick="like(this)" {{!-- {{#if disabled}}disabled{{/if}} --}}
+                                    data-trackid="{{_id}}" class="likes {{#unless likedByUser}}unliked{{/unless}}">⛰️
                                     <span>{{track.likeCount}}</span></button>
                             </div>
                             <img class="box-track-img"
@@ -36,7 +37,17 @@
                     </div>
                 </div>
             </div>
-        </div>
         {{/each}}
-    </section>
+    </div>
 </div>
+</section>
+</div>
+
+
+{{!-- 
+element.style {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 200px;
+    /* display: inline-blo --}}

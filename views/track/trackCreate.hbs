@@ -2,7 +2,7 @@
 	<form action="/tracks/create" method="POST" onsubmit="addPathToForm(this)" enctype="multipart/form-data">
 		<div class="spacetracktop mb-3">
 			<h3 for="name" class="form-label">Nombre de la Ruta</h3>
-			<input type="text" labelme="title" name="title" value="{{track.title}}"
+			<input type="text" name="title" value="{{track.title}}" placeholder="Ejemplo: GR-11.9 (Aragón) Collado de Arrablo - Collado de Anisclo (Faja de Olas)"
 				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
 			{{#if errors.name}}
 			<div class="invalid-feedback">
@@ -16,7 +16,9 @@
 			<select name="categories">
 				<option selected value="0"> Elige una categoría </option>
 				{{#each categories as |category|}}
-				<option value="{{ category }}">{{ category }}</option>
+				<option
+					style="background-image:url(https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/hiker_i6hab1.svg);"
+					value="{{ category }}">{{ category }}</option>
 				{{/each}}
 			</select>
 		</div>
@@ -25,8 +27,10 @@
 
 		<div class="spacedescription mb-3">
 			<h3 for="description" class="form-label">Descripción</h3>
-			<input class="textarea" type="text" name="description" value="{{track.description}}"
-				class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" required>
+			<textarea class="textarea" {{!-- type="text" --}} name="description"
+				placeholder="Detalla tu ruta lo máximo posible"
+				class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description"
+				required>{{track.description}}</textarea>
 			{{#if errors.description}}
 			<div class="invalid-feedback">
 				{{errors.description}}
@@ -34,18 +38,37 @@
 			{{/if}}
 		</div>
 		{{!-- //==================================================== --}}
-		<h3 for="description" class="form-label">Sube tu imagen favorita</h3>
-		<label class="filelabel">
-			<i class="fa fa-paperclip">
-			</i>
-			<span class="title">
-				Add File
-			</span>
-			<input class="FileUpload1" id="FileInput" name="image" value="{{track.image}}" type="file" />
-		</label>
-		{{!-- //==================================================== --}}
-		<div class="butoncrearruta">
-			<button type="submit" class="btn btn-primary container">Crear Ruta</button>
+		<div class="row">
+			<div class="col-6">
+
+				<h3 for="description" class="form-label">Sube tu imagen favorita</h3>
+				<label class="filelabel">
+					<i class="fa fa-paperclip">
+					</i>
+					<span class="title">
+						Add File
+					</span>
+					<input class="FileUpload1" id="FileInput" name="image" value="{{track.image}}" type="file" />
+				</label>
+				{{!-- //==================================================== --}}
+			</div>
+			<div class="col-6">
+				<h1>
+					<svg class="c-dashed-line" width="580" height="240">
+						<defs>
+							<path id="c-dashed-line" d="M875 0s5 120-435 120-435 120-435 120" />
+						</defs>
+						<!-- A solid green line that we'll animate -->
+						<use class="c-dashed-line__path" xlink:href="#c-dashed-line" />
+						<!-- A dashed white line that sits on top of the solid green line -->
+						<use class="c-dashed-line__dash" xlink:href="#c-dashed-line" />
+					</svg>
+
+				</h1>
+			</div>
+			<div class="container butoncrearruta">
+				<button type="submit" class="btn btn-primary container">Crear Ruta</button>
+			</div>
 		</div>
 	</form>
 </div>
