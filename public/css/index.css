@@ -197,7 +197,7 @@ margin-left: 35px;
     margin-left: 20px;
 }
 .close-sesion{
-    margin-left: 20px;
+    margin-left: 50px;
     height: 45px;
 
 }
@@ -326,7 +326,7 @@ margin-left: 35px;
 
 /* ================= tracks ===============================*/
 .container-fluid-list {
-    background-color: rgb(185, 183, 183);
+    background-color:#C1E3C1;
 }
 .titulo-lista-tracks{
     text-align: center;
@@ -338,10 +338,12 @@ margin-left: 35px;
 .card-horizontal {
     display: flex;
     flex: 1 1 auto;
+    /* width: 600px; */
 }
 .spacetracktop {
     margin-top: 50px;
 }
+
 .spacedescription {
     margin-top: 30px;
     margin-bottom: 200px;
@@ -351,7 +353,10 @@ margin-left: 35px;
     height: 180px;
     resize: none;
 }
-
+.list-tracks{
+    margin-left: 100px;
+    margin-right: -250px;
+}
 
 
 .butoncrearruta {
@@ -393,6 +398,8 @@ margin-left: 35px;
 
 .card-body {
     display: inline-block;
+    width: 800px;
+    
 }
 
 /* ================= MAPS CSS ===============================*/
@@ -452,7 +459,7 @@ margin-left: 35px;
     top: 45px;  
     width: 24em;
     margin: 0 auto;
-    font-family: 'Akaya Telivigala', cursive;
+    font-family: 'Nunito', sans-serif;
 
    
     font-size: 320%;

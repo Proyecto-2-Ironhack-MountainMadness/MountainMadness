@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
   },
   imgProfile: {
     type: String,
-    default: "",
+    default: "https://res.cloudinary.com/drls3a8oi/image/upload/v1615552272/IRON%20HACK/MountainMadness/default_h7xjby.jpg",
   },
   birth: {
     type: Date
