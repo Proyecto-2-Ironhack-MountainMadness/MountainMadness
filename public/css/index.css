@@ -291,10 +291,14 @@ body {
 }
 .spacedescription {
     margin-top: 30px;
+    margin-bottom: 200px;
 }
 .textarea {
     width: 100%;
-    height: 250px;
+    height: 180px;
+    resize: none;
+    
+
 }
 .butoncrearruta {
     max-width: 100%;

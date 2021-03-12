@@ -2,7 +2,7 @@
 	<form action="/tracks/create" method="POST" onsubmit="addPathToForm(this)" enctype="multipart/form-data">
 		<div class="spacetracktop mb-3">
 			<h3 for="name" class="form-label">Nombre de la Ruta</h3>
-			<input type="text" labelme="title" value="{{track.title}}"
+			<input type="text" name="title" value="{{track.title}}"
 				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
 			{{#if errors.name}}
 			<div class="invalid-feedback">
@@ -16,7 +16,7 @@
 			<select name="categories">
 				<option selected value="0"> Elige una categoría </option>
 				{{#each categories as |category|}}
-				<option value="{{ category }}">{{ category }}</option>
+				<option style="background-image:url(https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/hiker_i6hab1.svg);" value="{{ category }}">{{ category }}</option>
 				{{/each}}
 			</select>
 		</div>
@@ -25,8 +25,8 @@
 
 		<div class="spacedescription mb-3">
 			<h3 for="description" class="form-label">Descripción</h3>
-			<input class="textarea" type="text" name="description" value="{{track.description}}"
-				class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" required>
+			<textarea class="textarea" {{!-- type="text" --}} name="description" placeholder="Detalla tu ruta lo máximo posible"
+				class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" required >{{track.description}}</textarea>
 			{{#if errors.description}}
 			<div class="invalid-feedback">
 				{{errors.description}}
