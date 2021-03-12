@@ -46,6 +46,59 @@ body {
     align-items: center !important;
 }
 
+.space-profile{
+    margin-bottom: 50px;
+}
+
+.hr-profile{
+    border: 1px solid rgb(95, 165, 95);
+    border-radius: 5px;
+    width: 55%;
+}
+
+
+.info-user{
+ align-items: flex-end;
+}
+
+.align-end {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.btn-profile-down{
+    margin-bottom: 30px;
+    margin-right: 20px;
+}
+
+.btn-edit{
+margin-left: 35px;
+
+}
+
+.btn-fav {
+    margin-left: 75px;
+}
+
+.btn-del {
+    margin-left: 155px;
+}
+
+.espace-user{
+    margin-bottom: 25px;
+}
+
+.espace-footer-user{
+    margin-bottom: 100px;
+}
+
+/* ==================edit profile==================== */
+
+.btn-save {
+    margin-bottom: 80px
+}
+
+
 /* ==================navbarhome==================== */
 .nopadding {
     padding: 0 !important;
