@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Track = require("../models/Track.model");
 const Comment = require("../models/Comments.model")
 const categories = require("../data/categories");
+const valoracion = require("../data/valoracion");
+const dificultad = require("../data/dificultad");
 const User = require("../models/User.model");
 const Like = require("../models/Like.model");
 
@@ -14,6 +16,8 @@ module.exports.tracksPage = (req, res, next) => {
       res.render("track/list", {
         
         categories: categories,
+        valoracion: valoracion,
+         dificultad: dificultad,
         isAuthor: true,
         tracks: tracks.map((track) => {
           track.likeCount = track.likes.length;
@@ -80,7 +84,7 @@ module.exports.trackDetails = (req, res, next) => {
 
 //=======================================================CREATE================================================================
 module.exports.create = (req, res, next) => {
-  res.render("track/trackCreate", { categories });
+  res.render("track/trackCreate", { categories, valoracion, dificultad });
 };
 
 module.exports.doCreate = (req, res, next) => {
@@ -124,7 +128,7 @@ module.exports.edit = (req, res, next) => {
   const id = req.params.id;
 
   Track.findById(id).then((track) => {
-    res.render("track/trackEdit", { track, categories });
+    res.render("track/trackEdit", { track, categories, valoracion, dificultad });
   });
 };
 

@@ -1,11 +1,13 @@
 const Track = require("../models/Track.model");
 const categories = require("../data/categories");
+const valoracion = require("../data/valoracion");
+const dificultad = require("../data/dificultad");
 const { contactUsEmail } = require("../config/mailer.config")
 
 module.exports.home = (req, res, next) => {
   Track.find({})
     .then((tracks) => {
-      res.render('home', { isHome: true, tracks, categories: categories })
+      res.render('home', { isHome: true, tracks, categories: categories, valoracion: valoracion, dificultad: dificultad })
     })
     .catch((e) => {
       console.log(e);

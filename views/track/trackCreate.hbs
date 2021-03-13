@@ -2,7 +2,8 @@
 	<form action="/tracks/create" method="POST" onsubmit="addPathToForm(this)" enctype="multipart/form-data">
 		<div class="spacetracktop mb-3">
 			<h3 for="name" class="form-label">Nombre de la Ruta</h3>
-			<input type="text" name="title" value="{{track.title}}" placeholder="Ejemplo: GR-11.9 (Aragón) Collado de Arrablo - Collado de Anisclo (Faja de Olas)"
+			<input type="text" name="title" value="{{track.title}}"
+				placeholder="Ejemplo: GR-11.9 (Aragón) Collado de Arrablo - Collado de Anisclo (Faja de Olas)"
 				class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" required>
 			{{#if errors.name}}
 			<div class="invalid-feedback">
@@ -14,11 +15,27 @@
 		<div class="mb-3">
 			<label for="categories" class="form-label">Categoría</label>
 			<select name="categories">
-				<option selected value="0"> Elige una categoría </option>
+				{{!-- <option selected value="0"> Elige una categoría </option> --}}
 				{{#each categories as |category|}}
-				<option
-					style="background-image:url(https://res.cloudinary.com/drls3a8oi/image/upload/v1615231435/IRON%20HACK/MountainMadness/hiker_i6hab1.svg);"
-					value="{{ category }}">{{ category }}</option>
+				<option value="{{ category }}">{{ category }}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="mb-3">
+			<label for="valoracion" class="form-label">Categoría</label>
+			<select name="valoracion">
+				{{!-- <option selected value="0"> Elige una categoría </option> --}}
+				{{#each valoracion as |valoracion|}}
+				<option value="{{ valoracion }}">{{ valoracion }}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="mb-3">
+			<label for="dificultad" class="form-label">Categoría</label>
+			<select name="dificultad">
+				{{!-- <option selected value="0"> Elige una categoría </option> --}}
+				{{#each dificultad as |dificultad|}}
+				<option value="{{ dificultad }}">{{ dificultad }}</option>
 				{{/each}}
 			</select>
 		</div>
@@ -41,7 +58,7 @@
 		<div class="row">
 			<div class="col-6">
 
-				<h3 for="description" class="form-label">Sube tu imagen favorita</h3>
+				<h3 for="description" class="form-label" required>Sube tu imagen favorita</h3>
 				<label class="filelabel">
 					<i class="fa fa-paperclip">
 					</i>

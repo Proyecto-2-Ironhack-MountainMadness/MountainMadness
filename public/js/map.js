@@ -32,7 +32,7 @@ function initMap() {
     window.points.forEach(function (location) {
       var position = new google.maps.LatLng(location[1], location[0]);
       new google.maps.Marker({
-        icon: "/images/icon.png",
+        icon: "https://res.cloudinary.com/drls3a8oi/image/upload/v1615588404/IRON%20HACK/MountainMadness/placasdasdasdasaaaaaaaaseholder_cnkuun.png",
         position: position,
         map: map,
       });
@@ -89,7 +89,7 @@ function addLatLng(event) {
     position: event.latLng,
     title: "#" + path.getLength(),
     map: map,
-    icon: '/images/icon.png',
+    icon: 'https://res.cloudinary.com/drls3a8oi/image/upload/v1615588404/IRON%20HACK/MountainMadness/placasdasdasdasaaaaaaaaseholder_cnkuun.png',
   });
 }
 
