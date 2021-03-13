@@ -97,18 +97,24 @@ margin-left: 35px;
 }
 
 .espace-user{
-    margin-bottom: 25px;
+    margin-bottom: 40px;
 }
 
 .espace-footer-user{
     margin-bottom: 100px;
 }
 
+
+
 /* ==================edit profile==================== */
 
 .btn-save {
-    margin-bottom: 80px
+    margin-bottom: 80px;
+    margin-top: 40px;
 }
+
+
+
 
 
 /* ==================navbarhome==================== */
@@ -440,6 +446,15 @@ margin-left: 35px;
     
 }
 
+.add-opinion {
+    padding-top: 20px;
+}
+
+
+.coments {
+    padding-top: 20px;
+}
+
 /* ================= MAPS CSS ===============================*/
 #right-panel {
     font-family: "Roboto", "sans-serif";
@@ -523,8 +538,28 @@ margin-left: 35px;
 
 
 /*FOOTER*/
+.img-footer {
+    padding-left: 25px;
+}
 
+.title-footer {
+    padding-left: 100px;
+    padding-top: 10px;
+    text-decoration: underline;
+    color: rgb(95, 165, 95);
+    
+}
 
+.section-footer {
+    padding-right: 310px;
+    padding-top: 50px;
+}
+
+.subtitle-footer{
+    text-decoration: underline;
+    letter-spacing: normal;
+    
+}
 
 
 
