@@ -429,10 +429,10 @@ margin-left: 35px;
 }
 
 .box-track-img-detail {
-    margin-left: -300px;
-    margin-top: 50px;
-    width: 500px;
-    height: 350px;
+    margin-left: 50px;
+    margin-top: 0px;
+    width: 400px;
+    height: 250px;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -458,6 +458,9 @@ margin-left: 35px;
     width: 320px;
     
 }
+.descriptiondetailtrack{
+    padding-left: 0px;
+}
 .descriptionaddline {
     margin-top: 25px;
 }
@@ -481,8 +484,18 @@ margin-left: 35px;
 .detailinfotrack{
     margin-left: -100px;
 }
+.nombreimagen{
+    margin-left: 50px;
+}
+.detailinfotracksize{
+    margin-top: 5px;
+}
 .add-opinion {
     margin-top: 20px;
+}
+.pespacio {
+    margin-bottom: 25px;
+    margin-left: 50px;
 }
 
 .comentarious{
