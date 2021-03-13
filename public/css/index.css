@@ -373,10 +373,12 @@ margin-left: 35px;
 .card-horizontal {
     display: flex;
     flex: 1 1 auto;
+    
     /* width: 600px; */
 }
 .spacetracktop {
     margin-top: 50px;
+    
 }
 
 .spacedescription {
@@ -389,8 +391,14 @@ margin-left: 35px;
     resize: none;
 }
 .list-tracks{
-    margin-left: 100px;
-    margin-right: -250px;
+     margin-left: 60px;
+     /* margin-bottom: 80px; */
+   margin-right: 30px;
+    /* max-width: 100%; */
+}
+
+.footertext{
+    display: inline-block;
 }
 
 
@@ -420,6 +428,9 @@ margin-left: 35px;
     background: grey;
     width: 50%;
 }
+.rowlisttrack{
+    width: 100%;
+}
 
 .trackdetaildescription{
         background: grey;
@@ -442,7 +453,7 @@ margin-left: 35px;
 
 .card-body {
     display: inline-block;
-    width: 600px;
+    
     
 }
 

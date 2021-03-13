@@ -1,14 +1,15 @@
 <div class="container-fluid-list">
+    
     <div class="container">
         <h1 class="titulo-lista-tracks">Rutas</h1>
     </div>
 
     <section class="list-tracks" id="tracks">
-        <div class="row">
+        <div class="row rowlisttrack">
             {{#each tracks as |track|}}
-            <div class="col-5 mt-3">
+            <div class="col-6 mt-3">
                 <div class="track">
-                    <div class="card" style="width: 52rem;">
+                    <div class="card" style="width: 62rem;">
                         <div class="card-horizontal">
 
                             <div class="card-body">
@@ -23,9 +24,10 @@
                                 <p class="track__description "><b>Descripción:</b>
                                     {{track.description}} </p>
                                 <p class="track__description"><b>Categoria:</b> {{track.categories}}</p>
-                                <p class="track__description"><b>Dificultad:</b> {{track.dificultad}}</p>                           </p>
+                                <p class="track__description"><b>Dificultad:</b> {{track.dificultad}}</p>
+                                </p>
                                 <p class="track__description"><b>Valoración:</b> {{track.valoracion}}</p>
-                              
+
                                 <button onclick="like(this)" data-trackid="{{_id}}"
                                     class="likes {{#unless likedByUser}}unliked{{/unless}}"><b>¡Guarda tus rutas
                                         favoritas!</b> <span class="emojifavo">⛰️</span>
@@ -43,10 +45,13 @@
                 </div>
             </div>
             {{/each}}
+                        
+                     
         </div>
+    </section>
+  
 </div>
-</section>
-</div>
+
 
 
 {{!--
