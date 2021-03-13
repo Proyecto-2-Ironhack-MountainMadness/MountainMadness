@@ -22,7 +22,7 @@ router.post("/create", secure.isAuthenticated, upload.single("image"), tracksCon
 router.get("/:id/edit", secure.isAuthenticated, tracksController.edit);
 router.post("/:id/edit", secure.isAuthenticated, upload.single("image"), tracksController.doEdit);
 
-router.get('/:id', tracksController.trackDetails)
+router.get('/:id',upload.single("image"), tracksController.trackDetails)
 router.post('/:id/delete', tracksController.trackDelete)
 
 //========================likes ====================//

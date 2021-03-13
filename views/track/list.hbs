@@ -1,7 +1,7 @@
 <div class="container-fluid-list">
-    
+
     <div class="container">
-        <h1 class="titulo-lista-tracks">Rutas</h1>
+        <h1 class="titulo-lista-tracks text-white">Rutas</h1>
     </div>
 
     <section class="list-tracks" id="tracks">
@@ -13,11 +13,10 @@
                         <div class="card-horizontal">
 
                             <div class="card-body">
-                                <div class="track__title"
-                                    style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
+                                <div class="track__title">
                                     <a href="/tracks/{{track._id}}"
-                                        style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
-                                        <h4 class="title-listtracks">{{track.title}} </h4>
+                                        style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);text-overflow: ellipsis; overflow: hidden;white-space: nowrap; ">
+                                        <p class="listtracksttitle">{{track.title}} </p>
 
                                     </a>
                                 </div>
@@ -30,7 +29,7 @@
 
                                 <button onclick="like(this)" data-trackid="{{_id}}"
                                     class="likes {{#unless likedByUser}}unliked{{/unless}}"><b>¡Guarda tus rutas
-                                        favoritas!</b> <span class="emojifavo">⛰️</span>
+                                        favoritas!</b>⛰️<span>{{track.likeCount}}</span></button>
 
                             </div>
                             <img class="box-track-img"
@@ -45,11 +44,9 @@
                 </div>
             </div>
             {{/each}}
-                        
-                     
+
+
         </div>
     </section>
-  
+
 </div>
-
-

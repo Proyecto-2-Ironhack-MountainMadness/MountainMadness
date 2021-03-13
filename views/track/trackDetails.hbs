@@ -1,101 +1,108 @@
-<div>
-<div class="container" id="route">
-  <h1>{{track.title}}</h1>
-  <div class="map-wrapper">
-    <div id="map" {{!-- style="pointer-events: none;" --}}>
+<div class="topdetailtrack">
+  <div class="container" id="route">
+    <h1>{{track.title}}</h1>
+    <div class="map-wrapper">
+      <div id="map" {{!-- style="pointer-events: none;" --}}>
 
-    </div>
-  </div>
-
-
-  <div class="card" style="width: 22rem; mt-5 ">
-    <div class="card-body">
-      <h5 class="card-title">Datos</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div class="mb-3">
-          <p><b>Autor: </b>{{track.author.email}}</p>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="mb-3">
-          <p><b>Distancia: </b>{{track.distance}}</p>
-        </div>
-      </li>
-      <li class="list-group-item">
-        <div class="mb-3">
-          <p><b>Descripción: </b>{{track.description}}</p>
-        </div>
-      </li>
-
-      <li class="list-group-item">
-        <div class="mb-3">
-          <p><b>Valoración: </b></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <form method="POST" action="/tracks/{{track._id}}/comments">
-    <div class="mb-3">
-      <label for="comments" class="form-label">Añade tu Opinión sobre esta ruta</label>
-      <input type="textArea" name="message" class="form-control {{#if errors.comments}}is-invalid{{/if}}" id="comments">
-
-      <div class="add-opinion align-end text-center">
-        <button class="btn btn-primary" type="submit">Enviar opinión <span
-            class="fa fa-check nt-w ml-2"></span></button>
       </div>
-  </form>
+    </div>
+    <div class="botonesdetail row d-flex justify-content-center">
 
-
-
-  {{#if errors.comments}}
-  <div class="invalid-feedback">
-    {{errors.comments}}
-  </div>
-  {{/if}}
-</div>
-
-
-
-{{#if isAuthor}}
-<div class="align-items-center">
-  <div class="btn-group ">
-    <form action="/tracks/{{track._id}}/delete" class="col-8 px-10" method="POST">
-      <button class="btn btn-danger">Borrar Track</button>
-    </form>
-    <form action="/tracks/{{track._id}}/edit" class="col-8" method="GET">
-      <button class="btn btn-danger">Editar Track</button>
-    </form>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h3 class="coments">Comentarios</h3>
-
+      <div></div>
+      {{#if isAuthor}}
+      <div class="botonesdetail">
+        <div class="btn-group ">
+          <form action="/tracks/{{track._id}}/delete" class="col-6 " method="POST">
+            <button class="btn btn-success">☠️ Borrar Track</button>
+          </form>
+          <form action="/tracks/{{track._id}}/edit" class="col-6" method="GET">
+            <button class="btn btn-success">🖊️ Editar Track</button>
+          </form>
+        </div>
+      </div>
       {{/if}}
 
+    </div>
+
+    <hr class="hr">
+    <div class="row">
+
+      <div class="col-3">
+        <p><b>Autor: </b></p>
+        <p><b>Dificultad: </b></p>
+        <p><b>Valoracion: </b></p>
+        <p><b>Imagen: </b></p>
 
 
-      {{#each track.comments }}
-      <div>
-        <div class="flex-row align-items-center mb-3">
-          <p>{{user.nickName}} {{this.message}}</p>
-        </div>
       </div>
-      <hr>
-      {{/each}}
+      <div class="col-3">
+        <div class="detailinfotrack">
+          <p>{{track.author.email}}</p>
+          <p>{{track.dificultad}}</p>
+          <p>{{track.valoracion}}</p>
+        </div>
+          <div class="col-6">
+            <img class="box-track-img-detail"
+              src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}"
+              alt="track image">
+          </div>
+
+      </div>
+
+      <div class="col-6">
+        <p><b>Descripción: </b></p>
+        <p>{{track.description}}</p>
+      </div>
+
+    </div>
+
+
+    <form method="POST" action="/tracks/{{track._id}}/comments">
+      <div class="comentarious">
+        <label for="comments" class="form-label "><b>Añade tu Opinión sobre esta ruta</b></label>
+        <input type="textArea" name="message" class="form-control {{#if errors.comments}}is-invalid{{/if}}"
+          id="comments">
+
+        <div class="add-opinion align-end text-center">
+          <button class="btn btn-primary" type="submit">Enviar opinión <span
+              class="fa fa-check nt-w ml-2"></span></button>
+        </div>
+    </form>
+
+
+
+    {{#if errors.comments}}
+    <div class="invalid-feedback">
+      {{errors.comments}}
+    </div>
+    {{/if}}
+  </div>
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 class="coments">Comentarios</h3>
+
+
+
+
+        {{#each track.comments }}
+        <div>
+          <div class="flex-row align-items-center mb-3">
+            <p>{{user.nickName}} {{this.message}}</p>
+          </div>
+        </div>
+        <hr>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>
+<div class="space-profile">
+
 </div>
-
-
-
 <script>
   var decodedJson = decodeURIComponent("{{{pointsJSON}}}");
   var jsonObj = JSON.parse(decodedJson);
