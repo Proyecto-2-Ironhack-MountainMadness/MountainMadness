@@ -16,11 +16,23 @@ body {
     color: black;
     background-color: transparent;
     border: none;
+    margin-left: -10px;
   }
+.like{
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+}  
   
   .unliked {
     filter: grayscale();
   }
+
+ .emojifavo{
+     margin-left: 5px;
+ } 
 
 /*============= profile =================*/
 
@@ -273,6 +285,22 @@ margin-left: 35px;
     background-repeat: no-repeat;
 
   }
+  .title-listtracks {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 25px !important;
+    text-decoration: none !important;
+    vertical-align: middle !important;
+    outline: none !important;
+    text-decoration: none !important;
+    padding: 2px 1px 0 !important;
+    color: rgb(95, 165, 95);
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 20px !important;
+
+  }
 
   .title-carousel {
       text-align: center !important;
@@ -326,11 +354,12 @@ margin-left: 35px;
 
 /* ================= tracks ===============================*/
 .container-fluid-list {
-    background-color:#C1E3C1;
+    background-color:#7a927a;
 }
 .titulo-lista-tracks{
     text-align: center;
     vertical-align: auto;
+    font-weight: bolder;
 }
 .tracktitle{
     text-decoration: none;
@@ -390,6 +419,15 @@ margin-left: 35px;
         background: grey;
         width: 15%;
 }
+.track__description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 320px;
+}
+.descriptionaddline {
+    margin-top: 25px;
+}
 
 .rowtrackdetail {
     display: flex;
@@ -398,7 +436,7 @@ margin-left: 35px;
 
 .card-body {
     display: inline-block;
-    width: 800px;
+    width: 600px;
     
 }
 

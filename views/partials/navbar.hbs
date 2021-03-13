@@ -49,8 +49,12 @@
               {{/if}}
             </div>
             <div>
+              {{#if isHome}}
+              <a id='login-button' class="nav-link btn btn-danger">LogIn</a>
+              {{else}}
+              <a id='signup-button' class="nav-link btn btn-danger" href="/authenticate/google">LogIn</a>
 
-              <button id='login-button' class="nav-link btn btn-danger">LogIn</button>
+              {{/if}}
             </div>
 
             {{/if}}

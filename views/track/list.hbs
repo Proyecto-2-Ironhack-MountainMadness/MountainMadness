@@ -12,42 +12,47 @@
                         <div class="card-horizontal">
 
                             <div class="card-body">
-                                <div class="track__title">
+                                <div class="track__title"
+                                    style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
                                     <a href="/tracks/{{track._id}}"
                                         style="text-decoration: none; text-decoration-color: rgb(95, 165, 95);">
-                                        {{track.title}}
+                                        <h4 class="title-listtracks">{{track.title}} </h4>
 
                                     </a>
                                 </div>
-                                <p class="track__description">Descripción: {{track.description}}</p>
-                                <p class="track__description">Categoria: {{track.categories}}</p>
-                                <p class="track__description">Dificultad: </p>
-                                <p class="track__description">Valoración: </p>
-                                <button onclick="like(this)" {{!-- {{#if disabled}}disabled{{/if}} --}}
-                                    data-trackid="{{_id}}" class="likes {{#unless likedByUser}}unliked{{/unless}}">⛰️
-                                    <span>{{track.likeCount}}</span></button>
+                                <p class="track__description "><b>Descripción:</b>
+                                    {{track.description}} </p>
+                                <p class="track__description"><b>Categoria:</b> {{track.categories}}</p>
+                                <p class="track__description"><b>Dificultad:</b> {{track.dificultad}}</p>                           </p>
+                                <p class="track__description"><b>Valoración:</b> {{track.valoracion}}</p>
+                              
+                                <button onclick="like(this)" data-trackid="{{_id}}"
+                                    class="likes {{#unless likedByUser}}unliked{{/unless}}"><b>¡Guarda tus rutas
+                                        favoritas!</b> <span class="emojifavo">⛰️</span>
+
                             </div>
                             <img class="box-track-img"
                                 src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}"
                                 alt="track image">
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Subido por {{track.author.nickName}}</small>
+                            <small class="text-muted">Subido por {{#if
+                                track.author.nickName}}{{track.author.nickName}}{{else}}{{track.author.email}}{{/if}}</small>
                         </div>
                     </div>
                 </div>
             </div>
-        {{/each}}
-    </div>
+            {{/each}}
+        </div>
 </div>
 </section>
 </div>
 
 
-{{!-- 
+{{!--
 element.style {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 200px;
-    /* display: inline-blo --}}
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+width: 200px;
+/* display: inline-blo --}}
