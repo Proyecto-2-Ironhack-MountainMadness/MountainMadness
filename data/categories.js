@@ -25,7 +25,7 @@ const categories = [
      "Trail running",
   
   
-     "Rutas 4x4",
+     "Todoterreno",
   
   
      "Kayak",

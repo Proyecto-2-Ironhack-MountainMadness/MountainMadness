@@ -28,34 +28,44 @@
     <div class="row">
 
       <div class="col-3">
-        <p><b>Autor: </b></p>
-        <p><b>Dificultad: </b></p>
-        <p><b>Valoracion: </b></p>
-        <p><b>Imagen: </b></p>
-
+        <div class="detailinfotracksize">
+          <p class="pespacio"><b>Autor: </b></p>
+      
+          <p class="pespacio" ><b>Dificultad: </b></p>
+          <p class="pespacio"><b>Valoración: </b></p>
+          <p class="pespacio"><b>Categoria: </b></p>
+          
+        </div>
 
       </div>
       <div class="col-3">
         <div class="detailinfotrack">
-          <p>{{track.author.email}}</p>
-          <p>{{track.dificultad}}</p>
-          <p>{{track.valoracion}}</p>
-        </div>
-          <div class="col-6">
-            <img class="box-track-img-detail"
-              src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}"
-              alt="track image">
+          <div class="detailinfotracksize">
+            <p class="pespacio">{{track.author.email}}</p>
+            <p class="pespacio">{{track.dificultad}}</p>
+            <p class="pespacio">{{track.valoracion}}</p>
+            <p class="pespacio">{{track.categories}}</p>
           </div>
+        </div>
 
       </div>
-
       <div class="col-6">
-        <p><b>Descripción: </b></p>
-        <p>{{track.description}}</p>
+        <p class="nombreimagen"><b>Imagen: </b></p>
+        <img class="box-track-img-detail"
+          src="{{#if track.image}}{{track.image}}{{else}}https://res.cloudinary.com/drls3a8oi/image/upload/v1615296976/IRON%20HACK/MountainMadness/hope-MSgLEgdIUiA-unsplash_rb6wua.jpg{{/if}}"
+          alt="track image">
       </div>
+
 
     </div>
 
+    <div class="descriptiondetailtrack col-12">
+      <p><b>Descripción: </b></p>
+      <text class="text" {{!-- type="text" --}} name="description" placeholder="Detalla tu ruta lo máximo posible"
+        class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description"
+        required>{{track.description}}</text>
+    </div>
+    <hr class="hr">
 
     <form method="POST" action="/tracks/{{track._id}}/comments">
       <div class="comentarious">
@@ -68,6 +78,8 @@
               class="fa fa-check nt-w ml-2"></span></button>
         </div>
     </form>
+
+    <hr class="hr">
 
 
 

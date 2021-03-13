@@ -140,10 +140,13 @@ module.exports.doEdit = (req, res, next) => {
       x.split(",").map((n) => Number(n))
     );
   }
-  const { title, description, path } = req.body;
+  const { title, description, path, categories, valoracion, dificultad } = req.body;
   Track.findByIdAndUpdate(id, {
     title,
     description,
+    categories,
+    dificultad,
+    valoracion,
     path,
   })
 
