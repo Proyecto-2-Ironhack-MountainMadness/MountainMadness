@@ -274,7 +274,7 @@ margin-left: 35px;
     text-align: center;
 }
 .hr {
-    border: 2px solid rgb(95, 165, 95);
+    border: 1px solid rgb(95, 165, 95);
     border-radius: 5px;
 }
 .firstrou {
@@ -291,12 +291,10 @@ margin-left: 35px;
     background-repeat: no-repeat;
 
   }
-  .title-listtracks {
+  .listtracksttitle {
     font-family: 'Open Sans', sans-serif !important;
     font-size: 25px !important;
     text-decoration: none !important;
-    vertical-align: middle !important;
-    outline: none !important;
     text-decoration: none !important;
     padding: 2px 1px 0 !important;
     color: rgb(95, 165, 95);
@@ -304,6 +302,13 @@ margin-left: 35px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: 320px;
+
+  }
+  .track__title{
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
     padding-bottom: 20px !important;
 
   }
@@ -423,6 +428,16 @@ margin-left: 35px;
     background-repeat: no-repeat;
 }
 
+.box-track-img-detail {
+    margin-left: -300px;
+    margin-top: 50px;
+    width: 500px;
+    height: 350px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .trackdetailimg{
     border: white;
     background: grey;
@@ -441,9 +456,13 @@ margin-left: 35px;
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 320px;
+    
 }
 .descriptionaddline {
     margin-top: 25px;
+}
+.topdetailtrack{
+    margin-top: 20px;
 }
 
 .rowtrackdetail {
@@ -456,14 +475,23 @@ margin-left: 35px;
     
     
 }
-
+.botonesdetail{
+    margin-right: 5px;
+}
+.detailinfotrack{
+    margin-left: -100px;
+}
 .add-opinion {
-    padding-top: 20px;
+    margin-top: 20px;
 }
 
+.comentarious{
+    margin-top: 20px;
+}
 
 .coments {
-    padding-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 /* ================= MAPS CSS ===============================*/
