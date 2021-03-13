@@ -1,7 +1,8 @@
+<div>
 <div class="container" id="route">
   <h1>{{track.title}}</h1>
-  <div class="map-wrapper" >
-    <div id="map"{{!--  style="pointer-events: none;" --}}>
+  <div class="map-wrapper">
+    <div id="map" {{!-- style="pointer-events: none;" --}}>
 
     </div>
   </div>
@@ -41,7 +42,7 @@
       <label for="comments" class="form-label">Añade tu Opinión sobre esta ruta</label>
       <input type="textArea" name="message" class="form-control {{#if errors.comments}}is-invalid{{/if}}" id="comments">
 
-      <div class="align-end text-center">
+      <div class="add-opinion align-end text-center">
         <button class="btn btn-primary" type="submit">Enviar opinión <span
             class="fa fa-check nt-w ml-2"></span></button>
       </div>
@@ -69,19 +70,29 @@
     </form>
   </div>
 </div>
-{{/if}}
 
-<h3>Comentarios</h3>
 
-{{#each track.comments }}
-<div>
-  <div class="flex-row align-items-center mb-3">
-    <p>{{this.message}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="coments">Comentarios</h3>
+
+      {{/if}}
+
+
+
+      {{#each track.comments }}
+      <div>
+        <div class="flex-row align-items-center mb-3">
+          <p>{{user.nickName}} {{this.message}}</p>
+        </div>
+      </div>
+      <hr>
+      {{/each}}
+    </div>
   </div>
 </div>
-<hr>
-{{/each}}
-
+</div>
 
 
 

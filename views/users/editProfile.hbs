@@ -23,17 +23,20 @@
       <p class="espace-user text-center">🖊️ Sobre mi: </p>
     </div>
     <form method="POST" action="/users/editProfile">
-      <div class="col-12">
+      <div class="espace-user col-12">
         <input type="text" name="nickName" class="form-control" id="inputNickname" value="{{currentUser.nickName}}"
           placeholder="{{currentUser.nickName}}"> 
+          <br>
         <input type="number" name="phone" class="form-control" id="phone" value="{{currentUser.phone}}"
           placeholder="{{currentUser.phone}}">
+          <br>
         <input type="text" name="country" class="form-control" id="country" value="{{currentUser.country}}"
           placeholder="{{currentUser.country}}">
           <br>
         <input type="date" name="birth" class="form-control" id="birth" value="{{currentUser.birth}}"
           placeholder="{{currentUser.birth}}">
-        <textarea name="aboutMe" class="form-control" id="aboutMe" value="{{currentUser.aboutMe}}"
+          <br>
+        <textarea name="aboutMe" class="textarea" id="aboutMe" value="{{currentUser.aboutMe}}"
           placeholder="{{currentUser.aboutMe}}" class="form-control {{#if errors.description}}is-invalid{{/if}}"
           id="description">{{track.description}}</textarea>
 
@@ -46,8 +49,8 @@
 </div>
 
 <div>
-  <div class="d-grid gap-2 col-6 mx-auto">
-    <button class=" btn-save btn btn-primary btn-block p-3 mt-5 btn-naturet nt-f" type="submit">Save Changes <span
+  <div class="btn-div-save d-grid gap-2 col-1 mx-auto">
+    <button class="btn-save btn btn-primary p-3 " type="submit">Save Changes <span
         class="fa fa-check nt-w ml-2"></span></button>
 
   </div>
