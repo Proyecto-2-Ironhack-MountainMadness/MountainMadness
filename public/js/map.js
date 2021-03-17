@@ -73,12 +73,8 @@ function removeLine() {
 
 // Handles click events on a map, and adds a new point to the Polyline.
 function addLatLng(event) {
-  console.log(event)
   const path = poly.getPath();
-  console.log(poly.getPath())
   if (path.Fb[0]) {
-    console.log("holaaa", path.Fb[0].lat())
-    console.log("holaaa", path.Fb[0].lng())
   }
 
   // Because path is an MVCArray, we can simply append a new coordinate

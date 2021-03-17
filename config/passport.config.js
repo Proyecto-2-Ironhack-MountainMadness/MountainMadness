@@ -59,7 +59,6 @@ passport.use('local-auth', new LocalStrategy({
         { 'social.google': googleID }
       ]})
       .then(user => {
-            /* next(null, false, { error: "Registrate y activa tu cuenta aceptando el correo de confirmacion" }) */
             if (!user) {
                 const newUserInstance = new User({
                   email,

@@ -54,17 +54,6 @@ const trackSchema = new mongoose.Schema(
   }
 );
 
-// location: {
-//   type: {
-//     type: String,
-//     enum: ['Point'],
-//     required: true
-//   },
-//   coordinates: {
-//     type: [Number],
-//     required: true
-//   }
-// },
 
 trackSchema.index({ location: "2dsphere" });
 
@@ -73,19 +62,8 @@ trackSchema.virtual("likes", {
   localField: "_id",
   foreignField: "track",
 });
-/* trackSchema.virtual("valoracion", {
-  ref: "valoracion",
-  localField: "_id",
-  foreignField: "track",
-});
-trackSchema.virtual("dificultad", {
-  ref: "dificultad",
-  localField: "_id",
-  foreignField: "track",
-}); */
 
 const Track = mongoose.model("Track", trackSchema);
 
 module.exports = Track;
 
-//No se me ocurre mas información para el modelo xDDD

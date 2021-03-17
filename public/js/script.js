@@ -11,15 +11,6 @@ const like = (element) => {
     .catch((e) => console.error("Error liking product", e));
   };
   
-  //  /product/{{_id}}/like
-  
-/*   setTimeout(() => {
-    document.querySelectorAll('.toast').forEach(toast => {
-      console.log(toast)
-      new bootstrap.Toast(toast).hide()
-    })  
-  }, 5000); */
-
 
 /* =========  INPUT IMAGES CREAR RUTA =============== */
 
