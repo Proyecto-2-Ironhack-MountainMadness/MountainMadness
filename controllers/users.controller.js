@@ -152,9 +152,7 @@ module.exports.doLoginGoogle = (req, res, next) => {
 
 
 module.exports.wishlist = (req, res, next) => {
-  console.log("he llegao")
 
-  console.log(req.currentUser)
   Like.find({ user: req.currentUser._id })
   .populate("track")
   .then((likes) => {

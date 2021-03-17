@@ -19,10 +19,10 @@ const categories = [
      "Motocross",
   
   
-     "Espeleogía",
+     "Espeleología",
   
   
-     "Trail running",
+     "TrailRunning",
   
   
      "Todoterreno",
